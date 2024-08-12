@@ -1,4 +1,4 @@
-package apis.champion
+package apis.lol.champion
 
 import com.fasterxml.jackson.annotation.JsonProperty
 

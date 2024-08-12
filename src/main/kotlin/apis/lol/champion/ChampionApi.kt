@@ -1,4 +1,4 @@
-package apis.champion
+package apis.lol.champion
 
 import ApiClientFactory
 import RegionApiClientFactory
@@ -14,6 +14,7 @@ class ChampionApi(
     private val apiClient = RegionApiClientFactory
         .create(apiKey, region)
         .createApiClient(ChampionApiClient::class.java)
+
     fun getChampionRotations(): ChampionResponse = apiClient.getChampionRotations()
 
     private interface ChampionApiClient {

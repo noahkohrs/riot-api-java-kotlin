@@ -1,7 +1,5 @@
-package apis.match
+package apis.lol.match
 
-import feign.Param
-import feign.RequestLine
 import values.GlobalRegion
 
 class MatchApi(

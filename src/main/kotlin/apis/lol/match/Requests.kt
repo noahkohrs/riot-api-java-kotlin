@@ -1,4 +1,4 @@
-package apis.match
+package apis.lol.match
 
 class MatchIdParams(
     val startTime: Long? = null,

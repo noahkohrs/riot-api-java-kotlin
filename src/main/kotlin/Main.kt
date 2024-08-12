@@ -1,6 +1,6 @@
 package org.example
 
-import com.noahkohrs.riot.api.sdk.RiotApi
+import RiotApi
 import values.GlobalRegion
 import values.Region
 

@@ -1,6 +1,3 @@
-package org.example
-
-import RiotApi
 import values.GlobalRegion
 import values.Region
 

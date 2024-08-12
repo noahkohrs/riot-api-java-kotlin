@@ -1,6 +1,5 @@
 package apis.lol.champion
 
-import ApiClientFactory
 import RegionApiClientFactory
 import feign.RequestLine
 import values.Region
@@ -18,7 +17,7 @@ class ChampionApi(
     fun getChampionRotations(): ChampionResponse = apiClient.getChampionRotations()
 
     private interface ChampionApiClient {
-        @RequestLine("GET $PATH/champion-rotations")
+        @RequestLine("GET /lol/platform/v3/champion-rotations")
         fun getChampionRotations() : ChampionResponse
     }
 }

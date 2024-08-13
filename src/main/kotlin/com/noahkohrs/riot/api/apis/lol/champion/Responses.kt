@@ -3,7 +3,7 @@ package apis.lol.champion
 import com.fasterxml.jackson.annotation.JsonProperty
 
 
-data class ChampionResponse(
+public data class ChampionResponse(
     @JsonProperty("freeChampionIds")
     val freeChampionIds: List<Int>,
     @JsonProperty("freeChampionIdsForNewPlayers")

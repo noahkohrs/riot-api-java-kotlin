@@ -1,12 +1,12 @@
 package apis.template
 
-import RegionApiClientFactory
+import com.noahkohrs.riot.api.RegionApiClientFactory
 import feign.RequestLine
-import values.GlobalRegion
-import values.Region
+import com.noahkohrs.riot.api.values.GlobalRegion
+import com.noahkohrs.riot.api.values.Region
 
 // TODO: Replace ___ with the name of the API
-class ___Api(
+public class ___Api(
     apiKey: String,
     // TODO: Remove either region or globalRegion depending on the https://developer.riotgames.com/apis
     region: Region,
@@ -18,7 +18,7 @@ class ___Api(
 
     // TODO: Add the functions linked to the endpoints as wanted
     //  and with possible parameters and post treatments if needed
-    fun getSomeValue(): SomeResponse = apiClient.getSomeValue()
+    public fun getSomeValue(): SomeResponse = apiClient.getSomeValue()
 
     private interface ___ApiClient {
         // TODO: Add the endpoints: https://developer.riotgames.com/apis

@@ -1,13 +1,17 @@
-import values.GlobalRegion;
-import values.Region;
+import com.noahkohrs.riot.api.RiotApi;
+import com.noahkohrs.riot.api.values.Region;
 
 public class JavaExampleMain {
     public static void main(String[] args) {
+        String apiKey = System.getenv("RIOT_API_KEY");
+        if (apiKey == null) {
+            throw new RuntimeException("RIOT_API_KEY environment variable is not set");
+        }
         // Create Riot Api
-        var riotApi = new RiotApi("RGAPI-3dba4106-7b2b-4485-870a-065481d5e310", Region.EUW1, GlobalRegion.EUROPE);
+        RiotApi riotApi = new RiotApi(apiKey, Region.EUW1);
 
         // Get Champion Rotation
-        var championRotation = riotApi.getChampion().getChampionRotations();
+        var championRotation = riotApi.lol.champion.getChampionRotations();
         System.out.println(championRotation);
     }
 }

@@ -1,13 +1,16 @@
-import values.GlobalRegion
-import values.Region
+import com.noahkohrs.riot.api.RiotApi
+import com.noahkohrs.riot.api.values.Region
 
-fun main() {
+
+public fun main() {
+    val apiKey by lazy {
+        System.getenv("RIOT_API_KEY") ?: throw IllegalStateException("RIOT_API_KEY not set")
+    }
     val riotApi = RiotApi(
-        "RGAPI-3dba4106-7b2b-4485-870a-065481d5e310",
-        Region.EUW1,
-        GlobalRegion.EUROPE
+        apiKey,
+        Region.EUW1
     )
-    val champ = riotApi.champion
+    val champ = riotApi.lol.champion
     println(champ.getChampionRotations())
 }
 

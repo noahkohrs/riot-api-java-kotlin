@@ -17,8 +17,12 @@ public fun main() {
     println(status.getPlatformData())
 
     val champMastery = riotApi.lol.championMastery
-    println(champMastery.getAllMasteriesByPuuid("_KW9cHtSCSSCUVNZ3-__w2UsiIvQbpx1KKP0hC5U8xq4iBf0WL8f6Y8unxngvtKq-Ho_7l3E89D5TQ"))
     //Puuid of DNS Floppa#007
+    //println(champMastery.getChampMasteriesByPuuid("OPl5MMfUFkGFwdVrXaFz22kgUmANTcQcFlEDDOPvo3Hd9M00PLeY-4gPjzq8XSP6bb1mzT-iWC3ZzQ", 69))
+    //println(champMastery.getAllMasteriesByPuuid("OPl5MMfUFkGFwdVrXaFz22kgUmANTcQcFlEDDOPvo3Hd9M00PLeY-4gPjzq8XSP6bb1mzT-iWC3ZzQ"))
+    //println(champMastery.getTopMasteriesByPuuid("OPl5MMfUFkGFwdVrXaFz22kgUmANTcQcFlEDDOPvo3Hd9M00PLeY-4gPjzq8XSP6bb1mzT-iWC3ZzQ", 3))
+    println(champMastery.getMasteryScoreByPuuid("OPl5MMfUFkGFwdVrXaFz22kgUmANTcQcFlEDDOPvo3Hd9M00PLeY-4gPjzq8XSP6bb1mzT-iWC3ZzQ"))
+
 }
 
 

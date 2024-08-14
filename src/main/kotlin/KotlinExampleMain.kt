@@ -15,5 +15,10 @@ public fun main() {
 
     val status = riotApi.lol.status
     println(status.getPlatformData())
+
+    val champMastery = riotApi.lol.championMastery
+    println(champMastery.getAllMasteriesByPuuid("_KW9cHtSCSSCUVNZ3-__w2UsiIvQbpx1KKP0hC5U8xq4iBf0WL8f6Y8unxngvtKq-Ho_7l3E89D5TQ"))
+    //Puuid of DNS Floppa#007
 }
+
 

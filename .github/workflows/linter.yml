@@ -4,7 +4,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  check-lint:
+  basic-checks:
+    name: Basic checks
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -14,7 +15,7 @@ jobs:
         run: ./gradlew build
       # Linting Gradle
       - name: KtLint
-        run: ./gradle ktLintCheck
+        run: ./gradlew ktLintCheck
       # Test Gradle
       - name: Tests
         run: ./gradlew test

@@ -1,0 +1,20 @@
+name: CI/CD Process
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      # Build Gradle
+      - name: Build
+        run: ./gradlew build
+      # Linting Gradle
+      - name: KtLint
+        run: ./gradle ktLintCheck
+      # Test Gradle
+      - name: Tests
+        run: ./gradlew test

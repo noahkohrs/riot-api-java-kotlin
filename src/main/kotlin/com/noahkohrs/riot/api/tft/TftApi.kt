@@ -6,6 +6,5 @@ import com.noahkohrs.riot.api.values.Region
 public class TftApi(
     apiKey: String,
     region: Region,
-    globalRegion: GlobalRegion
-) {
-}
+    globalRegion: GlobalRegion,
+)

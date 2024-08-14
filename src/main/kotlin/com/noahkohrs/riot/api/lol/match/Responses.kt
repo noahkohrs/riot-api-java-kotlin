@@ -1,1 +1,1 @@
-package apis.lol.match
+package com.noahkohrs.riot.api.lol.match

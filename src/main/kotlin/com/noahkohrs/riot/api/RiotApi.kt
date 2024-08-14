@@ -1,9 +1,9 @@
 package com.noahkohrs.riot.api
 
-import apis.lol.LoLApi
-import apis.lor.LoRApi
-import apis.tft.TftApi
-import apis.valorant.ValorantApi
+import com.noahkohrs.riot.api.lol.LoLApi
+import com.noahkohrs.riot.api.lor.LoRApi
+import com.noahkohrs.riot.api.tft.TftApi
+import com.noahkohrs.riot.api.valorant.ValorantApi
 import com.noahkohrs.riot.api.values.GlobalRegion
 import com.noahkohrs.riot.api.values.Region
 

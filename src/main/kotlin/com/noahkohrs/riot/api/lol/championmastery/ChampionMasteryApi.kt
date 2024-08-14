@@ -1,4 +1,4 @@
-package apis.lol.championmastery
+package com.noahkohrs.riot.api.lol.championmastery
 
 import com.noahkohrs.riot.api.RegionApiClientFactory
 import com.noahkohrs.riot.api.values.Region

@@ -1,4 +1,4 @@
-package apis.lol.status
+package com.noahkohrs.riot.api.lol.status
 
 import com.noahkohrs.riot.api.RegionApiClientFactory
 import com.noahkohrs.riot.api.values.Region

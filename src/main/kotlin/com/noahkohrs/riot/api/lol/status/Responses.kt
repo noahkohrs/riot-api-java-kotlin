@@ -1,4 +1,4 @@
-package apis.lol.status
+package com.noahkohrs.riot.api.lol.status
 
 import com.squareup.moshi.Json
 

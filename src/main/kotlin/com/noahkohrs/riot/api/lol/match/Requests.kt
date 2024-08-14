@@ -1,4 +1,4 @@
-package apis.lol.match
+package com.noahkohrs.riot.api.lol.match
 
 // TODO: Work in progress, not yet implemented
 public class MatchIdParams(

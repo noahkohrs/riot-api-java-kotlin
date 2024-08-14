@@ -1,1 +1,1 @@
-package apis.lol.champion
+package com.noahkohrs.riot.api.lol.champion

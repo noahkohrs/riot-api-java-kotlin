@@ -1,7 +1,6 @@
-package apis.lol.champion
+package com.noahkohrs.riot.api.lol.champion
 
 import com.noahkohrs.riot.api.RegionApiClientFactory
-import com.noahkohrs.riot.api.lol.champion.ChampionResponse
 import com.noahkohrs.riot.api.values.Region
 import feign.RequestLine
 

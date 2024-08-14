@@ -1,8 +1,8 @@
-package apis.lol
+package com.noahkohrs.riot.api.lol
 
-import apis.lol.champion.ChampionApi
-import apis.lol.championmastery.ChampionMasteryApi
-import apis.lol.status.StatusApi
+import com.noahkohrs.riot.api.lol.champion.ChampionApi
+import com.noahkohrs.riot.api.lol.championmastery.ChampionMasteryApi
+import com.noahkohrs.riot.api.lol.status.StatusApi
 import com.noahkohrs.riot.api.values.Region
 
 public class LoLApi(

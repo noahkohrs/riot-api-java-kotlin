@@ -1,4 +1,4 @@
-package apis.lol.championmastery
+package com.noahkohrs.riot.api.lol.championmastery
 
 import com.squareup.moshi.Json
 

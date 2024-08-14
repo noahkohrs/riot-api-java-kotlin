@@ -1,65 +1,65 @@
 package apis.lol.status
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.squareup.moshi.Json
 
 //ContentDto
 public data class ContentDto(
-    @JsonProperty("locale")
+    @Json(name = "locale")
     val locale: String,
-    @JsonProperty("content")
+    @Json(name = "content")
     val content: String
 )
 //UpdateDto
 public data class UpdateDto(
-    @JsonProperty("id")
+    @Json(name = "id")
     val id: Int,
-    @JsonProperty("author")
+    @Json(name = "author")
     val author: String,
-    @JsonProperty("publish")
+    @Json(name = "publish")
     val publish: Boolean,
-    @JsonProperty("publish_locations")
+    @Json(name = "publish_locations")
     val publishLocations: List<String>,
-    @JsonProperty("translations")
+    @Json(name = "translations")
     val translations: List<ContentDto>,
-    @JsonProperty("created_at")
+    @Json(name = "created_at")
     val createdAt: String,
-    @JsonProperty("updated_at")
+    @Json(name = "updated_at")
     val updatedAt: String,
 )
 
 //StatusDto
 public data class StatusDto(
-    @JsonProperty("id")
+    @Json(name = "id")
     val id: Int,
-    @JsonProperty("maintenance_status")
+    @Json(name = "maintenance_status")
     val maintenanceStatus: String,
-    @JsonProperty("incident_severity")
+    @Json(name = "incident_severity")
     val incidentSeverity: String?,
-    @JsonProperty("titles")
+    @Json(name = "titles")
     val titles: List<ContentDto>,
-    @JsonProperty("updates")
+    @Json(name = "updates")
     val updates: List<UpdateDto>,
-    @JsonProperty("created_at")
+    @Json(name = "created_at")
     val createdAt: String,
-    @JsonProperty("archive_at")
+    @Json(name = "archive_at")
     val archiveAt: String,
-    @JsonProperty("updated_at")
+    @Json(name = "updated_at")
     val updatedAt: String?,
-    @JsonProperty("platforms")
+    @Json(name = "platforms")
     val platforms: List<String>,
 )
 
 //PlatformDataDto
 public data class PlatformResponse(
-    @JsonProperty("id")
+    @Json(name = "id")
     val id: String,
-    @JsonProperty("name")
+    @Json(name = "name")
     val name: String,
-    @JsonProperty("locales")
+    @Json(name = "locales")
     val locales: List<String>,
-    @JsonProperty("maintenances")
+    @Json(name = "maintenances")
     val maintenances: List<StatusDto>,
-    @JsonProperty("incidents")
+    @Json(name = "incidents")
     val incidents: List<StatusDto>,
 )
 

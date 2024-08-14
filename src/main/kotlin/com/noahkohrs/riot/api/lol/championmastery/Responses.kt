@@ -1,41 +1,41 @@
 package apis.lol.championmastery
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.squareup.moshi.Json
 
 public data class RewardConfigDto(
-    @JsonProperty("rewardValue")
+    @Json(name = "rewardValue")
     val rewardValue: String,
-    @JsonProperty("rewardType")
+    @Json(name = "rewardType")
     val rewardType: String,
-    @JsonProperty("maximalReward")
-    val maximalReward: Int
+    @Json(name = "maximalReward")
+    val maximalReward: Int=0
 )
 
 public data class NextSeasonMilestonesDto(
-    @JsonProperty("requireGradeCounts")
+    @Json(name = "requireGradeCounts")
     val requireGradeCounts: Any,
-    @JsonProperty("rewardMarks")
+    @Json(name = "rewardMarks")
     val rewardMarks: Int,
-    @JsonProperty("bonus")
+    @Json(name = "bonus")
     val bonus: Boolean,
-    @JsonProperty("rewardConfig")
-    val rewardConfig: RewardConfigDto?
+    @Json(name = "rewardConfig")
+    val rewardConfig: RewardConfigDto? = null
     )
 
 public data class ChampionMasteryDto(
-    @JsonProperty("puuid") val puuid: String,
-    @JsonProperty("championPointsUntilNextLevel") val championPointsUntilNextLevel: Long,
-    @JsonProperty("chestGranted") val chestGranted: Boolean,
-    @JsonProperty("championId") val championId: Long,
-    @JsonProperty("lastPlayTime") val lastPlayTime: Long,
-    @JsonProperty("championLevel") val championLevel: Int,
-    @JsonProperty("championPoints") val championPoints: Int,
-    @JsonProperty("championPointsSinceLastLevel") val championPointsSinceLastLevel: Long,
-    @JsonProperty("markRequiredForNextLevel") val markRequiredForNextLevel: Int,
-    @JsonProperty("championSeasonMilestone") val championSeasonMilestone: Int,
-    @JsonProperty("nextSeasonMilestone") val nextSeasonMilestone: NextSeasonMilestonesDto?,
-    @JsonProperty("tokensEarned") val tokensEarned: Int,
-    @JsonProperty("milestoneGrades") val milestoneGrades: List<String>?
+    @Json(name = "puuid") val puuid: String,
+    @Json(name = "championPointsUntilNextLevel") val championPointsUntilNextLevel: Long,
+    @Json(name = "chestGranted") val chestGranted: Boolean = false,
+    @Json(name = "championId") val championId: Long,
+    @Json(name = "lastPlayTime") val lastPlayTime: Long,
+    @Json(name = "championLevel") val championLevel: Int,
+    @Json(name = "championPoints") val championPoints: Int,
+    @Json(name = "championPointsSinceLastLevel") val championPointsSinceLastLevel: Long,
+    @Json(name = "markRequiredForNextLevel") val markRequiredForNextLevel: Int,
+    @Json(name = "championSeasonMilestone") val championSeasonMilestone: Int,
+    @Json(name = "nextSeasonMilestone") val nextSeasonMilestone: NextSeasonMilestonesDto,
+    @Json(name = "tokensEarned") val tokensEarned: Int,
+    @Json(name = "milestoneGrades") val milestoneGrades: List<String> = emptyList()
 )
 
 

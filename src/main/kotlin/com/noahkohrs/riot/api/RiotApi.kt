@@ -18,8 +18,7 @@ public class RiotApi(
     @JvmField
     public val lol: LoLApi = LoLApi(
         apiKey,
-        region,
-        globalRegion
+        region
     )
 
     @JvmField

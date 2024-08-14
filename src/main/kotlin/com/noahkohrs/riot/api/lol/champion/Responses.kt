@@ -1,13 +1,13 @@
 package apis.lol.champion
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.squareup.moshi.Json
 
 
 public data class ChampionResponse(
-    @JsonProperty("freeChampionIds")
+    @Json(name = "freeChampionIds")
     val freeChampionIds: List<Int>,
-    @JsonProperty("freeChampionIdsForNewPlayers")
+    @Json(name = "freeChampionIdsForNewPlayers")
     val freeChampionIdsForNewPlayers: List<Int>,
-    @JsonProperty("maxNewPlayerLevel")
+    @Json(name = "maxNewPlayerLevel")
     val maxNewPlayerLevel: Int
 )

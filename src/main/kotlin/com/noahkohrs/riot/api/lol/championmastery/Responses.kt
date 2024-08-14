@@ -1,7 +1,6 @@
 package apis.lol.championmastery
 
 import com.squareup.moshi.Json
-import org.jetbrains.annotations.NotNull
 
 public data class RewardConfigDto(
     @Json(name = "rewardValue")

@@ -1,9 +1,5 @@
-import apis.lol.champion.ChampionResponse;
-import apis.lol.championmastery.ChampionMasteryDto;
 import com.noahkohrs.riot.api.RiotApi;
 import com.noahkohrs.riot.api.values.Region;
-
-import java.util.List;
 
 public class JavaExampleMain {
     public static String DnsFloppaPuuid = "OPl5MMfUFkGFwdVrXaFz22kgUmANTcQcFlEDDOPvo3Hd9M00PLeY-4gPjzq8XSP6bb1mzT-iWC3ZzQ";

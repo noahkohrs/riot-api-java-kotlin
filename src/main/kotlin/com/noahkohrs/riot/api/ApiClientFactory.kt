@@ -1,17 +1,14 @@
 package com.noahkohrs.riot.api
 
-import feign.Feign
-import feign.RequestInterceptor
-import feign.RequestTemplate
 import com.noahkohrs.riot.api.values.GlobalRegion
 import com.noahkohrs.riot.api.values.Region
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import feign.Response
-import feign.codec.Decoder
+import feign.Feign
+import feign.RequestInterceptor
+import feign.RequestTemplate
 import feign.moshi.MoshiDecoder
 import feign.moshi.MoshiEncoder
-import java.lang.reflect.Type
 
 
 internal class ApiKeyRequestInterceptor(private val apiKey: String) : RequestInterceptor {

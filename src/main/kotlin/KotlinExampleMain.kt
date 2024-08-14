@@ -20,7 +20,7 @@ public fun main() {
     val champMastery = riotApi.lol.championMastery
     //Puuid of DNS Floppa#007
     println(champMastery.getChampMasteriesByPuuid(DnsFloppaPuuid, 69))
-    val res = champMastery.getAllMasteriesByPuuid(DnsFloppaPuuid)[0]
+    println(champMastery.getAllMasteriesByPuuid(DnsFloppaPuuid)[0])
     println(champMastery.getTopMasteriesByPuuid(DnsFloppaPuuid, 3))
     println(champMastery.getMasteryScoreByPuuid(DnsFloppaPuuid))
 

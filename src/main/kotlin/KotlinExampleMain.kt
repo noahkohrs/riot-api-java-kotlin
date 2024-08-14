@@ -12,5 +12,8 @@ public fun main() {
     )
     val champ = riotApi.lol.champion
     println(champ.getChampionRotations())
+
+    val status = riotApi.lol.status
+    println(status.getPlatformData())
 }
 

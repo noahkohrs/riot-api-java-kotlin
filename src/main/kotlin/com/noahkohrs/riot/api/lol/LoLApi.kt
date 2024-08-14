@@ -1,13 +1,13 @@
 package apis.lol
 
 import apis.lol.champion.ChampionApi
-import apis.lol.status.StatusApi
 import apis.lol.championmastery.ChampionMasteryApi
+import apis.lol.status.StatusApi
 import com.noahkohrs.riot.api.values.Region
 
 public class LoLApi(
     apiKey: String,
-    region: Region
+    region: Region,
 ) {
     @JvmField
     public val champion: ChampionApi = ChampionApi(apiKey, region)

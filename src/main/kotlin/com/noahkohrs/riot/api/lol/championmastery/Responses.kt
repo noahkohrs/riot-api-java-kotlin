@@ -8,7 +8,7 @@ public data class RewardConfigDto(
     @Json(name = "rewardType")
     val rewardType: String,
     @Json(name = "maximalReward")
-    val maximalReward: Int=0
+    val maximalReward: Int = 0,
 )
 
 public data class NextSeasonMilestonesDto(
@@ -19,8 +19,8 @@ public data class NextSeasonMilestonesDto(
     @Json(name = "bonus")
     val bonus: Boolean,
     @Json(name = "rewardConfig")
-    val rewardConfig: RewardConfigDto? = null
-    )
+    val rewardConfig: RewardConfigDto? = null,
+)
 
 public data class ChampionMasteryDto(
     @Json(name = "puuid") val puuid: String,
@@ -35,9 +35,5 @@ public data class ChampionMasteryDto(
     @Json(name = "championSeasonMilestone") val championSeasonMilestone: Int,
     @Json(name = "nextSeasonMilestone") val nextSeasonMilestone: NextSeasonMilestonesDto,
     @Json(name = "tokensEarned") val tokensEarned: Int,
-    @Json(name = "milestoneGrades") val milestoneGrades: List<String> = emptyList()
+    @Json(name = "milestoneGrades") val milestoneGrades: List<String> = emptyList(),
 )
-
-
-
-

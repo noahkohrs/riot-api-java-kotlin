@@ -6,6 +6,5 @@ import com.noahkohrs.riot.api.values.Region
 public class LoRApi(
     apiKey: String,
     region: Region,
-    globalRegion: GlobalRegion
-) {
-}
+    globalRegion: GlobalRegion,
+)

@@ -2,14 +2,15 @@ package apis.lol.status
 
 import com.squareup.moshi.Json
 
-//ContentDto
+// ContentDto
 public data class ContentDto(
     @Json(name = "locale")
     val locale: String,
     @Json(name = "content")
-    val content: String
+    val content: String,
 )
-//UpdateDto
+
+// UpdateDto
 public data class UpdateDto(
     @Json(name = "id")
     val id: Int,
@@ -27,7 +28,7 @@ public data class UpdateDto(
     val updatedAt: String,
 )
 
-//StatusDto
+// StatusDto
 public data class StatusDto(
     @Json(name = "id")
     val id: Int,
@@ -49,7 +50,7 @@ public data class StatusDto(
     val platforms: List<String>,
 )
 
-//PlatformDataDto
+// PlatformDataDto
 public data class PlatformResponse(
     @Json(name = "id")
     val id: String,
@@ -62,5 +63,3 @@ public data class PlatformResponse(
     @Json(name = "incidents")
     val incidents: List<StatusDto>,
 )
-
-

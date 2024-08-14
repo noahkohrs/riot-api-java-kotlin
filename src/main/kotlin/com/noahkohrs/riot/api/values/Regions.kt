@@ -17,14 +17,15 @@ public enum class Region(public val value: String) {
     TH2("th2"),
     TR1("tr1"),
     TW2("tw2"),
-    VN2("vn2")
+    VN2("vn2"),
 }
 
 public enum class GlobalRegion(public val value: String) {
     AMERICAS("americas"),
     ASIA("asia"),
     EUROPE("europe"),
-    SEA("sea");
+    SEA("sea"),
+    ;
 
     public companion object {
         public fun fromRegion(region: Region): GlobalRegion {

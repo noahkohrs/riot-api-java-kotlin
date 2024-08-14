@@ -6,6 +6,5 @@ import com.noahkohrs.riot.api.values.Region
 public class ValorantApi(
     apiKey: String,
     region: Region,
-    globalRegion: GlobalRegion
-) {
-}
+    globalRegion: GlobalRegion,
+)

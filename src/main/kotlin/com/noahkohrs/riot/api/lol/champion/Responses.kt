@@ -1,7 +1,6 @@
-package apis.lol.champion
+package com.noahkohrs.riot.api.lol.champion
 
 import com.squareup.moshi.Json
-
 
 public data class ChampionResponse(
     @Json(name = "freeChampionIds")
@@ -9,5 +8,5 @@ public data class ChampionResponse(
     @Json(name = "freeChampionIdsForNewPlayers")
     val freeChampionIdsForNewPlayers: List<Int>,
     @Json(name = "maxNewPlayerLevel")
-    val maxNewPlayerLevel: Int
+    val maxNewPlayerLevel: Int,
 )

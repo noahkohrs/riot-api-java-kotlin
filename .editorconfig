@@ -1,0 +1,9 @@
+[*.{kt,kts}]
+# No wild card authorised
+ktlint_standard_no-wildcard-imports = disabled
+
+#File 'Responses.kt' contains a single class and possibly also extension functions for that class and should be named same after that class 'ChampionResponse.kt'
+ktlint_standard_filename = disabled
+
+#File 'Requests.kt' should not be empty (cannot be auto-corrected)
+ktlint_standard_no-empty-file = disabled

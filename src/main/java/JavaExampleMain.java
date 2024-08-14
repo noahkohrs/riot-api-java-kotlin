@@ -8,10 +8,8 @@ public class JavaExampleMain {
         if (apiKey == null) {
             throw new RuntimeException("RIOT_API_KEY environment variable is not set");
         }
-        // Create Riot Api
         RiotApi riotApi = new RiotApi(apiKey, Region.EUW1);
         try {
-            // Votre code ici
             riotApi.lol.champion.getChampionRotations();
             riotApi.lol.championMastery.getMasteryScoreByPuuid(DnsFloppaPuuid);
         } catch (Exception e) {

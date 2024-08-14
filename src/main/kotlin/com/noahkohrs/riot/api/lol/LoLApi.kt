@@ -13,6 +13,10 @@ public class LoLApi(
 ) {
     @JvmField
     public val champion: ChampionApi = ChampionApi(apiKey, region)
+
+    @JvmField
     public val status: StatusApi = StatusApi(apiKey, region)
+
+    @JvmField
     public val championMastery: ChampionMasteryApi = ChampionMasteryApi(apiKey, region)
 }

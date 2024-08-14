@@ -3,10 +3,15 @@ package com.noahkohrs.riot.api
 import feign.Feign
 import feign.RequestInterceptor
 import feign.RequestTemplate
-import feign.jackson.JacksonDecoder
-import feign.jackson.JacksonEncoder
 import com.noahkohrs.riot.api.values.GlobalRegion
 import com.noahkohrs.riot.api.values.Region
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import feign.Response
+import feign.codec.Decoder
+import feign.moshi.MoshiDecoder
+import feign.moshi.MoshiEncoder
+import java.lang.reflect.Type
 
 
 internal class ApiKeyRequestInterceptor(private val apiKey: String) : RequestInterceptor {
@@ -17,10 +22,12 @@ internal class ApiKeyRequestInterceptor(private val apiKey: String) : RequestInt
 
 
 internal class ApiClientFactory(private val baseUrl: String, private val apiKey: String) {
+    // create a MoshiEncoder and MoshiDecoder
     fun <T> createApiClient(apiType: Class<T>?): T {
+        val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
         return Feign.builder()
-            .encoder(JacksonEncoder())
-            .decoder(JacksonDecoder())
+            .decoder(MoshiDecoder(moshi))
+            .encoder(MoshiEncoder(moshi))
             .requestInterceptor(ApiKeyRequestInterceptor(apiKey))
             .target(apiType, baseUrl)
     }

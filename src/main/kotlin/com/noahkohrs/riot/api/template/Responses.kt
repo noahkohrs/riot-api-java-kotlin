@@ -1,14 +1,15 @@
 package apis.template
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.squareup.moshi.Json
+
 //TODO: Create necessary data classes for the responses from the API
 
 // TODO: Remove/Transform this example.
 public data class SomeResponse(
     // @JsonProperty is the name in the Json response
-    @JsonProperty("someField")
+    @Json(name = "someField")
     val field: Int,
-    @JsonProperty("someListOfFields")
+    @Json(name = "someListOfFields")
     val someListOfFields: List<Int>,
 )
 

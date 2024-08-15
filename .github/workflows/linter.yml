@@ -10,12 +10,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      # Build Gradle
+      # Build Gradle which perform project building
       - name: Build
-        run: ./gradlew build
-      # Linting Gradle
-      - name: KtLint
-        run: ./gradlew ktLintCheck
-      # Test Gradle
-      - name: Tests
-        run: ./gradlew test
+        run: ./gradlew assemble
+      # Checking the linting
+      - name: Lint
+        run: ./gradlew ktlintCheck

@@ -1,3 +1,5 @@
+package org.example
+
 import com.noahkohrs.riot.api.RiotApi
 import com.noahkohrs.riot.api.values.Region
 
@@ -6,7 +8,7 @@ private data class Player(val name: String, val tag: String)
 private val DNS_FLOPPA = Player("DNS Floppa", "007")
 private val DNS_YOTSUBA = Player("DNS Yotsuba", "EUW")
 
-public fun main() {
+fun main() {
     val apiKey by lazy {
         System.getenv("RIOT_API_KEY") ?: throw IllegalStateException("RIOT_API_KEY not set")
     }

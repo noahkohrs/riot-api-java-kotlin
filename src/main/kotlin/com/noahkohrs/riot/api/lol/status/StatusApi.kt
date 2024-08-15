@@ -1,6 +1,7 @@
 package com.noahkohrs.riot.api.lol.status
 
 import com.noahkohrs.riot.api.RegionApiClientFactory
+import com.noahkohrs.riot.api.dtos.PlatformDataDto
 import com.noahkohrs.riot.api.values.Region
 import feign.RequestLine
 
@@ -13,10 +14,10 @@ public class StatusApi(
             .create(apiKey, region)
             .createApiClient(StatusApiClient::class.java)
 
-    public fun getPlatformData(): PlatformResponse = apiClient.getPlatformData()
+    public fun getPlatformData(): PlatformDataDto = apiClient.getPlatformData()
 
     private interface StatusApiClient {
         @RequestLine("GET /lol/status/v4/platform-data")
-        fun getPlatformData(): PlatformResponse
+        fun getPlatformData(): PlatformDataDto
     }
 }

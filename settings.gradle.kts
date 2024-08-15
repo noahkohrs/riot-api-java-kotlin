@@ -4,3 +4,13 @@ plugins {
 rootProject.name = "riot-api-sdk"
 include("riot-api")
 include("test-apps")
+
+// Repositories
+
+@Suppress("UnstableApiUsage")
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenCentral()
+    }
+}

@@ -1,16 +1,11 @@
 import org.jetbrains.kotlin.gradle.dsl.ExplicitApiMode
 
 plugins {
-    kotlin("jvm") version "2.0.0"
-    // KtLinter plugin
-    id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
+    kotlin("jvm")
 }
+
 group = "com.noahkohrs"
 version = "1.0-SNAPSHOT"
-
-repositories {
-    mavenCentral()
-}
 
 dependencies {
     // Feign

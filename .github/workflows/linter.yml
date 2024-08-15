@@ -10,8 +10,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      # Build Gradle which perform project building, testing and linting
+      # Build Gradle which perform project building
       - name: Build
-        env:
-          RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
-        run: ./gradlew build
+        run: ./gradlew assemble
+      # Checking the linting
+      - name: Lint
+        run: ./gradlew ktlintCheck

@@ -31,8 +31,8 @@ TODO-LIST:
   - [ ] Implement match endpoints.
   - [ ] Implement ranked endpoints.
   - [ ] Implement status endpoints.
-- [ ] Implement all endpoints for the `riot` gateway
-  - [ ] Implement account endpoints.
+- [x] Implement all endpoints for the `riot` gateway
+  - [x] Implement account endpoints.
 - [ ] Implement all endpoints for the `tft` gateway
   - [ ] Implement league endpoints.
   - [ ] Implement match endpoints.

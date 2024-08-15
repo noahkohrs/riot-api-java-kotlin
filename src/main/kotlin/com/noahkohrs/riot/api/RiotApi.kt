@@ -1,5 +1,6 @@
 package com.noahkohrs.riot.api
 
+import com.noahkohrs.riot.api.account.AccountApi
 import com.noahkohrs.riot.api.lol.LoLApi
 import com.noahkohrs.riot.api.lor.LoRApi
 import com.noahkohrs.riot.api.tft.TftApi
@@ -44,5 +45,12 @@ public class RiotApi(
             apiKey,
             region,
             globalRegion,
+        )
+
+    @JvmField
+    public val account: AccountApi =
+        AccountApi(
+            apiKey,
+            region,
         )
 }

@@ -1,7 +1,10 @@
 import com.noahkohrs.riot.api.RiotApi
 import com.noahkohrs.riot.api.values.Region
 
-private const val DNS_FLOPPA_PUUID = "OPl5MMfUFkGFwdVrXaFz22kgUmANTcQcFlEDDOPvo3Hd9M00PLeY-4gPjzq8XSP6bb1mzT-iWC3ZzQ"
+private data class Player(val name: String, val tag: String)
+
+private val DNS_FLOPPA = Player("DNS Floppa", "007")
+private val DNS_YOTSUBA = Player("DNS Yotsuba", "EUW")
 
 public fun main() {
     val apiKey by lazy {
@@ -12,16 +15,17 @@ public fun main() {
             apiKey,
             Region.EUW1,
         )
-    val champ = riotApi.lol.champion
-    println(champ.getChampionRotations())
+    println(riotApi.lol.champion.getChampionRotations())
+    val DnsFloppaPuuid = riotApi.account.getAccountByRiotId(DNS_FLOPPA.name, DNS_FLOPPA.tag).puuid
+    val DnsYotsubaPuuid = riotApi.account.getAccountByRiotId(DNS_YOTSUBA.name, DNS_YOTSUBA.tag).puuid
 
-    val status = riotApi.lol.status
-    println(status.getPlatformData())
+
+    println(riotApi.lol.status.getPlatformData())
 
     val champMastery = riotApi.lol.championMastery
     // Puuid of DNS Floppa#007
-    println(champMastery.getChampMasteriesByPuuid(DNS_FLOPPA_PUUID, 69))
-    println(champMastery.getAllMasteriesByPuuid(DNS_FLOPPA_PUUID)[0])
-    println(champMastery.getTopMasteriesByPuuid(DNS_FLOPPA_PUUID, 3))
-    println(champMastery.getMasteryScoreByPuuid(DNS_FLOPPA_PUUID))
+    println(champMastery.getChampMasteriesByPuuid(DnsFloppaPuuid, 69))
+    println(champMastery.getAllMasteriesByPuuid(DnsFloppaPuuid)[0])
+    println(champMastery.getTopMasteriesByPuuid(DnsFloppaPuuid, 3))
+    println(champMastery.getMasteryScoreByPuuid(DnsFloppaPuuid))
 }

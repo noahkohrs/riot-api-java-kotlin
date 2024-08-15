@@ -38,3 +38,23 @@ public enum class GlobalRegion(public val value: String) {
         }
     }
 }
+
+public enum class AccountRegion(public val value: String) {
+    AMERICAS("americas"),
+    ASIA("asia"),
+    EUROPE("europe"),
+    ESPORTS("esports"),
+    ;
+
+    public companion object {
+        public fun fromRegion(region: Region): AccountRegion {
+            return when (region) {
+                Region.BR1, Region.LA1, Region.LA2, Region.NA1, Region.OC1 -> AMERICAS
+                Region.EUN1, Region.EUW1, Region.TR1, Region.RU, Region.ME1 -> EUROPE
+                Region.JP1, Region.KR -> ASIA
+                else -> EUROPE
+            }
+        }
+    }
+}
+

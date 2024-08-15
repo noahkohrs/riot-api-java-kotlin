@@ -12,6 +12,6 @@ jobs:
         uses: actions/checkout@v4
       # Build Gradle which perform project building, testing and linting
       - name: Build
-        run: ./gradlew build
         env:
           RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
+        run: ./gradlew build

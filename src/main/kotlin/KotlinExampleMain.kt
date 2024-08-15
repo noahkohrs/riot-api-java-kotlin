@@ -16,15 +16,15 @@ public fun main() {
             Region.EUW1,
         )
     println(riotApi.lol.champion.getChampionRotations())
-    val DnsFloppaPuuid = riotApi.account.getAccountByRiotId(DNS_FLOPPA.name, DNS_FLOPPA.tag).puuid
-    val DnsYotsubaPuuid = riotApi.account.getAccountByRiotId(DNS_YOTSUBA.name, DNS_YOTSUBA.tag).puuid
+    val dnsFloppaPuuid = riotApi.account.getAccountByRiotId(DNS_FLOPPA.name, DNS_FLOPPA.tag).puuid
+    val dnsYotsubaPuuid = riotApi.account.getAccountByRiotId(DNS_YOTSUBA.name, DNS_YOTSUBA.tag).puuid
 
     println(riotApi.lol.status.getPlatformData())
 
     val champMastery = riotApi.lol.championMastery
     // Puuid of DNS Floppa#007
-    println(champMastery.getChampMasteriesByPuuid(DnsFloppaPuuid, 69))
-    println(champMastery.getAllMasteriesByPuuid(DnsFloppaPuuid)[0])
-    println(champMastery.getTopMasteriesByPuuid(DnsFloppaPuuid, 3))
-    println(champMastery.getMasteryScoreByPuuid(DnsFloppaPuuid))
+    println(champMastery.getChampMasteriesByPuuid(dnsFloppaPuuid, 69))
+    println(champMastery.getAllMasteriesByPuuid(dnsFloppaPuuid)[0])
+    println(champMastery.getTopMasteriesByPuuid(dnsFloppaPuuid, 3))
+    println(champMastery.getMasteryScoreByPuuid(dnsFloppaPuuid))
 }

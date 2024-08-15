@@ -165,4 +165,3 @@ public data class SummonerDto(
     @Json(name = "summonerLevel")
     val summonerLevel: Long,
 )
-

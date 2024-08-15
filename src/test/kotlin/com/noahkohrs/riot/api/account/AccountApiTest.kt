@@ -8,13 +8,14 @@ import org.junit.jupiter.api.Test
 
 data class Player(
     val name: String,
-    val tag: String
+    val tag: String,
 )
 
-val players = listOf(
-    Player("DNS Floppa", "007"),
-    Player("DNS Yotsuba", "EUW")
-)
+val players =
+    listOf(
+        Player("DNS Floppa", "007"),
+        Player("DNS Yotsuba", "EUW"),
+    )
 
 val apiKey by lazy {
     System.getenv("RIOT_API_KEY") ?: throw IllegalStateException("RIOT_API_KEY not set")
@@ -25,8 +26,8 @@ val apiKey by lazy {
  */
 class AccountApiTest {
     private val riotApi = RiotApi(apiKey, Region.EUW1)
-    @Test fun testAccount() {
 
+    @Test fun testAccount() {
         val account = Account(AccountDto("puuid", "gameName", "tagLine"))
         assertEquals("puuid", account.puuid)
         assertEquals("gameName", account.gameName)
@@ -35,11 +36,9 @@ class AccountApiTest {
 
     @Test fun testGetPuuid() {
         players.forEach {
-                val puuid = riotApi.account.getAccountByRiotId(it.name, it.tag).puuid
-                val playerFounded = riotApi.account.getAccountByPuuid(puuid).let { Player(it.gameName!!, it.tagLine!!) }
-                assertEquals(it, playerFounded)
+            val puuid = riotApi.account.getAccountByRiotId(it.name, it.tag).puuid
+            val playerFounded = riotApi.account.getAccountByPuuid(puuid).let { Player(it.gameName!!, it.tagLine!!) }
+            assertEquals(it, playerFounded)
         }
-
     }
-
 }

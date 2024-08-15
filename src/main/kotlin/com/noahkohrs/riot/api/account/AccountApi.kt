@@ -30,12 +30,18 @@ public class AccountApi(
     /**
      * Get account by riot id
      */
-    public fun getAccountByRiotId(gameName: String, tagLine: String): Account = Account(apiClient.getAccountByRiotId(gameName, tagLine))
+    public fun getAccountByRiotId(
+        gameName: String,
+        tagLine: String,
+    ): Account = Account(apiClient.getAccountByRiotId(gameName, tagLine))
 
     /**
      * Get active shard for a player
      */
-    public fun getActiveShardsByGameAndPuuid(game: String, puuid: String): ActiveShard = ActiveShard(apiClient.getActiveShardsByGameAndPuuid(game, puuid))
+    public fun getActiveShardsByGameAndPuuid(
+        game: String,
+        puuid: String,
+    ): ActiveShard = ActiveShard(apiClient.getActiveShardsByGameAndPuuid(game, puuid))
 
     /**
      * Get my account
@@ -47,13 +53,24 @@ public class AccountApi(
     private interface AccountApiClient {
         // GET /riot/account/v1/accounts/by-puuid/{puuid} Get account by puuid
         @RequestLine("GET /riot/account/v1/accounts/by-puuid/{puuid}")
-        fun getAccountByPuuid(@Param("puuid") puuid: String): AccountDto
+        fun getAccountByPuuid(
+            @Param("puuid") puuid: String,
+        ): AccountDto
+
         // GET /riot/account/v1/accounts/by-riot-id/{gameName}/{tagLine} Get account by riot id
         @RequestLine("GET /riot/account/v1/accounts/by-riot-id/{gameName}/{tagLine}")
-        fun getAccountByRiotId(@Param("gameName") gameName: String, @Param("tagLine") tagLine: String): AccountDto
+        fun getAccountByRiotId(
+            @Param("gameName") gameName: String,
+            @Param("tagLine") tagLine: String,
+        ): AccountDto
+
         // GET /riot/account/v1/active-shards/by-game/{game}/by-puuid/{puuid} Get active shard for a player
         @RequestLine("GET /riot/account/v1/active-shards/by-game/{game}/by-puuid/{puuid}")
-        fun getActiveShardsByGameAndPuuid(@Param("game") game: String, @Param("puuid") puuid: String): ActiveShardDto
+        fun getActiveShardsByGameAndPuuid(
+            @Param("game") game: String,
+            @Param("puuid") puuid: String,
+        ): ActiveShardDto
+
         // GET /riot/account/v1/accounts/me Get my account
         @RequestLine("GET /riot/account/v1/accounts/me")
         fun getMyAccount(): AccountDto

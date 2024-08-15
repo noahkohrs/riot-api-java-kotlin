@@ -19,7 +19,6 @@ public fun main() {
     val DnsFloppaPuuid = riotApi.account.getAccountByRiotId(DNS_FLOPPA.name, DNS_FLOPPA.tag).puuid
     val DnsYotsubaPuuid = riotApi.account.getAccountByRiotId(DNS_YOTSUBA.name, DNS_YOTSUBA.tag).puuid
 
-
     println(riotApi.lol.status.getPlatformData())
 
     val champMastery = riotApi.lol.championMastery

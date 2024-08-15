@@ -15,7 +15,7 @@ public data class AccountDto(
     @Json(name = "gameName")
     public val gameName: String? = null,
     @Json(name = "tagLine")
-    public val tagLine: String? = null
+    public val tagLine: String? = null,
 )
 
 /*
@@ -31,7 +31,7 @@ public data class ActiveShardDto(
     @Json(name = "game")
     public val game: String,
     @Json(name = "activeShard")
-    public val activeShard: String
+    public val activeShard: String,
 )
 
 public data class ChampionInfo(
@@ -42,8 +42,6 @@ public data class ChampionInfo(
     @Json(name = "maxNewPlayerLevel")
     val maxNewPlayerLevel: Int,
 )
-
-
 
 public data class RewardConfigDto(
     @Json(name = "rewardValue")
@@ -80,7 +78,6 @@ public data class ChampionMasteryDto(
     @Json(name = "tokensEarned") val tokensEarned: Int,
     @Json(name = "milestoneGrades") val milestoneGrades: List<String> = emptyList(),
 )
-
 
 // ContentDto
 public data class ContentDto(

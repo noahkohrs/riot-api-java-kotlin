@@ -1,6 +1,7 @@
 package com.noahkohrs.riot.api.account
 
 import com.noahkohrs.riot.api.RiotApi
+import com.noahkohrs.riot.api.dtos.AccountDto
 import com.noahkohrs.riot.api.values.Region
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test

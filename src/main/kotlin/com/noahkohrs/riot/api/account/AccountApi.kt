@@ -1,6 +1,8 @@
 package com.noahkohrs.riot.api.account
 
 import com.noahkohrs.riot.api.AccountApiClientFactory
+import com.noahkohrs.riot.api.dtos.AccountDto
+import com.noahkohrs.riot.api.dtos.ActiveShardDto
 import com.noahkohrs.riot.api.values.AccountRegion
 import com.noahkohrs.riot.api.values.Region
 import feign.Param

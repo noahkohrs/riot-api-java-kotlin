@@ -140,3 +140,29 @@ public data class PlatformDataDto(
     @Json(name = "incidents")
     val incidents: List<StatusDto>,
 )
+
+/*
+SummonerDTO - represents a summoner
+Name	Data Type	Description
+accountId	string	Encrypted account ID. Max length 56 characters.
+profileIconId	int	ID of the summoner icon associated with the summoner.
+revisionDate	long	Date summoner was last modified specified as epoch milliseconds. The following events will update this timestamp: profile icon change, playing the tutorial or advanced tutorial, finishing a game, summoner name change
+id	string	Encrypted summoner ID. Max length 63 characters.
+puuid	string	Encrypted PUUID. Exact length of 78 characters.
+summonerLevel	long	Summoner level associated with the summoner.
+ */
+public data class SummonerDto(
+    @Json(name = "accountId")
+    val accountId: String,
+    @Json(name = "profileIconId")
+    val profileIconId: Int,
+    @Json(name = "revisionDate")
+    val revisionDate: Long,
+    @Json(name = "id")
+    val id: String,
+    @Json(name = "puuid")
+    val puuid: String,
+    @Json(name = "summonerLevel")
+    val summonerLevel: Long,
+)
+

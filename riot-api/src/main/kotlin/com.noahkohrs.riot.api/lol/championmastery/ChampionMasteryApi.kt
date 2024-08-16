@@ -15,8 +15,7 @@ public class ChampionMasteryApi(
             .create(apiKey, region)
             .createApiClient(ChampionMasteryApiClient::class.java)
 
-    // TODO: Add the functions linked to the endpoints as wanted
-    //  and with possible parameters and post treatments if needed
+
     public fun getAllMasteriesByPuuid(puuid: String): List<ChampionMasteryDto> = apiClient.getAllMasteriesByPuuid(puuid)
 
     public fun getChampMasteriesByPuuid(
@@ -36,7 +35,6 @@ public class ChampionMasteryApi(
     public fun getMasteryScoreByPuuid(puuid: String): Int = apiClient.getMasteryScoreByPuuid(puuid)
 
     private interface ChampionMasteryApiClient {
-        // TODO: Add the endpoints: https://developer.riotgames.com/apis
         @RequestLine("GET /lol/champion-mastery/v4/champion-masteries/by-puuid/{encryptedPUUID}")
         fun getAllMasteriesByPuuid(
             @Param("encryptedPUUID") puuid: String,

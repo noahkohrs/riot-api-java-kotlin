@@ -1,6 +1,6 @@
 import com.noahkohrs.riot.api.RiotApi;
 import com.noahkohrs.riot.api.account.Account;
-import com.noahkohrs.riot.api.values.Region;
+import com.noahkohrs.riot.api.values.Platform;
 
 public class JavaExampleMain {
 
@@ -20,7 +20,7 @@ public class JavaExampleMain {
         if (apiKey == null) {
             throw new RuntimeException("RIOT_API_KEY environment variable is not set");
         }
-        RiotApi riotApi = new RiotApi(apiKey, Region.EUW1);
+        RiotApi riotApi = new RiotApi(apiKey, Platform.EUW1);
         try {
             riotApi.lol.champion.getChampionRotations();
             Account DnsFloppaAccount = riotApi.account.getAccountByRiotId(DnsFloppa.name, DnsFloppa.tag);

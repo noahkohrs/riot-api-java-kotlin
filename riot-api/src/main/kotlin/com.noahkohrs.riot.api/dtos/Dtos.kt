@@ -166,7 +166,6 @@ public data class SummonerDto(
     val summonerLevel: Long,
 )
 
-
 /*
 LeagueEntryDTO - represents a league entry
  */
@@ -197,7 +196,7 @@ public data class LeagueEntryDto(
     @Json(name = "inactive")
     val inactive: Boolean,
     @Json(name = "miniSeries")
-    val miniSeries: MiniSeriesDto? = null
+    val miniSeries: MiniSeriesDto? = null,
 )
 
 public data class MiniSeriesDto(
@@ -208,5 +207,5 @@ public data class MiniSeriesDto(
     @Json(name = "target")
     val target: Int,
     @Json(name = "wins")
-    val wins: Int
+    val wins: Int,
 )

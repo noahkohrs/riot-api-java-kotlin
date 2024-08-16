@@ -2,19 +2,18 @@ package com.noahkohrs.riot.api.lol.championmastery
 
 import com.noahkohrs.riot.api.RegionApiClientFactory
 import com.noahkohrs.riot.api.dtos.ChampionMasteryDto
-import com.noahkohrs.riot.api.values.Region
+import com.noahkohrs.riot.api.values.Platform
 import feign.Param
 import feign.RequestLine
 
 public class ChampionMasteryApi(
     apiKey: String,
-    region: Region,
+    platform: Platform,
 ) {
     private val apiClient =
         RegionApiClientFactory
-            .create(apiKey, region)
+            .create(apiKey, platform)
             .createApiClient(ChampionMasteryApiClient::class.java)
-
 
     public fun getAllMasteriesByPuuid(puuid: String): List<ChampionMasteryDto> = apiClient.getAllMasteriesByPuuid(puuid)
 

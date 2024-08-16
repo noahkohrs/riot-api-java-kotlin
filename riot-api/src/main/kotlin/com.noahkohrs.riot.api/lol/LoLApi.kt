@@ -5,24 +5,24 @@ import com.noahkohrs.riot.api.lol.championmastery.ChampionMasteryApi
 import com.noahkohrs.riot.api.lol.leagueexp.LeagueExpApi
 import com.noahkohrs.riot.api.lol.status.StatusApi
 import com.noahkohrs.riot.api.lol.summoner.SummonerApi
-import com.noahkohrs.riot.api.values.Region
+import com.noahkohrs.riot.api.values.Platform
 
 public class LoLApi(
     apiKey: String,
-    region: Region,
+    platform: Platform,
 ) {
     @JvmField
-    public val champion: ChampionApi = ChampionApi(apiKey, region)
+    public val champion: ChampionApi = ChampionApi(apiKey, platform)
 
     @JvmField
-    public val status: StatusApi = StatusApi(apiKey, region)
+    public val status: StatusApi = StatusApi(apiKey, platform)
 
     @JvmField
-    public val championMastery: ChampionMasteryApi = ChampionMasteryApi(apiKey, region)
+    public val championMastery: ChampionMasteryApi = ChampionMasteryApi(apiKey, platform)
 
     @JvmField
-    public val summoner: SummonerApi = SummonerApi(apiKey, region)
+    public val summoner: SummonerApi = SummonerApi(apiKey, platform)
 
     @JvmField
-    public val leagueExp: LeagueExpApi = LeagueExpApi(apiKey, region)
+    public val leagueExp: LeagueExpApi = LeagueExpApi(apiKey, platform)
 }

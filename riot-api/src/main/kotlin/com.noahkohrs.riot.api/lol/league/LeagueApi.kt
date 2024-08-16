@@ -63,51 +63,47 @@ public class LeagueApi(
         return LeagueListResponse.fromDto(dto)
     }
 
+    /**
+     * Get the master league for given queue.
+     */
+    public fun getMasterLeague(queue: LoLRankedQueue): LeagueListResponse {
+        val dto = apiClient.getMasterLeague(queue.value)
+        return LeagueListResponse.fromDto(dto)
+    }
+
     private interface LeagueApiClient {
 //        GET /lol/league/v4/challengerleagues/by-queue/{queue}Get the challenger league for given queue.
         @RequestLine("GET /lol/league/v4/challengerleagues/by-queue/{queue}")
         fun getChallengerLeague(
-            @Param("queue")
-            queue: String,
+            @Param("queue") queue: String,
         ): LeagueListDto
 
 //        GET /lol/league/v4/entries/by-summoner/{encryptedSummonerId}Get league entries in all queues for a given summoner ID.
         @RequestLine("GET /lol/league/v4/entries/by-summoner/{encryptedSummonerId}")
         fun getLeagueEntriesBySummoner(
-            @Param("encryptedSummonerId")
-            encryptedSummonerId: String,
+            @Param("encryptedSummonerId") encryptedSummonerId: String,
         ): Set<LeagueEntryDto>
 
-//        GET /lol/league/v4/entries/{queue}/{tier}/{division}Get all the league entries.
         @RequestLine("GET /lol/league/v4/entries/{queue}/{tier}/{division}")
         fun getLeagueEntries(
-            @Param("queue")
-            queue: String,
-            @Param("tier")
-            tier: String,
-            @Param("division")
-            division: String,
+            @Param("queue") queue: String,
+            @Param("tier") tier: String,
+            @Param("division") division: String,
         ): Set<LeagueEntryDto>
 
-//        GET /lol/league/v4/grandmasterleagues/by-queue/{queue}Get the grandmaster league of a specific queue.
         @RequestLine("GET /lol/league/v4/grandmasterleagues/by-queue/{queue}")
         fun getGrandmasterLeague(
-            @Param("queue")
-            queue: String,
+            @Param("queue") queue: String,
         ): LeagueListDto
 
-//        GET /lol/league/v4/leagues/{leagueId}Get league with given ID, including inactive entries.
         @RequestLine("GET /lol/league/v4/leagues/{leagueId}")
         fun getLeague(
-            @Param("leagueId")
-            leagueId: String,
+            @Param("leagueId") leagueId: String,
         ): LeagueListDto
 
-//        GET /lol/league/v4/masterleagues/by-queue/{queue}Get the master league for given queue.
         @RequestLine("GET /lol/league/v4/masterleagues/by-queue/{queue}")
         fun getMasterLeague(
-            @Param("queue")
-            queue: String,
+            @Param("queue") queue: String,
         ): LeagueListDto
     }
 }

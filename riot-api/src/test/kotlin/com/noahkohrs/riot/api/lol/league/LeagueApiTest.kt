@@ -41,4 +41,9 @@ class LeagueApiTest {
         val challengeLeagueId = riotApi.lol.league.getChallengerLeague(LoLRankedQueue.RankedSoloQueue).leagueId
         riotApi.lol.league.getLeague(challengeLeagueId)
     }
+
+    @Test
+    fun getMasterLeague() {
+        riotApi.lol.league.getMasterLeague(LoLRankedQueue.RankedSoloQueue)
+    }
 }

@@ -1,6 +1,9 @@
 package org.example
 
 import com.noahkohrs.riot.api.RiotApi
+import com.noahkohrs.riot.api.values.LoLDivision
+import com.noahkohrs.riot.api.values.LoLQueue
+import com.noahkohrs.riot.api.values.LoLTier
 import com.noahkohrs.riot.api.values.Platform
 
 private data class Player(val name: String, val tag: String)
@@ -31,5 +34,5 @@ fun main() {
     println(champMastery.getMasteryScoreByPuuid(dnsFloppaPuuid))
 
     val leagueExp = riotApi.lol.leagueExp
-    println(leagueExp.getLeagueEntries("RANKED_SOLO_5x5", "DIAMOND", "I", 10))
+    println(leagueExp.getLeagueEntries(LoLQueue.RankedSoloQueue, LoLTier.DIAMOND, LoLDivision.I, 10))
 }

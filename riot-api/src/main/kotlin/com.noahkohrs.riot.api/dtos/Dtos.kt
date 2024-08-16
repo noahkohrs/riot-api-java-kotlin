@@ -165,3 +165,48 @@ public data class SummonerDto(
     @Json(name = "summonerLevel")
     val summonerLevel: Long,
 )
+
+
+/*
+LeagueEntryDTO - represents a league entry
+ */
+
+public data class LeagueEntryDto(
+    @Json(name = "leagueId")
+    val leagueId: String,
+    @Json(name = "summonerId")
+    val summonerId: String,
+    @Json(name = "queueType")
+    val queueType: String,
+    @Json(name = "tier")
+    val tier: String,
+    @Json(name = "rank")
+    val rank: String,
+    @Json(name = "leaguePoints")
+    val leaguePoints: Int,
+    @Json(name = "wins")
+    val wins: Int,
+    @Json(name = "losses")
+    val losses: Int,
+    @Json(name = "hotStreak")
+    val hotStreak: Boolean,
+    @Json(name = "veteran")
+    val veteran: Boolean,
+    @Json(name = "freshBlood")
+    val freshBlood: Boolean,
+    @Json(name = "inactive")
+    val inactive: Boolean,
+    @Json(name = "miniSeries")
+    val miniSeries: MiniSeriesDto? = null
+)
+
+public data class MiniSeriesDto(
+    @Json(name = "losses")
+    val losses: Int,
+    @Json(name = "progress")
+    val progress: String,
+    @Json(name = "target")
+    val target: Int,
+    @Json(name = "wins")
+    val wins: Int
+)

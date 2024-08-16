@@ -29,4 +29,8 @@ fun main() {
     println(champMastery.getAllMasteriesByPuuid(dnsFloppaPuuid)[0])
     println(champMastery.getTopMasteriesByPuuid(dnsFloppaPuuid, 3))
     println(champMastery.getMasteryScoreByPuuid(dnsFloppaPuuid))
+
+
+    val leagueExp = riotApi.lol.leagueExp
+    println(leagueExp.getLeagueEntries("RANKED_SOLO_5x5", "DIAMOND", "I", 10))
 }

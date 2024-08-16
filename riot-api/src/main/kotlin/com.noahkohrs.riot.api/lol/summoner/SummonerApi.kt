@@ -2,17 +2,17 @@ package com.noahkohrs.riot.api.lol.summoner
 
 import com.noahkohrs.riot.api.RegionApiClientFactory
 import com.noahkohrs.riot.api.dtos.SummonerDto
-import com.noahkohrs.riot.api.values.Region
+import com.noahkohrs.riot.api.values.Platform
 import feign.Param
 import feign.RequestLine
 
 public class SummonerApi(
     private val apiKey: String,
-    private val region: Region,
+    private val platform: Platform,
 ) {
     private val apiClient =
         RegionApiClientFactory
-            .create(apiKey, region, debug = false)
+            .create(apiKey, platform, debug = false)
             .createApiClient(SummonerApiClient::class.java)
 
     /**

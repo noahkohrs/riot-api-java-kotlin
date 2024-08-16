@@ -6,27 +6,27 @@ import com.noahkohrs.riot.api.lor.LoRApi
 import com.noahkohrs.riot.api.tft.TftApi
 import com.noahkohrs.riot.api.valorant.ValorantApi
 import com.noahkohrs.riot.api.values.GlobalRegion
-import com.noahkohrs.riot.api.values.Region
+import com.noahkohrs.riot.api.values.Platform
 
 public class RiotApi(
     apiKey: String,
-    region: Region,
+    platform: Platform,
     globalRegion: GlobalRegion,
 ) {
-    public constructor(apiKey: String, region: Region) : this(apiKey, region, GlobalRegion.fromRegion(region))
+    public constructor(apiKey: String, platform: Platform) : this(apiKey, platform, GlobalRegion.fromRegion(platform))
 
     @JvmField
     public val lol: LoLApi =
         LoLApi(
             apiKey,
-            region,
+            platform,
         )
 
     @JvmField
     public val lor: LoRApi =
         LoRApi(
             apiKey,
-            region,
+            platform,
             globalRegion,
         )
     // public val riot: Any = object {} // Might just be placed in this class since it's only sub-api
@@ -35,7 +35,7 @@ public class RiotApi(
     public val tft: TftApi =
         TftApi(
             apiKey,
-            region,
+            platform,
             globalRegion,
         )
 
@@ -43,7 +43,7 @@ public class RiotApi(
     public val valorant: ValorantApi =
         ValorantApi(
             apiKey,
-            region,
+            platform,
             globalRegion,
         )
 
@@ -51,6 +51,6 @@ public class RiotApi(
     public val account: AccountApi =
         AccountApi(
             apiKey,
-            region,
+            platform,
         )
 }

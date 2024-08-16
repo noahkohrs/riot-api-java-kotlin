@@ -4,7 +4,7 @@ import com.noahkohrs.riot.api.AccountApiClientFactory
 import com.noahkohrs.riot.api.dtos.AccountDto
 import com.noahkohrs.riot.api.dtos.ActiveShardDto
 import com.noahkohrs.riot.api.values.AccountRegion
-import com.noahkohrs.riot.api.values.Region
+import com.noahkohrs.riot.api.values.Platform
 import feign.Param
 import feign.RequestLine
 
@@ -15,11 +15,11 @@ import feign.RequestLine
  */
 public class AccountApi(
     private val apiKey: String,
-    private val region: Region,
+    private val platform: Platform,
 ) {
     private val apiClient =
         AccountApiClientFactory
-            .create(apiKey, AccountRegion.fromRegion(region), debug = false)
+            .create(apiKey, AccountRegion.fromRegion(platform), debug = false)
             .createApiClient(AccountApiClient::class.java)
 
     /**

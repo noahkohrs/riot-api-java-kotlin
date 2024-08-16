@@ -1,7 +1,10 @@
 package org.example
 
 import com.noahkohrs.riot.api.RiotApi
-import com.noahkohrs.riot.api.values.Region
+import com.noahkohrs.riot.api.values.LoLDivision
+import com.noahkohrs.riot.api.values.LoLQueue
+import com.noahkohrs.riot.api.values.LoLTier
+import com.noahkohrs.riot.api.values.Platform
 
 private data class Player(val name: String, val tag: String)
 
@@ -15,7 +18,7 @@ fun main() {
     val riotApi =
         RiotApi(
             apiKey,
-            Region.EUW1,
+            Platform.EUW1,
         )
     println(riotApi.lol.champion.getChampionRotations())
     val dnsFloppaPuuid = riotApi.account.getAccountByRiotId(DNS_FLOPPA.name, DNS_FLOPPA.tag).puuid
@@ -29,4 +32,7 @@ fun main() {
     println(champMastery.getAllMasteriesByPuuid(dnsFloppaPuuid)[0])
     println(champMastery.getTopMasteriesByPuuid(dnsFloppaPuuid, 3))
     println(champMastery.getMasteryScoreByPuuid(dnsFloppaPuuid))
+
+    val leagueExp = riotApi.lol.leagueExp
+    println(leagueExp.getLeagueEntries(LoLQueue.RankedSoloQueue, LoLTier.DIAMOND, LoLDivision.I, 10))
 }

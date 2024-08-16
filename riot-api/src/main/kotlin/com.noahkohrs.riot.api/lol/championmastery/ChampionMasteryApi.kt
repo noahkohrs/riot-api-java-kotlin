@@ -2,21 +2,19 @@ package com.noahkohrs.riot.api.lol.championmastery
 
 import com.noahkohrs.riot.api.RegionApiClientFactory
 import com.noahkohrs.riot.api.dtos.ChampionMasteryDto
-import com.noahkohrs.riot.api.values.Region
+import com.noahkohrs.riot.api.values.Platform
 import feign.Param
 import feign.RequestLine
 
 public class ChampionMasteryApi(
     apiKey: String,
-    region: Region,
+    platform: Platform,
 ) {
     private val apiClient =
         RegionApiClientFactory
-            .create(apiKey, region)
+            .create(apiKey, platform)
             .createApiClient(ChampionMasteryApiClient::class.java)
 
-    // TODO: Add the functions linked to the endpoints as wanted
-    //  and with possible parameters and post treatments if needed
     public fun getAllMasteriesByPuuid(puuid: String): List<ChampionMasteryDto> = apiClient.getAllMasteriesByPuuid(puuid)
 
     public fun getChampMasteriesByPuuid(
@@ -36,7 +34,6 @@ public class ChampionMasteryApi(
     public fun getMasteryScoreByPuuid(puuid: String): Int = apiClient.getMasteryScoreByPuuid(puuid)
 
     private interface ChampionMasteryApiClient {
-        // TODO: Add the endpoints: https://developer.riotgames.com/apis
         @RequestLine("GET /lol/champion-mastery/v4/champion-masteries/by-puuid/{encryptedPUUID}")
         fun getAllMasteriesByPuuid(
             @Param("encryptedPUUID") puuid: String,

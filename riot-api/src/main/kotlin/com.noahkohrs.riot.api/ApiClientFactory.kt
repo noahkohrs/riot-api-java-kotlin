@@ -2,7 +2,7 @@ package com.noahkohrs.riot.api
 
 import com.noahkohrs.riot.api.values.AccountRegion
 import com.noahkohrs.riot.api.values.GlobalRegion
-import com.noahkohrs.riot.api.values.Region
+import com.noahkohrs.riot.api.values.Platform
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import feign.*
@@ -36,10 +36,10 @@ internal class ApiClientFactory(private val baseUrl: String, private val apiKey:
 internal object RegionApiClientFactory {
     fun create(
         apiKey: String,
-        region: Region,
+        platform: Platform,
         debug: Boolean = false,
     ): ApiClientFactory {
-        val baseUrl = "https://$region.api.riotgames.com"
+        val baseUrl = "https://$platform.api.riotgames.com"
         return ApiClientFactory(baseUrl, apiKey, debug)
     }
 }

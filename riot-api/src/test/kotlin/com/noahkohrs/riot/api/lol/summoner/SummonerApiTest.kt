@@ -2,12 +2,12 @@ package com.noahkohrs.riot.api.lol.summoner
 
 import TestInternal
 import com.noahkohrs.riot.api.RiotApi
-import com.noahkohrs.riot.api.values.Region
+import com.noahkohrs.riot.api.values.Platform
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 class SummonerApiTest {
-    private val riotApi = RiotApi(TestInternal.apiKey, Region.EUW1)
+    private val riotApi = RiotApi(TestInternal.apiKey, Platform.EUW1)
     private val summonerApi = riotApi.lol.summoner
 
     @Test

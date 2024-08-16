@@ -2,9 +2,9 @@ package com.noahkohrs.riot.api.templates
 
 import apis.template.SomeResponse
 import com.noahkohrs.riot.api.RegionApiClientFactory
-import feign.RequestLine
 import com.noahkohrs.riot.api.values.GlobalRegion
 import com.noahkohrs.riot.api.values.Region
+import feign.RequestLine
 
 // TODO: Replace ___ with the name of the API
 public class ___Api(
@@ -23,8 +23,11 @@ public class ___Api(
 
     private interface ___ApiClient {
         // TODO: Add the endpoints: https://developer.riotgames.com/apis
+
         @RequestLine("GET /path/to/the/endpoint")
-        fun getSomeValue() : SomeResponse
+
+
+        fun getSomeValue(): SomeResponse
     }
 }
 

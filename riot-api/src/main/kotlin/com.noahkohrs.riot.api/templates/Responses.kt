@@ -1,6 +1,7 @@
 package apis.template
 
 import com.squareup.moshi.Json
+
 //TODO: Create necessary data classes for the responses from the API
 
 // TODO: Remove/Transform this example.

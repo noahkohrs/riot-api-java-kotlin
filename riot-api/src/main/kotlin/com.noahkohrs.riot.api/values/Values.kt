@@ -58,13 +58,43 @@ public enum class AccountRegion(public val value: String) {
     }
 }
 
-public enum class LoLQueue(public val value: String) {
+public enum class LoLRankedQueue(public val value: String) {
     RankedSoloQueue("RANKED_SOLO_5x5"),
     RankedFlexQueue("RANKED_FLEX_SR"),
+    ;
+
     // Twisted Treeline is deprecated on riot's end
 //    RANKED_FLEX_TT("RANKED_FLEX_TT"),
     // TFT is deprecated too on riot's end
 //    RANKED_TFT("RANKED_TFT"),
+
+    internal companion object {
+        fun fromValue(value: String): LoLRankedQueue {
+            return when (value) {
+                "RANKED_SOLO_5x5" -> RankedSoloQueue
+                "RANKED_FLEX_SR" -> RankedFlexQueue
+                else -> throw IllegalArgumentException("Invalid value for LoLQueue: $value")
+            }
+        }
+    }
+}
+
+public enum class LoLQueue(value: String) {
+    RankedSoloQueue("RANKED_SOLO_5x5"),
+    RankedFlexQueue("RANKED_FLEX_SR"),
+    Arena("CHERRY"),
+    ;
+
+    internal companion object {
+        fun fromValue(value: String): LoLQueue {
+            return when (value) {
+                "RANKED_SOLO_5x5" -> RankedSoloQueue
+                "RANKED_FLEX_SR" -> RankedFlexQueue
+                "CHERRY" -> Arena
+                else -> throw IllegalArgumentException("Invalid value for LoLQueue: $value")
+            }
+        }
+    }
 }
 
 public enum class LoLTier(public val value: String) {
@@ -78,6 +108,28 @@ public enum class LoLTier(public val value: String) {
     MASTER("MASTER"),
     GRANDMASTER("GRANDMASTER"),
     CHALLENGER("CHALLENGER"),
+    ;
+
+    /**
+     * Override valueOf
+     */
+    public companion object {
+        internal fun fromValue(value: String): LoLTier {
+            return when (value) {
+                "IRON" -> IRON
+                "BRONZE" -> BRONZE
+                "SILVER" -> SILVER
+                "GOLD" -> GOLD
+                "PLATINUM" -> PLATINUM
+                "EMERALD" -> EMERALD
+                "DIAMOND" -> DIAMOND
+                "MASTER" -> MASTER
+                "GRANDMASTER" -> GRANDMASTER
+                "CHALLENGER" -> CHALLENGER
+                else -> throw IllegalArgumentException("Invalid value for LoLTier: $value")
+            }
+        }
+    }
 }
 
 public enum class LoLDivision(public val value: String) {
@@ -85,4 +137,17 @@ public enum class LoLDivision(public val value: String) {
     II("II"),
     III("III"),
     IV("IV"),
+    ;
+
+    internal companion object {
+        fun fromValue(value: String): LoLDivision {
+            return when (value) {
+                "I" -> I
+                "II" -> II
+                "III" -> III
+                "IV" -> IV
+                else -> throw IllegalArgumentException("Invalid value for LoLDivision: $value")
+            }
+        }
+    }
 }

@@ -166,21 +166,87 @@ public data class SummonerDto(
     val summonerLevel: Long,
 )
 
+public data class MiniSeriesDto(
+    @Json(name = "losses")
+    val losses: Int,
+    @Json(name = "progress")
+    val progress: String,
+    @Json(name = "target")
+    val target: Int,
+    @Json(name = "wins")
+    val wins: Int,
+)
+
+/*
+leagueId	string
+entries	List[LeagueItemDTO]
+tier	string
+name	string
+queue	string
+ */
+public data class LeagueListDto(
+    @Json(name = "leagueId")
+    val leagueId: String,
+    @Json(name = "entries")
+    val entries: List<LeagueItemDto> = emptyList(),
+    @Json(name = "tier")
+    val tier: String,
+    @Json(name = "name")
+    val name: String,
+    @Json(name = "queue")
+    val queue: String,
+)
+
+/*
+freshBlood	boolean
+wins	int	Winning team on Summoners Rift.
+miniSeries	MiniSeriesDTO
+inactive	boolean
+veteran	boolean
+hotStreak	boolean
+rank	string
+leaguePoints	int
+losses	int	Losing team on Summoners Rift.
+summonerId	string	Player's encrypted summonerId.
+ */
+public data class LeagueItemDto(
+    @Json(name = "freshBlood")
+    val freshBlood: Boolean,
+    @Json(name = "wins")
+    val wins: Int,
+    @Json(name = "miniSeries")
+    val miniSeries: MiniSeriesDto? = null,
+    @Json(name = "inactive")
+    val inactive: Boolean,
+    @Json(name = "veteran")
+    val veteran: Boolean,
+    @Json(name = "hotStreak")
+    val hotStreak: Boolean,
+    @Json(name = "rank")
+    val rank: String,
+    @Json(name = "leaguePoints")
+    val leaguePoints: Int,
+    @Json(name = "losses")
+    val losses: Int,
+    @Json(name = "summonerId")
+    val summonerId: String,
+)
+
 /*
 LeagueEntryDTO - represents a league entry
  */
 
 public data class LeagueEntryDto(
     @Json(name = "leagueId")
-    val leagueId: String,
+    val leagueId: String? = null,
     @Json(name = "summonerId")
     val summonerId: String,
     @Json(name = "queueType")
     val queueType: String,
     @Json(name = "tier")
-    val tier: String,
+    val tier: String?,
     @Json(name = "rank")
-    val rank: String,
+    val rank: String?,
     @Json(name = "leaguePoints")
     val leaguePoints: Int,
     @Json(name = "wins")
@@ -197,15 +263,4 @@ public data class LeagueEntryDto(
     val inactive: Boolean,
     @Json(name = "miniSeries")
     val miniSeries: MiniSeriesDto? = null,
-)
-
-public data class MiniSeriesDto(
-    @Json(name = "losses")
-    val losses: Int,
-    @Json(name = "progress")
-    val progress: String,
-    @Json(name = "target")
-    val target: Int,
-    @Json(name = "wins")
-    val wins: Int,
 )

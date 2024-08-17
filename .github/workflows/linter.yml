@@ -16,3 +16,8 @@ jobs:
       # Checking the linting
       - name: Lint
         run: ./gradlew ktlintCheck
+      # Checking the unit tests
+      - name: Test
+        run: ./gradlew test
+        env:
+          RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}

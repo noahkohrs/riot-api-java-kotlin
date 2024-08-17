@@ -7,3 +7,5 @@ ktlint_standard_filename = disabled
 
 #File 'Requests.kt' should not be empty (cannot be auto-corrected)
 ktlint_standard_no-empty-file = disabled
+
+ktlint_standard_function-signature = disabled

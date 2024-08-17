@@ -3,7 +3,7 @@ package com.noahkohrs.riot.api.lol.leagueexp
 import com.noahkohrs.riot.api.RegionApiClientFactory
 import com.noahkohrs.riot.api.dtos.LeagueEntryDto
 import com.noahkohrs.riot.api.values.LoLDivision
-import com.noahkohrs.riot.api.values.LoLQueue
+import com.noahkohrs.riot.api.values.LoLRankedQueue
 import com.noahkohrs.riot.api.values.LoLTier
 import com.noahkohrs.riot.api.values.Platform
 import feign.Param
@@ -22,7 +22,7 @@ public class LeagueExpApi(
      * Get all the league entries for given queue, tier, and division.
      */
     public fun getLeagueEntries(
-        queue: LoLQueue,
+        queue: LoLRankedQueue,
         tier: LoLTier,
         division: LoLDivision,
         page: Int = 1,

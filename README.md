@@ -1,6 +1,8 @@
 # Riot Api SDK
 
-This will become a full SDK for the Riot API. It is currently in development and is not yet ready for use.
+A wrapper for the Riot Api for Java and Kotlin.
+
+This projet is **WORK IN PROGRESS** and is not production ready.
 
 ## Contributing
 

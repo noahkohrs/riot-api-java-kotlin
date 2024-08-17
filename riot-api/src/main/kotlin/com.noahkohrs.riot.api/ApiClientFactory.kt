@@ -69,6 +69,7 @@ internal object GlobalRegionApiClientFactory {
 internal object StaticRiotDragoonFactory {
     // create a MoshiEncoder and MoshiDecoder
     private const val STATIC_API_URL = "https://static.developer.riotgames.com"
+
     fun create(): StaticsRiotData.StaticDragoonApi {
         val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
         return Feign.builder()

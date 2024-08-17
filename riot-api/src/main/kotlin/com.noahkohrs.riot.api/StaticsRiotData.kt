@@ -1,24 +1,21 @@
 package com.noahkohrs.riot.api
 
-import feign.Request.HttpMethod
 import feign.RequestLine
-import java.net.http.HttpRequest
 
 internal object StaticsRiotData {
-    private val staticApi = StaticRiotDragoonFactory
-        .create()
+    private val staticApi =
+        StaticRiotDragoonFactory
+            .create()
     val queues = staticApi.getQueues().associateBy { it.queueId }
 
     val maps = staticApi.getMaps().associateBy { it.mapId }
 
     internal interface StaticDragoonApi {
-
         @RequestLine("GET /docs/lol/queues.json")
         fun getQueues(): List<Queue>
 
         @RequestLine("GET /docs/lol/maps.json")
         fun getMaps(): List<Map>
-
     }
 }
 
@@ -34,6 +31,7 @@ public data class Queue(
         }
     }
 }
+
 public data class Map(
     val mapId: Int,
     val mapName: String,

@@ -29,14 +29,15 @@ public class MatchApi(
         startIndex: Int = 0,
         count: Int = 20,
     ): List<String> {
-        val queryMap = mapOf(
-            "startTime" to startTime.time,
-            "endTime" to endTime.time,
-            "queue" to queue.queueId,
-            "type" to type,
-            "startIndex" to startIndex,
-            "count" to count,
-        )
+        val queryMap =
+            mapOf(
+                "startTime" to startTime.time,
+                "endTime" to endTime.time,
+                "queue" to queue.queueId,
+                "type" to type,
+                "startIndex" to startIndex,
+                "count" to count,
+            )
         return apiClient.getMatchIdsByPuuid(puuid, queryMap)
     }
 

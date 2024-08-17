@@ -1,11 +1,9 @@
 package com.noahkohrs.riot.api
 
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-import org.junit.jupiter.api.Assertions.*
-
 class StaticsRiotDataTest {
-
     @Test
     fun getQueues() {
         val currentQueuesNumber = 95

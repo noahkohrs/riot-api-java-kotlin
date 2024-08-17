@@ -14,7 +14,7 @@ However, please try to :
 
 This product is not endorsed, certified or approved in any way by Riot Games, Inc. or any of its affiliates.
 
-TODO-LIST:
+## TODO-LIST
 - [ ] Implement all endpoints for the `lol` gateway
   - [x] Implement champion endpoints.
   - [x] Implement champion-mastery endpoints.

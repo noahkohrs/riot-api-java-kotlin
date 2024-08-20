@@ -4,7 +4,7 @@ internal object TestInternal {
     }
 
     val dnsFloppa = Player("DNS Floppa", "007")
-    val dnsYotsuba = Player("DNS Yotsua", "EUW")
+    val dnsYotsuba = Player("DNS Yotsuba", "EUW")
 
     val somePlayers = listOf(dnsFloppa, dnsYotsuba)
 }

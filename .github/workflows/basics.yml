@@ -16,3 +16,9 @@ jobs:
       # Checking the linting
       - name: Lint
         run: ./gradlew ktlintCheck
+      # Checking the unit tests
+      # For some reason, test does not pass on the CI/CD for now and they need to be done locally.
+#      - name: Test
+#        run: ./gradlew test
+#        env:
+#          RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}

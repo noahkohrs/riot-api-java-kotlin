@@ -1,16 +1,22 @@
 # Riot Api SDK
 
-This will become a full SDK for the Riot API. It is currently in development and is not yet ready for use.
+A wrapper for the Riot Api for Java and Kotlin.
+
+This projet is **WORK IN PROGRESS** and is not production ready.
 
 ## Contributing
 
-If you would like to contribute to this project, 
-please feel free to fork the repository fill one of the api classes with the necessary endpoints and submit a pull request.
-You can copy the template in the `apis.template` package's into the gateway you want to write to get started.
+If you would like to contribute to this project, please feel free to do it.
+However, please try to :
+- Be consistent with the current library structures and patterns.
+- Document as much as possible your implementation choices.
+- Not add to much content in one pull request. 
 
-You can also improve overall project's structure if you have some background on it.
+## Disclaimer
 
-TODO-LIST:
+This product is not endorsed, certified or approved in any way by Riot Games, Inc. or any of its affiliates.
+
+## TODO-LIST
 - [ ] Implement all endpoints for the `lol` gateway
   - [x] Implement champion endpoints.
   - [x] Implement champion-mastery endpoints.
@@ -45,3 +51,4 @@ TODO-LIST:
   - [ ] Implement match endpoints.
   - [ ] Implement ranked endpoints.
   - [ ] Implement status endpoints.
+     

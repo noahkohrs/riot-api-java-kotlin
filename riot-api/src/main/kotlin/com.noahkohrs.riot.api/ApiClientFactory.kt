@@ -21,10 +21,15 @@ internal class RiotApiRequestInterceptor(private val apiKey: String, private val
     }
 }
 
+
+
+
 internal class ApiClientFactory(private val baseUrl: String, private val apiKey: String, private val debug: Boolean = false) {
     // create a MoshiEncoder and MoshiDecoder
     fun <T> createApiClient(apiType: Class<T>?): T {
-        val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+        val moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
         return Feign.builder()
             .decoder(MoshiDecoder(moshi))
             .encoder(MoshiEncoder(moshi))

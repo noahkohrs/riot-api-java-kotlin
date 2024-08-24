@@ -301,7 +301,7 @@ public data class ChallengesDto(
     val fasterSupportQuestCompletion: Int = 0,
 //    fastestLegendary	int
     @Json(name = "fastestLegendary")
-    val fastestLegendary: Int = 0,
+    val fastestLegendary: Float = 0f,
 //    hadAfkTeammate	int
     @Json(name = "hadAfkTeammate")
     val hadAfkTeammate: Int = 0,
@@ -352,7 +352,7 @@ public data class ChallengesDto(
     val teleportTakedowns: Int = 0,
 //    thirdInhibitorDestroyedTime	int
     @Json(name = "thirdInhibitorDestroyedTime")
-    val thirdInhibitorDestroyedTime: Int = 0,
+    val thirdInhibitorDestroyedTime: Float = 0f,
 //    threeWardsOneSweeperCount	int
     @Json(name = "threeWardsOneSweeperCount")
     val threeWardsOneSweeperCount: Int = 0,
@@ -781,7 +781,7 @@ public data class ObjectivesDto(
 public data class BanDto(
     // TODO: Check if this can be null when theres no champ ban
     @Json(name = "championId")
-    val championId: Int? = null,
+    val championId: Int,
     @Json(name = "pickTurn")
     val pickTurn: Int = 0,
 )
@@ -812,7 +812,7 @@ public data class PerkStyleSelectionDto(
 
 public data class PerkStyleDto(
     @Json(name = "description")
-    val description: String? = null,
+    val description: String = "",
     @Json(name = "selections")
     val selections: List<PerkStyleSelectionDto> = emptyList(),
     @Json(name = "style")
@@ -1098,7 +1098,7 @@ public data class ParticipantDto(
 // role	string
     // Should not happen I guess but need investigations.
     @Json(name = "role")
-    val role: String = "NONE",
+    val role: String = "UNKNOWN",
 // sightWardsBoughtInGame	int
     @Json(name = "sightWardsBoughtInGame")
     val sightWardsBoughtInGame: Int = 0,

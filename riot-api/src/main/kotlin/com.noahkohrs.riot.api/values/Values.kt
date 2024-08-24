@@ -151,3 +151,72 @@ public enum class LoLDivision(public val value: String) {
         }
     }
 }
+
+public enum class Position {
+    TOP,
+    JUNGLE,
+    MIDDLE,
+    BOTTOM,
+    UTILITY,
+    UNKNOWN,
+    ;
+
+    internal companion object {
+        fun fromValue(str: String): Position {
+            return when (str) {
+                "TOP" -> TOP
+                "JUNGLE" -> JUNGLE
+                "MIDDLE" -> MIDDLE
+                "BOTTOM" -> BOTTOM
+                "UTILITY" -> UTILITY
+                else -> UNKNOWN
+            }
+        }
+    }
+}
+
+public enum class Role {
+    SOLO,
+    CARRY,
+    SUPPORT,
+    NONE,
+    UNKNOWN,
+    ;
+
+    internal companion object {
+        fun fromValue(str: String): Role {
+            return when (str) {
+                "SOLO" -> SOLO
+                "CARRY" -> CARRY
+                "SUPPORT" -> SUPPORT
+                "NONE" -> NONE
+                else -> UNKNOWN
+            }
+        }
+    }
+}
+
+public enum class TeamSide {
+    BLUE,
+    RED,
+    UNKNOWN,
+    ;
+
+    internal companion object {
+        fun fromValue(str: String): TeamSide {
+            return when (str) {
+                "BLUE" -> BLUE
+                "RED" -> RED
+                else -> UNKNOWN
+            }
+        }
+
+        fun fromValue(int: Int): TeamSide {
+            return when (int) {
+                100 -> BLUE
+                200 -> RED
+                else -> UNKNOWN
+            }
+        }
+    }
+}

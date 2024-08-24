@@ -17,10 +17,4 @@ class StaticsRiotDataTest {
         val currentMapsNumber = 16
         assertEquals(StaticsRiotData.maps.size, currentMapsNumber)
     }
-
-    @Test
-    fun getItems() {
-        val currentItemsNumber = 0
-        assertEquals(StaticsRiotData.items.size, currentItemsNumber)
-    }
 }

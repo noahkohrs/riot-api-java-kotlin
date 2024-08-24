@@ -285,12 +285,15 @@ public data class ChallengesDto(
     @Json(name = "controlWardTimeCoverageInRiverOrEnemyHalf")
     val controlWardTimeCoverageInRiverOrEnemyHalf: Float = 0f,
 //    earliestBaron	int
+    // Wrong type on docs, refer to https://github.com/RiotGames/developer-relations/issues/982
     @Json(name = "earliestBaron")
     val earliestBaron: Float = 0f,
 //    earliestDragonTakedown	int
+    // Wrong type on docs, refer to https://github.com/RiotGames/developer-relations/issues/982
     @Json(name = "earliestDragonTakedown")
     val earliestDragonTakedown: Float = 0f,
 //    earliestElderDragon	int
+    // Wrong type on docs, refer to https://github.com/RiotGames/developer-relations/issues/982
     @Json(name = "earliestElderDragon")
     val earliestElderDragon: Float = 0f,
 //    earlyLaningPhaseGoldExpAdvantage	int
@@ -300,6 +303,7 @@ public data class ChallengesDto(
     @Json(name = "fasterSupportQuestCompletion")
     val fasterSupportQuestCompletion: Int = 0,
 //    fastestLegendary	int
+    // Wrong type on docs, refer to https://github.com/RiotGames/developer-relations/issues/982
     @Json(name = "fastestLegendary")
     val fastestLegendary: Float = 0f,
 //    hadAfkTeammate	int
@@ -351,6 +355,7 @@ public data class ChallengesDto(
     @Json(name = "teleportTakedowns")
     val teleportTakedowns: Int = 0,
 //    thirdInhibitorDestroyedTime	int
+    // Wrong type on docs, refer to https://github.com/RiotGames/developer-relations/issues/982
     @Json(name = "thirdInhibitorDestroyedTime")
     val thirdInhibitorDestroyedTime: Float = 0f,
 //    threeWardsOneSweeperCount	int

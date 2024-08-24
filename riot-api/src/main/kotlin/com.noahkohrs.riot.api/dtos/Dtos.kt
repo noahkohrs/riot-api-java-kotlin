@@ -286,13 +286,13 @@ public data class ChallengesDto(
     val controlWardTimeCoverageInRiverOrEnemyHalf: Float = 0f,
 //    earliestBaron	int
     @Json(name = "earliestBaron")
-    val earliestBaron: Int = 0,
+    val earliestBaron: Float = 0f,
 //    earliestDragonTakedown	int
     @Json(name = "earliestDragonTakedown")
-    val earliestDragonTakedown: Int = 0,
+    val earliestDragonTakedown: Float = 0f,
 //    earliestElderDragon	int
     @Json(name = "earliestElderDragon")
-    val earliestElderDragon: Int = 0,
+    val earliestElderDragon: Float = 0f,
 //    earlyLaningPhaseGoldExpAdvantage	int
     @Json(name = "earlyLaningPhaseGoldExpAdvantage")
     val earlyLaningPhaseGoldExpAdvantage: Int = 0,
@@ -779,7 +779,7 @@ public data class ObjectivesDto(
 )
 
 public data class BanDto(
-    // TODO: Check if this can be null when there no chamop ban
+    // TODO: Check if this can be null when theres no champ ban
     @Json(name = "championId")
     val championId: Int? = null,
     @Json(name = "pickTurn")

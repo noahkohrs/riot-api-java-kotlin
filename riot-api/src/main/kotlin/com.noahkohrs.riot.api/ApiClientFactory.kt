@@ -1,5 +1,6 @@
 package com.noahkohrs.riot.api
 
+import com.noahkohrs.riot.api.manipulation.UnpredictableDtoAdapterFactory
 import com.noahkohrs.riot.api.values.AccountRegion
 import com.noahkohrs.riot.api.values.GlobalRegion
 import com.noahkohrs.riot.api.values.Platform
@@ -24,7 +25,11 @@ internal class RiotApiRequestInterceptor(private val apiKey: String, private val
 internal class ApiClientFactory(private val baseUrl: String, private val apiKey: String, private val debug: Boolean = false) {
     // create a MoshiEncoder and MoshiDecoder
     fun <T> createApiClient(apiType: Class<T>?): T {
-        val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+        val moshi =
+            Moshi.Builder()
+                .add(UnpredictableDtoAdapterFactory())
+                .add(KotlinJsonAdapterFactory())
+                .build()
         return Feign.builder()
             .decoder(MoshiDecoder(moshi))
             .encoder(MoshiEncoder(moshi))

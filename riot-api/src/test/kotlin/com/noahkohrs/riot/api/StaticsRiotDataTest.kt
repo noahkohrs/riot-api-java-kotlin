@@ -1,12 +1,13 @@
 package com.noahkohrs.riot.api
 
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.Test
+import kotlin.test.Test
 
 class StaticsRiotDataTest {
     @Test
     fun getQueues() {
-        val currentQueuesNumber = 95
+        val currentQueuesNumber = 96
+
         assertEquals(StaticsRiotData.queues.size, currentQueuesNumber)
     }
 

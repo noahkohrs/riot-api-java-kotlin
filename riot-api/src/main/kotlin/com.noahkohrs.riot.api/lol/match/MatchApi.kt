@@ -1,7 +1,7 @@
 package com.noahkohrs.riot.api.lol.match
 
 import com.noahkohrs.riot.api.GlobalRegionApiClientFactory
-import com.noahkohrs.riot.api.Queue
+import com.noahkohrs.riot.api.LoLQueue
 import com.noahkohrs.riot.api.values.GlobalRegion
 import feign.Param
 import feign.QueryMap
@@ -24,7 +24,7 @@ public class MatchApi(
         puuid: String,
         startTime: Date,
         endTime: Date,
-        queue: Queue,
+        queue: LoLQueue,
         type: String,
         startIndex: Int = 0,
         count: Int = 20,

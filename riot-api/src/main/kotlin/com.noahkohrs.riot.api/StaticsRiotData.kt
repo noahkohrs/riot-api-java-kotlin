@@ -12,27 +12,27 @@ internal object StaticsRiotData {
 
     internal interface StaticDragoonApi {
         @RequestLine("GET /docs/lol/queues.json")
-        fun getQueues(): List<Queue>
+        fun getQueues(): List<LoLQueue>
 
         @RequestLine("GET /docs/lol/maps.json")
-        fun getMaps(): List<Map>
+        fun getMaps(): List<LoLMap>
     }
 }
 
-public data class Queue(
+public data class LoLQueue(
     val queueId: Int,
     val map: String,
     val description: String?,
     val notes: String?,
 ) {
     public companion object {
-        public fun fromId(queueId: Int): Queue {
+        public fun fromId(queueId: Int): LoLQueue {
             return StaticsRiotData.queues[queueId] ?: error("Queue $queueId not found")
         }
     }
 }
 
-public data class Map(
+public data class LoLMap(
     val mapId: Int,
     val mapName: String,
     val notes: String,

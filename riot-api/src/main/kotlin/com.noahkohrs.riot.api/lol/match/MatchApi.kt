@@ -9,8 +9,8 @@ import feign.RequestLine
 import java.util.Date
 
 public class MatchApi(
-    private val apiKey: String,
-    private val globalRegion: GlobalRegion,
+    apiKey: String,
+    globalRegion: GlobalRegion,
 ) {
     private val apiClient =
         GlobalRegionApiClientFactory

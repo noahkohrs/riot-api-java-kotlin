@@ -7,8 +7,8 @@ import feign.Param
 import feign.RequestLine
 
 public class SummonerApi(
-    private val apiKey: String,
-    private val platform: Platform,
+    apiKey: String,
+    platform: Platform,
 ) {
     private val apiClient =
         RegionApiClientFactory

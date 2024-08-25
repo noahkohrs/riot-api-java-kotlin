@@ -14,8 +14,8 @@ import feign.RequestLine
  * [Riot Account API](https://developer.riotgames.com/apis#account-v1)
  */
 public class AccountApi(
-    private val apiKey: String,
-    private val platform: Platform,
+    apiKey: String,
+    platform: Platform,
 ) {
     private val apiClient =
         AccountApiClientFactory

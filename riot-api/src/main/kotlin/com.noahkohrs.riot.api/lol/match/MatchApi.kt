@@ -2,6 +2,7 @@ package com.noahkohrs.riot.api.lol.match
 
 import com.noahkohrs.riot.api.GlobalRegionApiClientFactory
 import com.noahkohrs.riot.api.dtos.MatchDto
+import com.noahkohrs.riot.api.dtos.TimelineDto
 import com.noahkohrs.riot.api.values.GlobalRegion
 import feign.Param
 import feign.QueryMap
@@ -20,6 +21,7 @@ public class MatchApi(
     /**
      * Get a list of match ids by puuid
      */
+    @JvmOverloads
     public fun getMatchIdsByPuuid(
         puuid: String,
         startTime: Date? = null,
@@ -47,6 +49,14 @@ public class MatchApi(
         return Match.fromDto(res)
     }
 
+    /**
+     * Get a match timeline by match id
+     */
+    public fun getMatchTimelineById(matchId: String): MatchTimeline {
+        val res = apiClient.getMatchTimelineById(matchId)
+        return MatchTimeline.fromDto(res)
+    }
+
     private interface MatchApiClient {
 //        GET /lol/match/v5/matches/by-puuid/{puuid}/idsGet a list of match ids by puuid
         @RequestLine("GET /lol/match/v5/matches/by-puuid/{puuid}/ids")
@@ -65,5 +75,10 @@ public class MatchApi(
         ): MatchDto
 
 //        GET /lol/match/v5/matches/{matchId}/timelineGet a match timeline by match id
+        @RequestLine("GET /lol/match/v5/matches/{matchId}/timeline")
+        fun getMatchTimelineById(
+            @Param("matchId")
+            matchId: String,
+        ): TimelineDto
     }
 }

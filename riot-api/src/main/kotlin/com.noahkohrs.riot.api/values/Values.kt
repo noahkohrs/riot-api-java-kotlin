@@ -220,3 +220,59 @@ public enum class TeamSide {
         }
     }
 }
+
+public enum class LaneType {
+    BOT,
+    MID,
+    TOP,
+    ;
+
+    internal companion object {
+        fun fromValue(str: String): LaneType {
+            return when (str) {
+                "BOT_LANE" -> BOT
+                "MID_LANE" -> MID
+                "TOP_LANE" -> TOP
+                else -> throw IllegalArgumentException("Invalid value for LaneType: $str")
+            }
+        }
+    }
+}
+
+public enum class BuildingType {
+    TOWER,
+    INHIBITOR,
+    NEXUS,
+    ;
+
+    internal companion object {
+        fun fromValue(str: String): BuildingType {
+            return when (str) {
+                "TOWER_BUILDING" -> TOWER
+                "INHIBITOR_BUILDING" -> INHIBITOR
+                "NEXUS_BUILDING" -> NEXUS
+                else -> throw IllegalArgumentException("Invalid value for BuildingType: $str")
+            }
+        }
+    }
+}
+
+public enum class TowerType {
+    OUTER_TURRET,
+    INNER_TURRET,
+    BASE_TURRET,
+    NEXUS_TURRET,
+    ;
+
+    internal companion object {
+        fun fromValue(str: String): TowerType? {
+            return when (str) {
+                "OUTER_TURRET" -> OUTER_TURRET
+                "INNER_TURRET" -> INNER_TURRET
+                "BASE_TURRET" -> BASE_TURRET
+                "NEXUS_TURRET" -> NEXUS_TURRET
+                else -> null
+            }
+        }
+    }
+}

@@ -1,7 +1,7 @@
 package com.noahkohrs.riot.api.manipulation
 
-internal class JsonObject() {
-    constructor(data: Map<String, Any>) : this() {
+public class JsonObject() {
+    public constructor(data: Map<String, Any>) : this() {
         for ((key, value) in data) {
             add(key, value)
         }
@@ -9,11 +9,19 @@ internal class JsonObject() {
 
     private val data: MutableMap<String, Any> = mutableMapOf()
 
-    fun getString(key: String): String? {
+    public fun getString(key: String): String? {
         return data[key]?.toString()
     }
 
-    fun getInt(key: String): Int? =
+    public fun getLong(key: String): Long? =
+        when (val value = data[key]) {
+            is Long -> value
+            is Number -> value.toLong()
+            is String -> value.toLongOrNull()
+            else -> null
+        }
+
+    public fun getInt(key: String): Int? =
         when (val value = data[key]) {
             is Int -> value
             is Number -> value.toInt()
@@ -21,7 +29,7 @@ internal class JsonObject() {
             else -> null
         }
 
-    fun getBoolean(key: String): Boolean? {
+    public fun getBoolean(key: String): Boolean? {
         return when (val value = data[key]) {
             is Boolean -> value
             is String ->
@@ -34,7 +42,7 @@ internal class JsonObject() {
         }
     }
 
-    fun getDouble(key: String): Double? =
+    public fun getDouble(key: String): Double? =
         when (val value = data[key]) {
             is Double -> value
             is Number -> value.toDouble()
@@ -42,22 +50,33 @@ internal class JsonObject() {
             else -> null
         }
 
-    fun getObject(key: String): JsonObject? {
-        val map = data[key] as? JsonObject
-        return map
+    public fun getObject(key: String): JsonObject? {
+        val map = data[key] as? Map<*, *> ?: return null
+        val obj = JsonObject(map as Map<String, Any>)
+        return obj
+    }
+
+    public fun <T> getArray(key: String): List<T>? {
+        val ret = data[key]
+        if (ret !is List<*>) {
+            return null
+        }
+        if (ret.isEmpty()) {
+            return emptyList()
+        }
+        if (ret[0] is Map<*, *>) {
+            return ret.map { JsonObject(it as Map<String, Any>) } as List<T>
+        }
+        return ret as List<T>
     }
 
     // This class misses handling for lists.
 
-    fun add(key: String, value: Any) {
-        if (value is Map<*, *>) {
-            data[key] = JsonObject(value as Map<String, Any>)
-        } else {
-            data[key] = value
-        }
+    public fun add(key: String, value: Any) {
+        data[key] = value
     }
 
-    fun isEmpty(): Boolean {
+    public fun isEmpty(): Boolean {
         return data.isEmpty()
     }
 }

@@ -3,8 +3,8 @@ package com.noahkohrs.riot.api.manipulation
 import com.squareup.moshi.*
 import java.lang.reflect.Type
 
-internal abstract class UnpredictableDto {
-    val additionalData: JsonObject = JsonObject(mutableMapOf())
+public abstract class UnpredictableDto {
+    public val additionalData: JsonObject = JsonObject(mutableMapOf())
 }
 
 // Custom JsonAdapter

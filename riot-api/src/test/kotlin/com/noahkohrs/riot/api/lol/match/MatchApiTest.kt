@@ -25,4 +25,18 @@ class MatchApiTest {
             assertNotNull(match)
         }
     }
+
+    @Test
+    fun getMatchTimelineByIdStressTest() {
+        val testMatchs = mutableSetOf<String>()
+        for (p in TestInternal.somePlayers) {
+            val puuid = riotApi.account.getAccountByRiotId(p.name, p.tag).puuid
+            val matchIds = riotApi.lol.match.getMatchIdsByPuuid(puuid, count = 80)
+            testMatchs.addAll(matchIds)
+        }
+        for (matchId in testMatchs) {
+            val match = riotApi.lol.match.getMatchTimelineById(matchId)
+            assertNotNull(match)
+        }
+    }
 }

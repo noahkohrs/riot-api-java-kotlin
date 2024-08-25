@@ -13,9 +13,9 @@ public data class AccountDto(
     @Json(name = "puuid")
     public val puuid: String,
     @Json(name = "gameName")
-    public val gameName: String? = null,
+    public val gameName: String,
     @Json(name = "tagLine")
-    public val tagLine: String? = null,
+    public val tagLine: String,
 )
 
 /*

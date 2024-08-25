@@ -1,5 +1,6 @@
 import org.jetbrains.kotlin.gradle.dsl.ExplicitApiMode
 
+apply(plugin = "org.jetbrains.dokka")
 plugins {
     kotlin("jvm")
 }

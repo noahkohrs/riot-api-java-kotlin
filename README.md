@@ -21,14 +21,14 @@ This product is not endorsed, certified or approved in any way by Riot Games, In
   - [x] Implement champion endpoints.
   - [x] Implement champion-mastery endpoints.
   - [ ] Implement clash endpoints.
-  - [ ] Implement league endpoints.
-  - [ ] Implement league-exp endpoints.
+  - [x] Implement league endpoints.
+  - [x] Implement league-exp endpoints.
   - [ ] Implement challenges endpoints.
-  - [ ] Implement match endpoints.
+  - [x] Implement match endpoints.
   - [ ] Implement rso-match endpoints.
   - [ ] Implement spectator endpoints.
   - [x] Implement status endpoints.
-  - [ ] Implement summoner endpoints.
+  - [x] Implement summoner endpoints.
   - [ ] Implement tournament endpoints.
   - [ ] Implement tournament-stub endpoints.
 - [ ] Implement all endpoints for the `lor` gateway

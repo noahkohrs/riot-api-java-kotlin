@@ -1,6 +1,7 @@
 package com.noahkohrs.riot.api
 
 import com.noahkohrs.riot.api.manipulation.UnpredictableDtoAdapterFactory
+import com.noahkohrs.riot.api.statics.StaticsRiotData
 import com.noahkohrs.riot.api.values.AccountRegion
 import com.noahkohrs.riot.api.values.GlobalRegion
 import com.noahkohrs.riot.api.values.Platform

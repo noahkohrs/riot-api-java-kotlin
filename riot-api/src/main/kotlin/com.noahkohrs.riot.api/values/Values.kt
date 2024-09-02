@@ -151,3 +151,128 @@ public enum class LoLDivision(public val value: String) {
         }
     }
 }
+
+public enum class Position {
+    TOP,
+    JUNGLE,
+    MIDDLE,
+    BOTTOM,
+    UTILITY,
+    UNKNOWN,
+    ;
+
+    internal companion object {
+        fun fromValue(str: String): Position {
+            return when (str) {
+                "TOP" -> TOP
+                "JUNGLE" -> JUNGLE
+                "MIDDLE" -> MIDDLE
+                "BOTTOM" -> BOTTOM
+                "UTILITY" -> UTILITY
+                else -> UNKNOWN
+            }
+        }
+    }
+}
+
+public enum class Role {
+    SOLO,
+    CARRY,
+    SUPPORT,
+    NONE,
+    UNKNOWN,
+    ;
+
+    internal companion object {
+        fun fromValue(str: String): Role {
+            return when (str) {
+                "SOLO" -> SOLO
+                "CARRY" -> CARRY
+                "SUPPORT" -> SUPPORT
+                "NONE" -> NONE
+                else -> UNKNOWN
+            }
+        }
+    }
+}
+
+public enum class TeamSide {
+    BLUE,
+    RED,
+    UNKNOWN,
+    ;
+
+    internal companion object {
+        fun fromValue(str: String): TeamSide {
+            return when (str) {
+                "BLUE" -> BLUE
+                "RED" -> RED
+                else -> UNKNOWN
+            }
+        }
+
+        fun fromValue(int: Int): TeamSide {
+            return when (int) {
+                100 -> BLUE
+                200 -> RED
+                else -> UNKNOWN
+            }
+        }
+    }
+}
+
+public enum class LaneType {
+    BOT,
+    MID,
+    TOP,
+    ;
+
+    internal companion object {
+        fun fromValue(str: String): LaneType {
+            return when (str) {
+                "BOT_LANE" -> BOT
+                "MID_LANE" -> MID
+                "TOP_LANE" -> TOP
+                else -> throw IllegalArgumentException("Invalid value for LaneType: $str")
+            }
+        }
+    }
+}
+
+public enum class BuildingType {
+    TOWER,
+    INHIBITOR,
+    NEXUS,
+    ;
+
+    internal companion object {
+        fun fromValue(str: String): BuildingType {
+            return when (str) {
+                "TOWER_BUILDING" -> TOWER
+                "INHIBITOR_BUILDING" -> INHIBITOR
+                "NEXUS_BUILDING" -> NEXUS
+                else -> throw IllegalArgumentException("Invalid value for BuildingType: $str")
+            }
+        }
+    }
+}
+
+public enum class TowerType {
+    OUTER_TURRET,
+    INNER_TURRET,
+    BASE_TURRET,
+    NEXUS_TURRET,
+    ;
+
+    internal companion object {
+        fun fromValue(str: String): TowerType? {
+            return when (str) {
+                "OUTER_TURRET" -> OUTER_TURRET
+                "INNER_TURRET" -> INNER_TURRET
+                "BASE_TURRET" -> BASE_TURRET
+                "NEXUS_TURRET" -> NEXUS_TURRET
+                else -> null
+            }
+        }
+    }
+}

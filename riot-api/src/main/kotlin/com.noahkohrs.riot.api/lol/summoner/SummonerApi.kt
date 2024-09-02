@@ -18,29 +18,33 @@ public class SummonerApi(
     /**
      * Get a summoner by its RSO encrypted PUUID.
      */
-    public fun getSummonerByRsoPuuid(rsoPUUID: String): SummonerResponse = SummonerResponse(apiClient.getSummonerByRsoPuuid(rsoPUUID))
+    public fun getSummonerByRsoPuuid(
+        rsoPUUID: String,
+    ): SummonerResponse = SummonerResponse.fromDto(apiClient.getSummonerByRsoPuuid(rsoPUUID))
 
     /**
      * Get a summoner by account ID.
      */
     public fun getSummonerByAccountId(encryptedAccountId: String): SummonerResponse =
-        SummonerResponse(apiClient.getSummonerByAccountId(encryptedAccountId))
+        SummonerResponse.fromDto(apiClient.getSummonerByAccountId(encryptedAccountId))
 
     /**
      * Get a summoner by PUUID.
      */
-    public fun getSummonerByPuuid(encryptedPUUID: String): SummonerResponse = SummonerResponse(apiClient.getSummonerByPuuid(encryptedPUUID))
+    public fun getSummonerByPuuid(
+        encryptedPUUID: String,
+    ): SummonerResponse = SummonerResponse.fromDto(apiClient.getSummonerByPuuid(encryptedPUUID))
 
     /**
      * Get a summoner by access token.
      */
-    public fun getSummonerByAccessToken(): SummonerResponse = SummonerResponse(apiClient.getSummonerByAccessToken())
+    public fun getSummonerByAccessToken(): SummonerResponse = SummonerResponse.fromDto(apiClient.getSummonerByAccessToken())
 
     /**
      * Get a summoner by summoner ID.
      */
     public fun getSummonerBySummonerId(encryptedSummonerId: String): SummonerResponse =
-        SummonerResponse(apiClient.getSummonerBySummonerId(encryptedSummonerId))
+        SummonerResponse.fromDto(apiClient.getSummonerBySummonerId(encryptedSummonerId))
 
     private interface SummonerApiClient {
         //    GET /fulfillment/v1/summoners/by-puuid/{rsoPUUID}Get a summoner by its RSO encrypted PUUID.

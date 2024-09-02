@@ -1,12 +1,28 @@
 package com.noahkohrs.riot.api.lol.summoner
 
+import com.noahkohrs.riot.api.annotations.LinkToStaticApi
 import com.noahkohrs.riot.api.dtos.SummonerDto
+import java.util.Date
 
-public data class SummonerResponse(private val dto: SummonerDto) {
-    public val id: String = dto.id
-    public val accountId: String = dto.accountId
-    public val puuid: String = dto.puuid
-    public val profileIconId: Int = dto.profileIconId
-    public val revisionDate: Long = dto.revisionDate
-    public val summonerLevel: Long = dto.summonerLevel
+public class SummonerResponse private constructor(
+    public val id: String,
+    public val accountId: String,
+    public val puuid: String,
+    @LinkToStaticApi
+    public val profileIconId: Int,
+    public val revisionDate: Date,
+    public val summonerLevel: Long,
+) {
+    internal companion object {
+        fun fromDto(dto: SummonerDto): SummonerResponse {
+            return SummonerResponse(
+                id = dto.id,
+                accountId = dto.accountId,
+                puuid = dto.puuid,
+                profileIconId = dto.profileIconId,
+                revisionDate = Date(dto.revisionDate),
+                summonerLevel = dto.summonerLevel,
+            )
+        }
+    }
 }

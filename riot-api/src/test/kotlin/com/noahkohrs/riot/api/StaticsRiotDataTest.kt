@@ -1,5 +1,6 @@
 package com.noahkohrs.riot.api
 
+import com.noahkohrs.riot.api.statics.StaticsRiotData
 import org.junit.jupiter.api.Assertions.*
 import kotlin.test.Test
 

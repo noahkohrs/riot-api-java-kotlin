@@ -1,5 +1,6 @@
 package com.noahkohrs.riot.api.dtos
 
+import com.noahkohrs.riot.api.manipulation.UnpredictableDto
 import com.squareup.moshi.Json
 
 // MIGHT NEED TO BE SEPERATED INTO MULTIPLE FILES LATER ON
@@ -285,14 +286,17 @@ public data class ChallengesDto(
     @Json(name = "controlWardTimeCoverageInRiverOrEnemyHalf")
     val controlWardTimeCoverageInRiverOrEnemyHalf: Float = 0f,
 //    earliestBaron	int
+    // Wrong type on docs, refer to https://github.com/RiotGames/developer-relations/issues/982
     @Json(name = "earliestBaron")
-    val earliestBaron: Int = 0,
+    val earliestBaron: Float = 0f,
 //    earliestDragonTakedown	int
+    // Wrong type on docs, refer to https://github.com/RiotGames/developer-relations/issues/982
     @Json(name = "earliestDragonTakedown")
-    val earliestDragonTakedown: Int = 0,
+    val earliestDragonTakedown: Float = 0f,
 //    earliestElderDragon	int
+    // Wrong type on docs, refer to https://github.com/RiotGames/developer-relations/issues/982
     @Json(name = "earliestElderDragon")
-    val earliestElderDragon: Int = 0,
+    val earliestElderDragon: Float = 0f,
 //    earlyLaningPhaseGoldExpAdvantage	int
     @Json(name = "earlyLaningPhaseGoldExpAdvantage")
     val earlyLaningPhaseGoldExpAdvantage: Int = 0,
@@ -300,8 +304,9 @@ public data class ChallengesDto(
     @Json(name = "fasterSupportQuestCompletion")
     val fasterSupportQuestCompletion: Int = 0,
 //    fastestLegendary	int
+    // Wrong type on docs, refer to https://github.com/RiotGames/developer-relations/issues/982
     @Json(name = "fastestLegendary")
-    val fastestLegendary: Int = 0,
+    val fastestLegendary: Float = 0f,
 //    hadAfkTeammate	int
     @Json(name = "hadAfkTeammate")
     val hadAfkTeammate: Int = 0,
@@ -351,8 +356,9 @@ public data class ChallengesDto(
     @Json(name = "teleportTakedowns")
     val teleportTakedowns: Int = 0,
 //    thirdInhibitorDestroyedTime	int
+    // Wrong type on docs, refer to https://github.com/RiotGames/developer-relations/issues/982
     @Json(name = "thirdInhibitorDestroyedTime")
-    val thirdInhibitorDestroyedTime: Int = 0,
+    val thirdInhibitorDestroyedTime: Float = 0f,
 //    threeWardsOneSweeperCount	int
     @Json(name = "threeWardsOneSweeperCount")
     val threeWardsOneSweeperCount: Int = 0,
@@ -779,9 +785,9 @@ public data class ObjectivesDto(
 )
 
 public data class BanDto(
-    // TODO: Check if this can be null when there no chamop ban
+    // TODO: Check if this can be null when theres no champ ban
     @Json(name = "championId")
-    val championId: Int? = null,
+    val championId: Int,
     @Json(name = "pickTurn")
     val pickTurn: Int = 0,
 )
@@ -812,7 +818,7 @@ public data class PerkStyleSelectionDto(
 
 public data class PerkStyleDto(
     @Json(name = "description")
-    val description: String? = null,
+    val description: String = "",
     @Json(name = "selections")
     val selections: List<PerkStyleSelectionDto> = emptyList(),
     @Json(name = "style")
@@ -1098,7 +1104,7 @@ public data class ParticipantDto(
 // role	string
     // Should not happen I guess but need investigations.
     @Json(name = "role")
-    val role: String = "NONE",
+    val role: String = "UNKNOWN",
 // sightWardsBoughtInGame	int
     @Json(name = "sightWardsBoughtInGame")
     val sightWardsBoughtInGame: Int = 0,
@@ -1289,4 +1295,246 @@ public data class MatchDto(
     val info: InfoDto,
     @Json(name = "metadata")
     val metadata: MetadataDto,
+)
+
+// Timeline Match
+
+public data class PositionDto(
+    @Json(name = "x")
+    val x: Int = 0,
+    @Json(name = "y")
+    val y: Int = 0,
+)
+
+// magicDamageDone	int
+// magicDamageDoneToChampions	int
+// magicDamageTaken	int
+// physicalDamageDone	int
+// physicalDamageDoneToChampions	int
+// physicalDamageTaken	int
+// totalDamageDone	int
+// totalDamageDoneToChampions	int
+// totalDamageTaken	int
+// trueDamageDone	int
+// trueDamageDoneToChampions	int
+// trueDamageTaken	int
+
+public data class DamageStatsDto(
+    @Json(name = "magicDamageDone")
+    val magicDamageDone: Int = 0,
+    @Json(name = "magicDamageDoneToChampions")
+    val magicDamageDoneToChampions: Int = 0,
+    @Json(name = "magicDamageTaken")
+    val magicDamageTaken: Int = 0,
+    @Json(name = "physicalDamageDone")
+    val physicalDamageDone: Int = 0,
+    @Json(name = "physicalDamageDoneToChampions")
+    val physicalDamageDoneToChampions: Int = 0,
+    @Json(name = "physicalDamageTaken")
+    val physicalDamageTaken: Int = 0,
+    @Json(name = "totalDamageDone")
+    val totalDamageDone: Int = 0,
+    @Json(name = "totalDamageDoneToChampions")
+    val totalDamageDoneToChampions: Int = 0,
+    @Json(name = "totalDamageTaken")
+    val totalDamageTaken: Int = 0,
+    @Json(name = "trueDamageDone")
+    val trueDamageDone: Int = 0,
+    @Json(name = "trueDamageDoneToChampions")
+    val trueDamageDoneToChampions: Int = 0,
+    @Json(name = "trueDamageTaken")
+    val trueDamageTaken: Int = 0,
+)
+
+// abilityHaste	int
+// abilityPower	int
+// armor	int
+// armorPen	int
+// armorPenPercent	int
+// attackDamage	int
+// attackSpeed	int
+// bonusArmorPenPercent	int
+// bonusMagicPenPercent	int
+// ccReduction	int
+// cooldownReduction	int
+// health	int
+// healthMax	int
+// healthRegen	int
+// lifesteal	int
+// magicPen	int
+// magicPenPercent	int
+// magicResist	int
+// movementSpeed	int
+// omnivamp	int
+// physicalVamp	int
+// power	int
+// powerMax	int
+// powerRegen	int
+// spellVamp	int
+public data class ChampionStatsDto(
+    @Json(name = "abilityHaste")
+    val abilityHaste: Int = 0,
+    @Json(name = "abilityPower")
+    val abilityPower: Int = 0,
+    @Json(name = "armor")
+    val armor: Int = 0,
+    @Json(name = "armorPen")
+    val armorPen: Int = 0,
+    @Json(name = "armorPenPercent")
+    val armorPenPercent: Int = 0,
+    @Json(name = "attackDamage")
+    val attackDamage: Int = 0,
+    @Json(name = "attackSpeed")
+    val attackSpeed: Int = 0,
+    @Json(name = "bonusArmorPenPercent")
+    val bonusArmorPenPercent: Int = 0,
+    @Json(name = "bonusMagicPenPercent")
+    val bonusMagicPenPercent: Int = 0,
+    @Json(name = "ccReduction")
+    val ccReduction: Int = 0,
+    @Json(name = "cooldownReduction")
+    val cooldownReduction: Int = 0,
+    @Json(name = "health")
+    val health: Int = 0,
+    @Json(name = "healthMax")
+    val healthMax: Int = 0,
+    @Json(name = "healthRegen")
+    val healthRegen: Int = 0,
+    @Json(name = "lifesteal")
+    val lifesteal: Int = 0,
+    @Json(name = "magicPen")
+    val magicPen: Int = 0,
+    @Json(name = "magicPenPercent")
+    val magicPenPercent: Int = 0,
+    @Json(name = "magicResist")
+    val magicResist: Int = 0,
+    @Json(name = "movementSpeed")
+    val movementSpeed: Int = 0,
+    @Json(name = "omnivamp")
+    val omnivamp: Int = 0,
+    @Json(name = "physicalVamp")
+    val physicalVamp: Int = 0,
+    @Json(name = "power")
+    val power: Int = 0,
+    @Json(name = "powerMax")
+    val powerMax: Int = 0,
+    @Json(name = "powerRegen")
+    val powerRegen: Int = 0,
+    @Json(name = "spellVamp")
+    val spellVamp: Int = 0,
+)
+
+// championStats	ChampionStatsDto
+// currentGold	int
+// damageStats	DamageStatsDto
+// goldPerSecond	int
+// jungleMinionsKilled	int
+// level	int
+// minionsKilled	int
+// participantId	int
+// position	PositionDto
+// timeEnemySpentControlled	int
+// totalGold	int
+// xp	int
+public data class ParticipantFrameDto(
+    @Json(name = "championStats")
+    val championStats: ChampionStatsDto = ChampionStatsDto(),
+    @Json(name = "currentGold")
+    val currentGold: Int = 0,
+    @Json(name = "damageStats")
+    val damageStats: DamageStatsDto = DamageStatsDto(),
+    @Json(name = "goldPerSecond")
+    val goldPerSecond: Int = 0,
+    @Json(name = "jungleMinionsKilled")
+    val jungleMinionsKilled: Int = 0,
+    @Json(name = "level")
+    val level: Int = 0,
+    @Json(name = "minionsKilled")
+    val minionsKilled: Int = 0,
+    @Json(name = "participantId")
+    val participantId: Int = 0,
+    @Json(name = "position")
+    val position: PositionDto = PositionDto(),
+    @Json(name = "timeEnemySpentControlled")
+    val timeEnemySpentControlled: Int = 0,
+    @Json(name = "totalGold")
+    val totalGold: Int = 0,
+    @Json(name = "xp")
+    val xp: Int = 0,
+)
+
+// timestamp	long
+// realTimestamp	long
+// type	string
+
+/**
+ * EventDto extends UnpredictableDto because it's field depends on the type.
+ */
+public data class EventTimelineDto(
+    @Json(name = "timestamp")
+    val timestamp: Long,
+    @Json(name = "type")
+    val type: String,
+) : UnpredictableDto()
+
+// events	List[EventsTimeLineDto]
+// participantFrames	ParticipantFramesDto
+// timestamp	int
+
+public data class FramesTimelineDto(
+    @Json(name = "events")
+    val events: List<EventTimelineDto> = emptyList(),
+    @Json(name = "participantFrames")
+    val participantFrames: Map<String, ParticipantFrameDto> = emptyMap(),
+    @Json(name = "timestamp")
+    val timestamp: Long = 0,
+)
+
+// participantId	int
+// puuid	string
+
+public data class ParticipantTimelineDto(
+    @Json(name = "participantId")
+    val participantId: Int = 0,
+    @Json(name = "puuid")
+    val puuid: String,
+)
+
+// endOfGameResult	string	Refer to indicate if the game ended in termination.
+// frameInterval	long
+// gameId	long
+// participants	List[ParticipantTimeLineDto]
+// frames	List[FramesTimeLineDto]
+
+public data class InfoTimelineDto(
+    @Json(name = "endOfGameResult")
+    val endOfGameResult: String,
+    @Json(name = "frameInterval")
+    val frameInterval: Long,
+    @Json(name = "gameId")
+    val gameId: Long,
+    @Json(name = "participants")
+    val participants: List<ParticipantTimelineDto> = emptyList(),
+    @Json(name = "frames")
+    val frames: List<FramesTimelineDto> = emptyList(),
+)
+
+// dataVersion	string	Match data version.
+// matchId	string	Match id.
+// participants	List[string]	A list of participant PUUIDs.
+
+public data class MetadataTimelineDto(
+    @Json(name = "dataVersion")
+    val dataVersion: String,
+    @Json(name = "matchId")
+    val matchId: String,
+    @Json(name = "participants")
+    val participants: List<String> = emptyList(),
+)
+
+public data class TimelineDto(
+    @Json(name = "info")
+    val info: InfoTimelineDto,
+    @Json(name = "metadata")
+    val metadata: MetadataTimelineDto,
 )

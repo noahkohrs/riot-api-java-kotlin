@@ -275,7 +275,10 @@ internal data class MetadataDto(
     val participantsPuuids: List<String>,
 )
 
-internal data class ChallengesDto(
+/**
+ * This dataclass is temporary part of the public API as it's really complex and need many time to restructure in a better way.
+ */
+public data class ChallengesDto(
 //    12AssistStreakCount	int
     @Json(name = "AssistStreakCount")
     val assistStreakCount: Int = 0,

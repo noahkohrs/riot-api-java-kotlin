@@ -5,11 +5,10 @@ import com.noahkohrs.riot.api.values.Position
 import com.noahkohrs.riot.api.values.Role
 import com.noahkohrs.riot.api.values.TeamSide
 
-@JvmRecord
-public data class Metadata(
-    public val dataVersion: String,
-    public val matchId: String,
-    public val participantsPuuids: List<String>,
+public class Metadata private constructor(
+    @JvmField public val dataVersion: String,
+    @JvmField public val matchId: String,
+    @JvmField public val participantsPuuids: List<String>,
 ) {
     internal companion object {
         fun fromDto(dto: MetadataDto): Metadata {
@@ -28,10 +27,9 @@ public data class Metadata(
 
 // Mission has a List called playerScores.
 
-@JvmRecord
-public data class Objective(
-    val first: Boolean,
-    val kills: Int,
+public class Objective private constructor(
+    @JvmField public val first: Boolean,
+    @JvmField public val kills: Int,
 ) {
     internal companion object {
         fun fromDto(dto: ObjectiveDto): Objective {
@@ -43,14 +41,13 @@ public data class Objective(
     }
 }
 
-@JvmRecord
-public data class Objectives(
-    val baron: Objective,
-    val champion: Objective,
-    val dragon: Objective,
-    val inhibitor: Objective,
-    val riftHerald: Objective,
-    val tower: Objective,
+public class Objectives private constructor(
+    @JvmField public val baron: Objective,
+    @JvmField public val champion: Objective,
+    @JvmField public val dragon: Objective,
+    @JvmField public val inhibitor: Objective,
+    @JvmField public val riftHerald: Objective,
+    @JvmField public val tower: Objective,
 ) {
     internal companion object {
         fun fromDto(dto: ObjectivesDto): Objectives {
@@ -66,10 +63,9 @@ public data class Objectives(
     }
 }
 
-@JvmRecord
-public data class Ban(
-    val championId: Int,
-    val pickTurn: Int,
+public class Ban private constructor(
+    @JvmField public val championId: Int,
+    @JvmField public val pickTurn: Int,
 ) {
     internal companion object {
         fun fromDto(dto: BanDto): Ban {
@@ -81,12 +77,11 @@ public data class Ban(
     }
 }
 
-@JvmRecord
-public data class Team(
-    val bans: List<Ban>,
-    val objectives: Objectives,
-    val teamId: Int,
-    val win: Boolean,
+public class Team private constructor(
+    @JvmField public val bans: List<Ban>,
+    @JvmField public val objectives: Objectives,
+    @JvmField public val teamId: Int,
+    @JvmField public val win: Boolean,
 ) {
     internal companion object {
         fun fromDto(dto: TeamDto): Team {
@@ -100,26 +95,59 @@ public data class Team(
     }
 }
 
-@JvmRecord
-public data class Participant(
-    val participantId: Int,
+public class Mission private constructor(
+    @JvmField public val playerScore0: Int,
+    @JvmField public val playerScore1: Int,
+    @JvmField public val playerScore2: Int,
+    @JvmField public val playerScore3: Int,
+    @JvmField public val playerScore4: Int,
+    @JvmField public val playerScore5: Int,
+    @JvmField public val playerScore6: Int,
+    @JvmField public val playerScore7: Int,
+    @JvmField public val playerScore8: Int,
+    @JvmField public val playerScore9: Int,
+    @JvmField public val playerScore10: Int,
+    @JvmField public val playerScore11: Int,
+) {
+    internal companion object {
+        fun fromDto(dto: MissionDto): Mission {
+            return Mission(
+                playerScore0 = dto.playerScore0,
+                playerScore1 = dto.playerScore1,
+                playerScore2 = dto.playerScore2,
+                playerScore3 = dto.playerScore3,
+                playerScore4 = dto.playerScore4,
+                playerScore5 = dto.playerScore5,
+                playerScore6 = dto.playerScore6,
+                playerScore7 = dto.playerScore7,
+                playerScore8 = dto.playerScore8,
+                playerScore9 = dto.playerScore9,
+                playerScore10 = dto.playerScore10,
+                playerScore11 = dto.playerScore11,
+            )
+        }
+    }
+}
+
+public class Participant private constructor(
+    @JvmField public val participantId: Int,
     // kills obtained from kills stats.
-    val assists: Int,
-    val deaths: Int,
-    val challenges: ChallengesDto,
-    val mission: MissionDto,
-    val items: List<Int>,
-    val augmentsIds: List<Int>,
-    val userData: UserData,
-    val pings: PingsStats,
-    val castsStats: CastsStats,
-    val teamStats: TeamStats,
-    val playerStats: PlayerStats,
-    val damagesStats: DamagesStats,
-    val wardStats: WardStats,
-    val championStats: ChampionStats,
-    val objectivesStats: ObjectivesStats,
-    val killsStats: KillsStats,
+    @JvmField public val assists: Int,
+    @JvmField public val deaths: Int,
+    @JvmField public val challenges: ChallengesDto,
+    @JvmField public val mission: Mission,
+    @JvmField public val items: List<Int>,
+    @JvmField public val augmentsIds: List<Int>,
+    @JvmField public val userData: UserData,
+    @JvmField public val pings: PingsStats,
+    @JvmField public val castsStats: CastsStats,
+    @JvmField public val teamStats: TeamStats,
+    @JvmField public val playerStats: PlayerStats,
+    @JvmField public val damagesStats: DamagesStats,
+    @JvmField public val wardStats: WardStats,
+    @JvmField public val championStats: ChampionStats,
+    @JvmField public val objectivesStats: ObjectivesStats,
+    @JvmField public val killsStats: KillsStats,
 ) {
     /**
      * Player's kills
@@ -127,171 +155,160 @@ public data class Participant(
     public val kills: Int
         get() = killsStats.kills
 
-    @JvmRecord
-    public data class UserData(
-        val profileIcon: Int,
-        val riotIdGameName: String,
-        val riotIdTagLine: String,
-        val summonerName: String,
-        val summonerLevel: Int,
+    public class UserData(
+        @JvmField public val profileIcon: Int,
+        @JvmField public val riotIdGameName: String,
+        @JvmField public val riotIdTagLine: String,
+        @JvmField public val summonerName: String,
+        @JvmField public val summonerLevel: Int,
     )
 
-    @JvmRecord
-    public data class PingsStats(
+    public class PingsStats(
         /**
          * Yellow crossed swords
          */
-        val allIn: Int,
+        @JvmField public val allIn: Int,
         /**
          * Green flag
          */
-        val assistMe: Int,
+        @JvmField public val assistMe: Int,
         /**
          * Blue generic ping
          */
-        val commandPings: Int,
+        @JvmField public val commandPings: Int,
         /**
          * Yellow question mark
          */
-        val enemyMissing: Int,
-        val holdOn: Int,
-        val getBack: Int,
+        @JvmField public val enemyMissing: Int,
+        @JvmField public val holdOn: Int,
+        @JvmField public val getBack: Int,
         /**
          * Green ward
          */
-        val needVision: Int,
-        val onMyWay: Int,
-        val push: Int,
-        val visionCleared: Int,
+        @JvmField public val needVision: Int,
+        @JvmField public val onMyWay: Int,
+        @JvmField public val push: Int,
+        @JvmField public val visionCleared: Int,
     )
 
-    @JvmRecord
-    public data class TeamStats(
-        val gameEndedInSurrender: Boolean,
-        val gameEndedInEarlySurrender: Boolean,
-        val win: Boolean,
-        val teamId: TeamSide,
-        val teamEarlySurrendered: Boolean,
+    public class TeamStats(
+        @JvmField public val gameEndedInSurrender: Boolean,
+        @JvmField public val gameEndedInEarlySurrender: Boolean,
+        @JvmField public val win: Boolean,
+        @JvmField public val teamId: TeamSide,
+        @JvmField public val teamEarlySurrendered: Boolean,
     )
 
-    @JvmRecord
-    public data class PlayerStats(
-        val bountyLevel: Int,
-        val goldEarned: Int,
-        val goldSpent: Int,
-        val eligibleForProgression: Boolean,
-        val largestCriticalStrike: Int,
-        val longestTimeSpentLiving: Int,
+    public class PlayerStats(
+        @JvmField public val bountyLevel: Int,
+        @JvmField public val goldEarned: Int,
+        @JvmField public val goldSpent: Int,
+        @JvmField public val eligibleForProgression: Boolean,
+        @JvmField public val largestCriticalStrike: Int,
+        @JvmField public val longestTimeSpentLiving: Int,
         /**
          * Both `individualPosition` and `teamPosition` are the most likely position for a player, done by different calculations.
          */
-        val individualPosition: Position,
+        @JvmField public val individualPosition: Position,
         /**
          * Both `individualPosition` and `teamPosition` are the most likely position for a player, done by different calculations.
          */
-        val teamPosition: Position,
-        val role: Role,
-        val placement: Int,
-        val timeCCingOthers: Int,
-        val timePlayed: Int,
-        val totalTimeSpentDead: Int,
-        val totalTimeCCDealt: Int,
-        val consumablesPurchased: Int,
-        val summoner1Id: Int,
-        val summoner2Id: Int,
+        @JvmField public val teamPosition: Position,
+        @JvmField public val role: Role,
+        @JvmField public val placement: Int,
+        @JvmField public val timeCCingOthers: Int,
+        @JvmField public val timePlayed: Int,
+        @JvmField public val totalTimeSpentDead: Int,
+        @JvmField public val totalTimeCCDealt: Int,
+        @JvmField public val consumablesPurchased: Int,
+        @JvmField public val summoner1Id: Int,
+        @JvmField public val summoner2Id: Int,
     )
 
-    @JvmRecord
-    public data class CastsStats(
-        val spell1Casts: Int,
-        val spell2Casts: Int,
-        val spell3Casts: Int,
-        val spell4Casts: Int,
-        val summoner1Casts: Int,
-        val summoner2Casts: Int,
+    public class CastsStats(
+        @JvmField public val spell1Casts: Int,
+        @JvmField public val spell2Casts: Int,
+        @JvmField public val spell3Casts: Int,
+        @JvmField public val spell4Casts: Int,
+        @JvmField public val summoner1Casts: Int,
+        @JvmField public val summoner2Casts: Int,
     )
 
-    @JvmRecord
-    public data class DamagesStats(
-        val physical: Damage,
-        val magic: Damage,
-        val trueDmg: Damage,
-        val total: Damage,
-        val dealtToBuildings: Int,
-        val dealtToObjectives: Int,
-        val dealtToTurrets: Int,
-        val selfMitigated: Int,
-        val totalShieldedOnTeammates: Int,
-        val totalHealed: Int,
-        val totalHealedOnTeammates: Int,
-        val totalUnitsHealed: Int,
+    public class DamagesStats(
+        @JvmField public val physical: Damage,
+        @JvmField public val magic: Damage,
+        @JvmField public val trueDmg: Damage,
+        @JvmField public val total: Damage,
+        @JvmField public val dealtToBuildings: Int,
+        @JvmField public val dealtToObjectives: Int,
+        @JvmField public val dealtToTurrets: Int,
+        @JvmField public val selfMitigated: Int,
+        @JvmField public val totalShieldedOnTeammates: Int,
+        @JvmField public val totalHealed: Int,
+        @JvmField public val totalHealedOnTeammates: Int,
+        @JvmField public val totalUnitsHealed: Int,
     ) {
-        @JvmRecord
-        public data class Damage(
-            val dealt: Int,
-            val dealtToChampions: Int,
-            val taken: Int,
+        public class Damage(
+            @JvmField public val dealt: Int,
+            @JvmField public val dealtToChampions: Int,
+            @JvmField public val taken: Int,
         )
 
-        val totalHealedOnSelf: Int
+        public val totalHealedOnSelf: Int
             get() = totalHealed - totalHealedOnTeammates
     }
 
-    @JvmRecord
-    public data class WardStats(
-        val placed: Int,
-        val destroyed: Int,
-        val detectorWardsPlaced: Int,
-        val sightWardsBought: Int,
-        val visionWardsBought: Int,
+    public class WardStats(
+        @JvmField public val placed: Int,
+        @JvmField public val destroyed: Int,
+        @JvmField public val detectorWardsPlaced: Int,
+        @JvmField public val sightWardsBought: Int,
+        @JvmField public val visionWardsBought: Int,
     )
 
-    @JvmRecord
-    public data class ChampionStats(
-        val id: Int,
-        val level: Int,
-        val experience: Int,
-        val name: String,
+    public class ChampionStats(
+        @JvmField public val id: Int,
+        @JvmField public val level: Int,
+        @JvmField public val experience: Int,
+        @JvmField public val name: String,
         /**
          * This is only used by Kayn for now.
          */
-        val transform: Int,
+        @JvmField public val transform: Int,
     )
 
-    @JvmRecord
-    public data class ObjectivesStats(
-        val firstTowerKill: Boolean,
-        val firstTowerAssist: Boolean,
-        val inhibitorKills: Int,
-        val inhibitorTakedowns: Int,
-        val inhibitorsLost: Int,
-        val baronKills: Int,
-        val dragonKills: Int,
-        val nexusKills: Int,
-        val nexusTakedowns: Int,
-        val turretKills: Int,
-        val turretsLost: Int,
-        val objectivesStolen: Int,
-        val objectivesStolenAssists: Int,
+    public class ObjectivesStats(
+        @JvmField public val firstTowerKill: Boolean,
+        @JvmField public val firstTowerAssist: Boolean,
+        @JvmField public val inhibitorKills: Int,
+        @JvmField public val inhibitorTakedowns: Int,
+        @JvmField public val inhibitorsLost: Int,
+        @JvmField public val baronKills: Int,
+        @JvmField public val dragonKills: Int,
+        @JvmField public val nexusKills: Int,
+        @JvmField public val nexusTakedowns: Int,
+        @JvmField public val turretKills: Int,
+        @JvmField public val turretsLost: Int,
+        @JvmField public val objectivesStolen: Int,
+        @JvmField public val objectivesStolenAssists: Int,
     )
 
-    @JvmRecord
-    public data class KillsStats(
-        val firstBloodKill: Boolean,
-        val firstBloodAssist: Boolean,
-        val killingSprees: Int,
-        val largestKillingSpree: Int,
-        val largestMultiKill: Int,
-        val unrealKills: Int,
-        val kills: Int,
-        val doubleKills: Int,
-        val tripleKills: Int,
-        val quadraKills: Int,
-        val pentaKills: Int,
-        val neutralMinionsKilled: Int,
-        val totalAllyJungleMinionsKilled: Int,
-        val totalEnemyJungleMinionsKilled: Int,
-        val totalMinionsKilled: Int,
+    public class KillsStats(
+        @JvmField public val firstBloodKill: Boolean,
+        @JvmField public val firstBloodAssist: Boolean,
+        @JvmField public val killingSprees: Int,
+        @JvmField public val largestKillingSpree: Int,
+        @JvmField public val largestMultiKill: Int,
+        @JvmField public val unrealKills: Int,
+        @JvmField public val kills: Int,
+        @JvmField public val doubleKills: Int,
+        @JvmField public val tripleKills: Int,
+        @JvmField public val quadraKills: Int,
+        @JvmField public val pentaKills: Int,
+        @JvmField public val neutralMinionsKilled: Int,
+        @JvmField public val totalAllyJungleMinionsKilled: Int,
+        @JvmField public val totalEnemyJungleMinionsKilled: Int,
+        @JvmField public val totalMinionsKilled: Int,
     ) {
         public val nonNeutralMinions: Int
             get() = totalMinionsKilled - neutralMinionsKilled
@@ -307,7 +324,7 @@ public data class Participant(
                 assists = dto.assists,
                 deaths = dto.deaths,
                 challenges = dto.challenges,
-                mission = dto.missions,
+                mission = Mission.fromDto(dto.missions),
                 items = listOfNotNull(dto.item0, dto.item1, dto.item2, dto.item3, dto.item4, dto.item5, dto.item6),
                 augmentsIds =
                     listOfNotNull(
@@ -465,32 +482,32 @@ public data class Participant(
     }
 }
 
-public data class Info(
-    val endOfGameResult: String,
+public class Info private constructor(
+    @JvmField public val endOfGameResult: String,
     /**
      * The timestamp of the game creation.
      */
-    val gameCreation: Long,
+    @JvmField public val gameCreation: Long,
     /**
      * The duration of the game in milliseconds.
      */
-    val gameDuration: Long,
+    @JvmField public val gameDuration: Long,
     /**
      * The timestamp of the game end.
      */
-    val gameEndTimestamp: Long,
-    val gameId: Long,
-    val gameMode: String,
-    val gameName: String,
-    val gameStartTimestamp: Long,
-    val gameType: String,
-    val gameVersion: String,
-    val mapId: Int,
-    val participants: List<Participant>,
-    val platformId: String,
-    val queueId: Int,
-    val teams: List<Team>,
-    val tournamentCode: String,
+    @JvmField public val gameEndTimestamp: Long,
+    @JvmField public val gameId: Long,
+    @JvmField public val gameMode: String,
+    @JvmField public val gameName: String,
+    @JvmField public val gameStartTimestamp: Long,
+    @JvmField public val gameType: String,
+    @JvmField public val gameVersion: String,
+    @JvmField public val mapId: Int,
+    @JvmField public val participants: List<Participant>,
+    @JvmField public val platformId: String,
+    @JvmField public val queueId: Int,
+    @JvmField public val teams: List<Team>,
+    @JvmField public val tournamentCode: String,
 ) {
     internal companion object {
         fun fromDto(dto: InfoDto): Info {
@@ -516,9 +533,9 @@ public data class Info(
     }
 }
 
-public data class Match(
-    val metadata: Metadata,
-    val info: Info,
+public class Match private constructor(
+    @JvmField public val metadata: Metadata,
+    @JvmField public val info: Info,
 ) {
     internal companion object {
         fun fromDto(dto: MatchDto): Match {

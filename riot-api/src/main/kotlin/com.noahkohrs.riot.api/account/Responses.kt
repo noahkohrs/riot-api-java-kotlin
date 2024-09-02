@@ -7,7 +7,7 @@ import com.noahkohrs.riot.api.dtos.*
  *
  * > Note: Most endpoints utilizes the `puuid` of the account to identify the player. However, some endpoints might uses different identifiers such as `summonerId`.
  */
-public class Account(
+public class Account private constructor(
     /**
      * The puuid of the account.
      */
@@ -32,7 +32,7 @@ public class Account(
     }
 }
 
-public data class ActiveShard(
+public class ActiveShard private constructor(
     @JvmField public val puuid: String,
     @JvmField public val game: String,
     @JvmField public val activeShard: String,

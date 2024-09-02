@@ -47,7 +47,7 @@ public class Update private constructor(
 }
 
 @UnstableApi
-public class Status(
+public class Status private constructor(
     @JvmField public val id: Int,
     @JvmField public val maintenanceStatus: String,
     @JvmField public val incidentSeverity: String?,

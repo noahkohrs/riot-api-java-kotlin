@@ -2,6 +2,7 @@ package com.noahkohrs.riot.api.lol.leagueexp
 
 import com.noahkohrs.riot.api.RegionApiClientFactory
 import com.noahkohrs.riot.api.dtos.LeagueEntryDto
+import com.noahkohrs.riot.api.lol.league.LeagueEntryResponse
 import com.noahkohrs.riot.api.values.LoLDivision
 import com.noahkohrs.riot.api.values.LoLRankedQueue
 import com.noahkohrs.riot.api.values.LoLTier
@@ -26,7 +27,10 @@ public class LeagueExpApi(
         tier: LoLTier,
         division: LoLDivision,
         page: Int = 1,
-    ): Set<LeagueEntryDto> = apiClient.getLeagueEntries(queue.value, tier.value, division.value, page)
+    ): Set<LeagueEntryResponse> =
+        apiClient.getLeagueEntries(queue.value, tier.value, division.value, page).map {
+            LeagueEntryResponse.fromDto(it)
+        }.toSet()
 
     private interface LeagueExpApiClient {
         @RequestLine("GET /lol/league-exp/v4/entries/{queue}/{tier}/{division}?page={page}")

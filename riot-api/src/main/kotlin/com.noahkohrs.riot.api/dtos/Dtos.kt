@@ -10,13 +10,13 @@ puuid	string
 gameName	string	This field may be excluded from the response if the account doesn't have a gameName.
 tagLine	string	This field may be excluded from the response if the account doesn't have a tagLine.
  */
-public data class AccountDto(
+internal data class AccountDto(
     @Json(name = "puuid")
-    public val puuid: String,
+    val puuid: String,
     @Json(name = "gameName")
-    public val gameName: String,
+    val gameName: String,
     @Json(name = "tagLine")
-    public val tagLine: String,
+    val tagLine: String,
 )
 
 /*
@@ -26,16 +26,16 @@ public data class AccountDto(
     "activeShard": "europe"
 }
  */
-public data class ActiveShardDto(
+internal data class ActiveShardDto(
     @Json(name = "puuid")
-    public val puuid: String,
+    internal val puuid: String,
     @Json(name = "game")
-    public val game: String,
+    internal val game: String,
     @Json(name = "activeShard")
-    public val activeShard: String,
+    internal val activeShard: String,
 )
 
-public data class ChampionInfo(
+internal data class ChampionInfo(
     @Json(name = "freeChampionIds")
     val freeChampionIds: List<Int>,
     @Json(name = "freeChampionIdsForNewPlayers")
@@ -44,7 +44,7 @@ public data class ChampionInfo(
     val maxNewPlayerLevel: Int,
 )
 
-public data class RewardConfigDto(
+internal data class RewardConfigDto(
     @Json(name = "rewardValue")
     val rewardValue: String,
     @Json(name = "rewardType")
@@ -53,7 +53,7 @@ public data class RewardConfigDto(
     val maximalReward: Int = 0,
 )
 
-public data class NextSeasonMilestonesDto(
+internal data class NextSeasonMilestonesDto(
     @Json(name = "requireGradeCounts")
     val requireGradeCounts: Any,
     @Json(name = "rewardMarks")
@@ -64,7 +64,7 @@ public data class NextSeasonMilestonesDto(
     val rewardConfig: RewardConfigDto? = null,
 )
 
-public data class ChampionMasteryDto(
+internal data class ChampionMasteryDto(
     @Json(name = "puuid") val puuid: String,
     @Json(name = "championPointsUntilNextLevel") val championPointsUntilNextLevel: Long,
     @Json(name = "chestGranted") val chestGranted: Boolean = false,
@@ -81,7 +81,7 @@ public data class ChampionMasteryDto(
 )
 
 // ContentDto
-public data class ContentDto(
+internal data class ContentDto(
     @Json(name = "locale")
     val locale: String,
     @Json(name = "content")
@@ -89,7 +89,7 @@ public data class ContentDto(
 )
 
 // UpdateDto
-public data class UpdateDto(
+internal data class UpdateDto(
     @Json(name = "id")
     val id: Int,
     @Json(name = "author")
@@ -107,7 +107,7 @@ public data class UpdateDto(
 )
 
 // StatusDto
-public data class StatusDto(
+internal data class StatusDto(
     @Json(name = "id")
     val id: Int,
     @Json(name = "maintenance_status")
@@ -129,7 +129,7 @@ public data class StatusDto(
 )
 
 // PlatformDataDto
-public data class PlatformDataDto(
+internal data class PlatformDataDto(
     @Json(name = "id")
     val id: String,
     @Json(name = "name")
@@ -152,7 +152,7 @@ id	string	Encrypted summoner ID. Max length 63 characters.
 puuid	string	Encrypted PUUID. Exact length of 78 characters.
 summonerLevel	long	Summoner level associated with the summoner.
  */
-public data class SummonerDto(
+internal data class SummonerDto(
     @Json(name = "accountId")
     val accountId: String,
     @Json(name = "profileIconId")
@@ -167,7 +167,7 @@ public data class SummonerDto(
     val summonerLevel: Long,
 )
 
-public data class MiniSeriesDto(
+internal data class MiniSeriesDto(
     @Json(name = "losses")
     val losses: Int,
     @Json(name = "progress")
@@ -185,7 +185,7 @@ tier	string
 name	string
 queue	string
  */
-public data class LeagueListDto(
+internal data class LeagueListDto(
     @Json(name = "leagueId")
     val leagueId: String,
     @Json(name = "entries")
@@ -210,7 +210,7 @@ leaguePoints	int
 losses	int	Losing team on Summoners Rift.
 summonerId	string	Player's encrypted summonerId.
  */
-public data class LeagueItemDto(
+internal data class LeagueItemDto(
     @Json(name = "freshBlood")
     val freshBlood: Boolean,
     @Json(name = "wins")
@@ -237,7 +237,7 @@ public data class LeagueItemDto(
 LeagueEntryDTO - represents a league entry
  */
 
-public data class LeagueEntryDto(
+internal data class LeagueEntryDto(
     @Json(name = "leagueId")
     val leagueId: String? = null,
     @Json(name = "summonerId")
@@ -266,7 +266,7 @@ public data class LeagueEntryDto(
     val miniSeries: MiniSeriesDto? = null,
 )
 
-public data class MetadataDto(
+internal data class MetadataDto(
     @Json(name = "dataVersion")
     val dataVersion: String,
     @Json(name = "matchId")
@@ -275,7 +275,7 @@ public data class MetadataDto(
     val participantsPuuids: List<String>,
 )
 
-public data class ChallengesDto(
+internal data class ChallengesDto(
 //    12AssistStreakCount	int
     @Json(name = "AssistStreakCount")
     val assistStreakCount: Int = 0,
@@ -721,7 +721,7 @@ public data class ChallengesDto(
     val wardTakedownsBefore20M: Int = 0,
 )
 
-public data class MissionDto(
+internal data class MissionDto(
 //    playerScore0	int
 //    playerScore1	int
 //    playerScore2	int
@@ -760,14 +760,14 @@ public data class MissionDto(
     val playerScore11: Int = 0,
 )
 
-public data class ObjectiveDto(
+internal data class ObjectiveDto(
     @Json(name = "first")
     val first: Boolean = false,
     @Json(name = "kills")
     val kills: Int = 0,
 )
 
-public data class ObjectivesDto(
+internal data class ObjectivesDto(
     @Json(name = "baron")
     val baron: ObjectiveDto,
     @Json(name = "champion")
@@ -784,7 +784,7 @@ public data class ObjectivesDto(
     val tower: ObjectiveDto,
 )
 
-public data class BanDto(
+internal data class BanDto(
     // TODO: Check if this can be null when theres no champ ban
     @Json(name = "championId")
     val championId: Int,
@@ -792,7 +792,7 @@ public data class BanDto(
     val pickTurn: Int = 0,
 )
 
-public data class TeamDto(
+internal data class TeamDto(
     @Json(name = "bans")
     val bans: List<BanDto> = emptyList(),
     @Json(name = "objectives")
@@ -805,7 +805,7 @@ public data class TeamDto(
 )
 
 // TODO: Investigate. No Idea what that means.
-public data class PerkStyleSelectionDto(
+internal data class PerkStyleSelectionDto(
     @Json(name = "perk")
     val perk: Int = 0,
     @Json(name = "var1")
@@ -816,7 +816,7 @@ public data class PerkStyleSelectionDto(
     val var3: Int = 0,
 )
 
-public data class PerkStyleDto(
+internal data class PerkStyleDto(
     @Json(name = "description")
     val description: String = "",
     @Json(name = "selections")
@@ -825,7 +825,7 @@ public data class PerkStyleDto(
     val style: Int = 0,
 )
 
-public data class PerkStatsDto(
+internal data class PerkStatsDto(
     @Json(name = "defense")
     val defense: Int = 0,
     @Json(name = "flex")
@@ -834,14 +834,14 @@ public data class PerkStatsDto(
     val offense: Int = 0,
 )
 
-public data class PerksDto(
+internal data class PerksDto(
     @Json(name = "statPerks")
     val statPerks: PerkStatsDto = PerkStatsDto(),
     @Json(name = "styles")
     val styles: List<PerkStyleDto> = emptyList(),
 )
 
-public data class ParticipantDto(
+internal data class ParticipantDto(
 //    allInPings	int	Yellow crossed swords
     @Json(name = "allInPings")
     val allInPings: Int = 0,
@@ -1239,7 +1239,7 @@ public data class ParticipantDto(
     val win: Boolean = false,
 )
 
-public data class InfoDto(
+internal data class InfoDto(
 //    endOfGameResult	string	Refer to indicate if the game ended in termination.
     @Json(name = "endOfGameResult")
     val endOfGameResult: String,
@@ -1290,7 +1290,7 @@ public data class InfoDto(
     val tournamentCode: String = "",
 )
 
-public data class MatchDto(
+internal data class MatchDto(
     @Json(name = "info")
     val info: InfoDto,
     @Json(name = "metadata")
@@ -1299,7 +1299,7 @@ public data class MatchDto(
 
 // Timeline Match
 
-public data class PositionDto(
+internal data class PositionDto(
     @Json(name = "x")
     val x: Int = 0,
     @Json(name = "y")
@@ -1319,7 +1319,7 @@ public data class PositionDto(
 // trueDamageDoneToChampions	int
 // trueDamageTaken	int
 
-public data class DamageStatsDto(
+internal data class DamageStatsDto(
     @Json(name = "magicDamageDone")
     val magicDamageDone: Int = 0,
     @Json(name = "magicDamageDoneToChampions")
@@ -1371,7 +1371,7 @@ public data class DamageStatsDto(
 // powerMax	int
 // powerRegen	int
 // spellVamp	int
-public data class ChampionStatsDto(
+internal data class ChampionStatsDto(
     @Json(name = "abilityHaste")
     val abilityHaste: Int = 0,
     @Json(name = "abilityPower")
@@ -1436,7 +1436,7 @@ public data class ChampionStatsDto(
 // timeEnemySpentControlled	int
 // totalGold	int
 // xp	int
-public data class ParticipantFrameDto(
+internal data class ParticipantFrameDto(
     @Json(name = "championStats")
     val championStats: ChampionStatsDto = ChampionStatsDto(),
     @Json(name = "currentGold")
@@ -1470,7 +1470,7 @@ public data class ParticipantFrameDto(
 /**
  * EventDto extends UnpredictableDto because it's field depends on the type.
  */
-public data class EventTimelineDto(
+internal data class EventTimelineDto(
     @Json(name = "timestamp")
     val timestamp: Long,
     @Json(name = "type")
@@ -1481,7 +1481,7 @@ public data class EventTimelineDto(
 // participantFrames	ParticipantFramesDto
 // timestamp	int
 
-public data class FramesTimelineDto(
+internal data class FramesTimelineDto(
     @Json(name = "events")
     val events: List<EventTimelineDto> = emptyList(),
     @Json(name = "participantFrames")
@@ -1493,7 +1493,7 @@ public data class FramesTimelineDto(
 // participantId	int
 // puuid	string
 
-public data class ParticipantTimelineDto(
+internal data class ParticipantTimelineDto(
     @Json(name = "participantId")
     val participantId: Int = 0,
     @Json(name = "puuid")
@@ -1506,7 +1506,7 @@ public data class ParticipantTimelineDto(
 // participants	List[ParticipantTimeLineDto]
 // frames	List[FramesTimeLineDto]
 
-public data class InfoTimelineDto(
+internal data class InfoTimelineDto(
     @Json(name = "endOfGameResult")
     val endOfGameResult: String,
     @Json(name = "frameInterval")
@@ -1523,7 +1523,7 @@ public data class InfoTimelineDto(
 // matchId	string	Match id.
 // participants	List[string]	A list of participant PUUIDs.
 
-public data class MetadataTimelineDto(
+internal data class MetadataTimelineDto(
     @Json(name = "dataVersion")
     val dataVersion: String,
     @Json(name = "matchId")
@@ -1532,7 +1532,7 @@ public data class MetadataTimelineDto(
     val participants: List<String> = emptyList(),
 )
 
-public data class TimelineDto(
+internal data class TimelineDto(
     @Json(name = "info")
     val info: InfoTimelineDto,
     @Json(name = "metadata")

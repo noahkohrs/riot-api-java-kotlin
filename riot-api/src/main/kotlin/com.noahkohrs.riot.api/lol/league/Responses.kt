@@ -8,19 +8,19 @@ import com.noahkohrs.riot.api.values.LoLDivision
 import com.noahkohrs.riot.api.values.LoLQueue
 import com.noahkohrs.riot.api.values.LoLTier
 
-public data class LeagueEntryResponse(
-    val leagueId: String?,
-    val summonerId: String,
-    val queue: LoLQueue,
-    val tier: LoLTier?,
-    val division: LoLDivision?,
-    val leaguePoints: Int,
-    val wins: Int,
-    val losses: Int,
-    val veteran: Boolean,
-    val inactive: Boolean,
-    val freshBlood: Boolean,
-    val hotStreak: Boolean,
+public class LeagueEntryResponse private constructor(
+    @JvmField public val leagueId: String?,
+    @JvmField public val summonerId: String,
+    @JvmField public val queue: LoLQueue,
+    @JvmField public val tier: LoLTier?,
+    @JvmField public val division: LoLDivision?,
+    @JvmField public val leaguePoints: Int,
+    @JvmField public val wins: Int,
+    @JvmField public val losses: Int,
+    @JvmField public val veteran: Boolean,
+    @JvmField public val inactive: Boolean,
+    @JvmField public val freshBlood: Boolean,
+    @JvmField public val hotStreak: Boolean,
 ) {
     internal companion object {
         fun fromDto(dto: LeagueEntryDto): LeagueEntryResponse {
@@ -42,12 +42,12 @@ public data class LeagueEntryResponse(
     }
 }
 
-public data class LeagueListResponse(
-    val leagueId: String,
-    val leaguePlayers: List<LeagueItemResponse>,
-    val tier: LoLTier,
-    val leagueName: String,
-    val queue: LoLQueue,
+public class LeagueListResponse private constructor(
+    @JvmField public val leagueId: String,
+    @JvmField public val leaguePlayers: List<LeagueItemResponse>,
+    @JvmField public val tier: LoLTier,
+    @JvmField public val leagueName: String,
+    @JvmField public val queue: LoLQueue,
 ) {
     internal companion object {
         fun fromDto(dto: LeagueListDto): LeagueListResponse {
@@ -62,24 +62,42 @@ public data class LeagueListResponse(
     }
 }
 
-public data class LeagueItemResponse(
-    val freshBlood: Boolean,
-    val wins: Int,
-    val miniSeries: MiniSeriesDto?,
-    val inactive: Boolean,
-    val veteran: Boolean,
-    val hotStreak: Boolean,
-    val rank: LoLDivision,
-    val leaguePoints: Int,
-    val losses: Int,
-    val summonerId: String,
+public class MiniSeriesResponse private constructor(
+    @JvmField public val progress: String,
+    @JvmField public val losses: Int,
+    @JvmField public val target: Int,
+    @JvmField public val wins: Int,
+) {
+    internal companion object {
+        fun fromDto(dto: MiniSeriesDto): MiniSeriesResponse {
+            return MiniSeriesResponse(
+                progress = dto.progress,
+                losses = dto.losses,
+                target = dto.target,
+                wins = dto.wins,
+            )
+        }
+    }
+}
+
+public class LeagueItemResponse private constructor(
+    @JvmField public val freshBlood: Boolean,
+    @JvmField public val wins: Int,
+    @JvmField public val miniSeries: MiniSeriesResponse?,
+    @JvmField public val inactive: Boolean,
+    @JvmField public val veteran: Boolean,
+    @JvmField public val hotStreak: Boolean,
+    @JvmField public val rank: LoLDivision,
+    @JvmField public val leaguePoints: Int,
+    @JvmField public val losses: Int,
+    @JvmField public val summonerId: String,
 ) {
     internal companion object {
         fun fromDto(dto: LeagueItemDto): LeagueItemResponse {
             return LeagueItemResponse(
                 freshBlood = dto.freshBlood,
                 wins = dto.wins,
-                miniSeries = dto.miniSeries,
+                miniSeries = dto.miniSeries?.let { MiniSeriesResponse.fromDto(it) },
                 inactive = dto.inactive,
                 veteran = dto.veteran,
                 hotStreak = dto.hotStreak,

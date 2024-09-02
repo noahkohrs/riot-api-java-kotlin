@@ -9,7 +9,7 @@ import feign.QueryMap
 import feign.RequestLine
 import java.util.Date
 
-public class MatchApi(
+public class MatchApi internal constructor(
     apiKey: String,
     globalRegion: GlobalRegion,
 ) {

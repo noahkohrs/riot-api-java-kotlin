@@ -6,7 +6,7 @@ import com.noahkohrs.riot.api.values.Platform
 import feign.Param
 import feign.RequestLine
 
-public class SummonerApi(
+public class SummonerApi internal constructor(
     apiKey: String,
     platform: Platform,
 ) {

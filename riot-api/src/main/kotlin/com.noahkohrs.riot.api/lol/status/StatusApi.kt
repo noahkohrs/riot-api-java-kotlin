@@ -5,7 +5,7 @@ import com.noahkohrs.riot.api.dtos.PlatformDataDto
 import com.noahkohrs.riot.api.values.Platform
 import feign.RequestLine
 
-public class StatusApi(
+public class StatusApi internal constructor(
     apiKey: String,
     platform: Platform,
 ) {

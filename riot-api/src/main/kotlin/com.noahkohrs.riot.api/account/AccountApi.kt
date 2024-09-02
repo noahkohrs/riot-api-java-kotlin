@@ -13,7 +13,7 @@ import feign.RequestLine
  *
  * [Riot Account API](https://developer.riotgames.com/apis#account-v1)
  */
-public class AccountApi(
+public class AccountApi internal constructor(
     apiKey: String,
     platform: Platform,
 ) {

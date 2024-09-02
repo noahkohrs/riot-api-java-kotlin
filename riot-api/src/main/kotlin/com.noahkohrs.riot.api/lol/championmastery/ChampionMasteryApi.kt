@@ -7,7 +7,7 @@ import com.noahkohrs.riot.api.values.Platform
 import feign.Param
 import feign.RequestLine
 
-public class ChampionMasteryApi(
+public class ChampionMasteryApi internal constructor(
     apiKey: String,
     platform: Platform,
 ) {

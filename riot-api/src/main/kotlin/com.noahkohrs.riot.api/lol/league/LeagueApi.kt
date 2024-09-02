@@ -10,7 +10,7 @@ import com.noahkohrs.riot.api.values.Platform
 import feign.Param
 import feign.RequestLine
 
-public class LeagueApi(
+public class LeagueApi internal constructor(
     apiKey: String,
     platform: Platform,
 ) {

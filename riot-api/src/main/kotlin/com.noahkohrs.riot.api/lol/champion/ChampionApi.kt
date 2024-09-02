@@ -10,7 +10,7 @@ import feign.RequestLine
  *
  * [Champion API](https://developer.riotgames.com/apis#champion-v3)
  */
-public class ChampionApi(
+public class ChampionApi internal constructor(
     apiKey: String,
     platform: Platform,
 ) {

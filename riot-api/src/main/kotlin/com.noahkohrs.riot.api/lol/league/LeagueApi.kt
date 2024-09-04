@@ -10,9 +10,9 @@ import com.noahkohrs.riot.api.values.Platform
 import feign.Param
 import feign.RequestLine
 
-public class LeagueApi(
-    private val apiKey: String,
-    private val platform: Platform,
+public class LeagueApi internal constructor(
+    apiKey: String,
+    platform: Platform,
 ) {
     private val apiClient =
         RegionApiClientFactory

@@ -1,12 +1,13 @@
 package com.noahkohrs.riot.api.lol.championmastery
 
 import com.noahkohrs.riot.api.RegionApiClientFactory
+import com.noahkohrs.riot.api.annotations.LinkToStaticApi
 import com.noahkohrs.riot.api.dtos.ChampionMasteryDto
 import com.noahkohrs.riot.api.values.Platform
 import feign.Param
 import feign.RequestLine
 
-public class ChampionMasteryApi(
+public class ChampionMasteryApi internal constructor(
     apiKey: String,
     platform: Platform,
 ) {
@@ -15,21 +16,21 @@ public class ChampionMasteryApi(
             .create(apiKey, platform)
             .createApiClient(ChampionMasteryApiClient::class.java)
 
-    public fun getAllMasteriesByPuuid(puuid: String): List<ChampionMasteryDto> = apiClient.getAllMasteriesByPuuid(puuid)
+    public fun getAllMasteriesByPuuid(puuid: String): List<ChampionMastery> =
+        apiClient.getAllMasteriesByPuuid(puuid).map {
+            ChampionMastery.fromDto(it)
+        }
 
     public fun getChampMasteriesByPuuid(
         puuid: String,
+        @LinkToStaticApi
         champId: Int,
-    ): ChampionMasteryDto =
-        apiClient.getChampMasteriesByPuuid(
-            puuid,
-            champId,
-        )
+    ): ChampionMastery = ChampionMastery.fromDto(apiClient.getChampMasteriesByPuuid(puuid, champId))
 
     public fun getTopMasteriesByPuuid(
         puuid: String,
         top: Int,
-    ): List<ChampionMasteryDto> = apiClient.getTopMasteriesByPuuid(puuid, top)
+    ): List<ChampionMastery> = apiClient.getTopMasteriesByPuuid(puuid, top).map { ChampionMastery.fromDto(it) }
 
     public fun getMasteryScoreByPuuid(puuid: String): Int = apiClient.getMasteryScoreByPuuid(puuid)
 
@@ -57,6 +58,3 @@ public class ChampionMasteryApi(
         ): Int
     }
 }
-
-// TODO: Generate a test for this class by right-clicked on <ClassName> -> Generate -> Test... -> OK
-// TODO: Add the test in the test folder.

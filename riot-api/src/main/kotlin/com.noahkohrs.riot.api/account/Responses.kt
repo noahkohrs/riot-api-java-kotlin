@@ -2,19 +2,48 @@ package com.noahkohrs.riot.api.account
 
 import com.noahkohrs.riot.api.dtos.*
 
-public data class Account(
-    val accountDto: AccountDto,
+/**
+ * The Account represent the account of a player.
+ *
+ * > Note: Most endpoints utilizes the `puuid` of the account to identify the player. However, some endpoints might uses different identifiers such as `summonerId`.
+ */
+public class Account private constructor(
+    /**
+     * The puuid of the account.
+     */
+    @JvmField public val puuid: String,
+    /**
+     * The game name of the account. e.g. RandomPlayer in **RandomPlayer**#123.
+     */
+    @JvmField public val gameName: String,
+    /**
+     * The tag line of the account. e.g. 123 in RandomPlayer#**123**.
+     */
+    @JvmField public val tagLine: String,
 ) {
-    public val puuid: String = accountDto.puuid
-    public val gameName: String? = accountDto.gameName
-    public val tagLine: String? = accountDto.tagLine
+    internal companion object {
+        fun fromDto(accountDto: AccountDto): Account {
+            return Account(
+                puuid = accountDto.puuid,
+                gameName = accountDto.gameName,
+                tagLine = accountDto.tagLine,
+            )
+        }
+    }
 }
-// Or the same with private main constructor:
 
-public data class ActiveShard(
-    val activeShardDto: ActiveShardDto,
+public class ActiveShard private constructor(
+    @JvmField public val puuid: String,
+    @JvmField public val game: String,
+    @JvmField public val activeShard: String,
 ) {
-    public val puuid: String = activeShardDto.puuid
-    public val game: String = activeShardDto.game
-    public val activeShard: String = activeShardDto.activeShard
+    internal companion object {
+        fun fromDto(activeShardDto: ActiveShardDto): ActiveShard {
+            return ActiveShard(
+                puuid = activeShardDto.puuid,
+                game = activeShardDto.game,
+                activeShard = activeShardDto.activeShard,
+            )
+        }
+    }
 }

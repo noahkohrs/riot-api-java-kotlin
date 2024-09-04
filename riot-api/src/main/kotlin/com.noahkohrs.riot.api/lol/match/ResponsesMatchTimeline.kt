@@ -9,10 +9,9 @@ import com.noahkohrs.riot.api.values.TeamSide
 import com.noahkohrs.riot.api.values.TowerType
 import org.jetbrains.annotations.Nullable
 
-@JvmRecord
-public data class Position(
-    @JvmField val x: Int,
-    @JvmField val y: Int,
+public class Position(
+    @JvmField public val x: Int,
+    @JvmField public val y: Int,
 ) {
     internal companion object {
         fun fromDto(dto: PositionDto): Position {
@@ -21,19 +20,17 @@ public data class Position(
     }
 }
 
-@JvmRecord
-public data class DamageStat(
-    @JvmField val dealt: Int,
-    @JvmField val dealtToChampions: Int,
-    @JvmField val taken: Int,
+public class DamageStat(
+    @JvmField public val dealt: Int,
+    @JvmField public val dealtToChampions: Int,
+    @JvmField public val taken: Int,
 )
 
-@JvmRecord
-public data class DamageStats(
-    @JvmField val magicDamage: DamageStat,
-    @JvmField val physicalDamage: DamageStat,
-    @JvmField val trueDamage: DamageStat,
-    @JvmField val totalDamage: DamageStat,
+public class DamageStats private constructor(
+    @JvmField public val magicDamage: DamageStat,
+    @JvmField public val physicalDamage: DamageStat,
+    @JvmField public val trueDamage: DamageStat,
+    @JvmField public val totalDamage: DamageStat,
 ) {
     internal companion object {
         fun fromDto(dto: DamageStatsDto): DamageStats {
@@ -71,33 +68,32 @@ public data class DamageStats(
  * Might need to be sorted by category later on.
  */
 @UnstableApi
-@JvmRecord
-public data class ChampionStats(
-    @JvmField val abilityHaste: Int = 0,
-    @JvmField val abilityPower: Int = 0,
-    @JvmField val armor: Int = 0,
-    @JvmField val armorPen: Int = 0,
-    @JvmField val armorPenPercent: Int = 0,
-    @JvmField val attackDamage: Int = 0,
-    @JvmField val attackSpeed: Int = 0,
-    @JvmField val bonusArmorPenPercent: Int = 0,
-    @JvmField val bonusMagicPenPercent: Int = 0,
-    @JvmField val ccReduction: Int = 0,
-    @JvmField val cooldownReduction: Int = 0,
-    @JvmField val health: Int = 0,
-    @JvmField val healthMax: Int = 0,
-    @JvmField val healthRegen: Int = 0,
-    @JvmField val lifesteal: Int = 0,
-    @JvmField val magicPen: Int = 0,
-    @JvmField val magicPenPercent: Int = 0,
-    @JvmField val magicResist: Int = 0,
-    @JvmField val movementSpeed: Int = 0,
-    @JvmField val omnivamp: Int = 0,
-    @JvmField val physicalVamp: Int = 0,
-    @JvmField val power: Int = 0,
-    @JvmField val powerMax: Int = 0,
-    @JvmField val powerRegen: Int = 0,
-    @JvmField val spellVamp: Int = 0,
+public class ChampionStats private constructor(
+    @JvmField public val abilityHaste: Int = 0,
+    @JvmField public val abilityPower: Int = 0,
+    @JvmField public val armor: Int = 0,
+    @JvmField public val armorPen: Int = 0,
+    @JvmField public val armorPenPercent: Int = 0,
+    @JvmField public val attackDamage: Int = 0,
+    @JvmField public val attackSpeed: Int = 0,
+    @JvmField public val bonusArmorPenPercent: Int = 0,
+    @JvmField public val bonusMagicPenPercent: Int = 0,
+    @JvmField public val ccReduction: Int = 0,
+    @JvmField public val cooldownReduction: Int = 0,
+    @JvmField public val health: Int = 0,
+    @JvmField public val healthMax: Int = 0,
+    @JvmField public val healthRegen: Int = 0,
+    @JvmField public val lifesteal: Int = 0,
+    @JvmField public val magicPen: Int = 0,
+    @JvmField public val magicPenPercent: Int = 0,
+    @JvmField public val magicResist: Int = 0,
+    @JvmField public val movementSpeed: Int = 0,
+    @JvmField public val omnivamp: Int = 0,
+    @JvmField public val physicalVamp: Int = 0,
+    @JvmField public val power: Int = 0,
+    @JvmField public val powerMax: Int = 0,
+    @JvmField public val powerRegen: Int = 0,
+    @JvmField public val spellVamp: Int = 0,
 ) {
     internal companion object {
         fun fromDto(dto: ChampionStatsDto): ChampionStats {
@@ -132,18 +128,17 @@ public data class ChampionStats(
     }
 }
 
-@JvmRecord
-public data class ParticipantFrame(
-    @JvmField val championStats: ChampionStats,
-    @JvmField val damageStats: DamageStats,
-    @JvmField val gold: Int,
-    @JvmField val jungleMinionsKilled: Int,
-    @JvmField val level: Int,
-    @JvmField val minionsKilled: Int,
-    @JvmField val position: Position,
-    @JvmField val timeEnemySpentControlled: Int,
-    @JvmField val totalGold: Int,
-    @JvmField val xp: Int,
+public class ParticipantFrame private constructor(
+    @JvmField public val championStats: ChampionStats,
+    @JvmField public val damageStats: DamageStats,
+    @JvmField public val gold: Int,
+    @JvmField public val jungleMinionsKilled: Int,
+    @JvmField public val level: Int,
+    @JvmField public val minionsKilled: Int,
+    @JvmField public val position: Position,
+    @JvmField public val timeEnemySpentControlled: Int,
+    @JvmField public val totalGold: Int,
+    @JvmField public val xp: Int,
 ) {
     internal companion object {
         fun fromDto(dto: ParticipantFrameDto): ParticipantFrame {
@@ -232,140 +227,139 @@ public abstract class TimelineEvent(
     public open val timestamp: Long,
 ) {
     // Type: PAUSE_END, Champs: [realTimestamp]
-    public data class PauseEnd(
-        override val timestamp: Long,
-        @JvmField val realTimestamp: Long,
+    public class PauseEnd(
+        public override val timestamp: Long,
+        @JvmField public val realTimestamp: Long,
     ) : TimelineEvent(TimelineEventType.PAUSE_END, timestamp)
 
     // Type: PAUSE_START, Champs: [realTimestamp]
-    public data class PauseStart(
-        override val timestamp: Long,
-        @JvmField val realTimestamp: Long,
+    public class PauseStart(
+        public override val timestamp: Long,
+        @JvmField public val realTimestamp: Long,
     ) : TimelineEvent(TimelineEventType.PAUSE_START, timestamp)
 
     // Type: LEVEL_UP, Champs: [level, participantId]
-    public data class LevelUp(
-        override val timestamp: Long,
-        @JvmField val level: Int,
-        @JvmField val participantId: Int,
+    public class LevelUp(
+        public override val timestamp: Long,
+        @JvmField public val level: Int,
+        @JvmField public val participantId: Int,
     ) : TimelineEvent(TimelineEventType.LEVEL_UP, timestamp)
 
     // Type: WARD_PLACED, Champs: [creatorId, wardType]
-    public data class WardPlaced(
-        override val timestamp: Long,
-        @JvmField val creatorId: Int,
-        @JvmField val wardType: String,
+    public class WardPlaced(
+        public override val timestamp: Long,
+        @JvmField public val creatorId: Int,
+        @JvmField public val wardType: String,
     ) : TimelineEvent(TimelineEventType.WARD_PLACED, timestamp)
 
     // Type: CHAMPION_KILL, Champs: [bounty, killStreakLength, killerId, position, shutdownBounty, victimId, victimDamageReceived, victimDamageDealt, assistingParticipantIds]
-    public data class ChampionKill(
-        override val timestamp: Long,
-        @JvmField val bounty: Int,
-        @JvmField val killStreakLength: Int,
-        @JvmField val killerId: Int,
-        @JvmField val position: Position,
-        @JvmField val shutdownBounty: Int,
-        @JvmField val victimId: Int,
-        @JvmField val victimDamageReceived: List<VictimDamage>,
-        @JvmField val victimDamageDealt: List<VictimDamage>,
-        @JvmField val assistingParticipantIds: List<Int>,
+    public class ChampionKill(
+        public override val timestamp: Long,
+        @JvmField public val bounty: Int,
+        @JvmField public val killStreakLength: Int,
+        @JvmField public val killerId: Int,
+        @JvmField public val position: Position,
+        @JvmField public val shutdownBounty: Int,
+        @JvmField public val victimId: Int,
+        @JvmField public val victimDamageReceived: List<VictimDamage>,
+        @JvmField public val victimDamageDealt: List<VictimDamage>,
+        @JvmField public val assistingParticipantIds: List<Int>,
     ) : TimelineEvent(TimelineEventType.CHAMPION_KILL, timestamp) {
-        @JvmRecord
-        public data class VictimDamage(
-            @JvmField val basic: Boolean,
-            @JvmField val magicDamage: Int,
-            @JvmField val name: String,
-            @JvmField val participantId: Int,
-            @JvmField val physicalDamage: Int,
-            @JvmField val spellName: String,
-            @JvmField val spellSlot: Int,
-            @JvmField val trueDamage: Int,
-            @JvmField val type: String,
+        public class VictimDamage(
+            @JvmField public val basic: Boolean,
+            @JvmField public val magicDamage: Int,
+            @JvmField public val name: String,
+            @JvmField public val participantId: Int,
+            @JvmField public val physicalDamage: Int,
+            @JvmField public val spellName: String,
+            @JvmField public val spellSlot: Int,
+            @JvmField public val trueDamage: Int,
+            @JvmField public val type: String,
         )
     }
 
     // Type: ITEM_DESTROYED, Champs: [itemId, participantId]
-    public data class ItemDestroyed(
-        override val timestamp: Long,
-        @JvmField val itemId: Int,
-        @JvmField val participantId: Int,
+    public class ItemDestroyed(
+        public override val timestamp: Long,
+        @JvmField public val itemId: Int,
+        @JvmField public val participantId: Int,
     ) : TimelineEvent(TimelineEventType.ITEM_DESTROYED, timestamp)
 
     // Type: GAME_END, Champs: [gameId, realTimestamp, winningTeam]
-    public data class GameEnd(
-        override val timestamp: Long,
-        @JvmField val gameId: Long,
-        @JvmField val realTimestamp: Long,
-        @JvmField val winningTeam: TeamSide,
+    public class GameEnd(
+        public override val timestamp: Long,
+        @JvmField public val gameId: Long,
+        @JvmField public val realTimestamp: Long,
+        @JvmField public val winningTeam: TeamSide,
     ) : TimelineEvent(TimelineEventType.GAME_END, timestamp)
 
     // Type: SKILL_LEVEL_UP, Champs: [levelUpType, participantId, skillSlot]
-    public data class SkillLevelUp(
-        override val timestamp: Long,
-        @JvmField val levelUpType: String,
-        @JvmField val participantId: Int,
-        @JvmField val skillSlot: Int,
+    public class SkillLevelUp(
+        public override val timestamp: Long,
+        @JvmField public val levelUpType: String,
+        @JvmField public val participantId: Int,
+        @JvmField public val skillSlot: Int,
     ) : TimelineEvent(TimelineEventType.SKILL_LEVEL_UP, timestamp)
 
     // Type: ITEM_PURCHASED, Champs: [itemId, participantId]
-    public data class ItemPurchased(
-        override val timestamp: Long,
-        @JvmField val itemId: Int,
-        @JvmField val participantId: Int,
+    public class ItemPurchased(
+        public override val timestamp: Long,
+        @JvmField public val itemId: Int,
+        @JvmField public val participantId: Int,
     ) : TimelineEvent(TimelineEventType.ITEM_PURCHASED, timestamp)
 
     // Type: CHAMPION_SPECIAL_KILL, Champs: [killType, killerId, position, multiKillLength]
-    public data class ChampionSpecialKill(
-        override val timestamp: Long,
-        @JvmField val killType: String,
-        @JvmField val killerId: Int,
-        @JvmField val position: Position,
-        @JvmField val multiKillLength: Int,
+    public class ChampionSpecialKill(
+        public override val timestamp: Long,
+        @JvmField public val killType: String,
+        @JvmField public val killerId: Int,
+        @JvmField public val position: Position,
+        @JvmField public val multiKillLength: Int,
     ) : TimelineEvent(TimelineEventType.CHAMPION_SPECIAL_KILL, timestamp)
 
     // Type: ITEM_SOLD, Champs: [itemId, participantId]
-    public data class ItemSold(
-        override val timestamp: Long,
-        @JvmField val itemId: Int,
-        @JvmField val participantId: Int,
+    public class ItemSold(
+        public override val timestamp: Long,
+        @JvmField public val itemId: Int,
+        @JvmField public val participantId: Int,
     ) : TimelineEvent(TimelineEventType.ITEM_SOLD, timestamp)
 
     // Type: ITEM_UNDO, Champs: [afterId, beforeId, goldGain, participantId]
-    public data class ItemUndo(
-        override val timestamp: Long,
-        @JvmField val afterId: Int,
-        @JvmField val beforeId: Int,
-        @JvmField val goldGain: Int,
-        @JvmField val participantId: Int,
+    public class ItemUndo(
+        public override val timestamp: Long,
+        @JvmField public val afterId: Int,
+        @JvmField public val beforeId: Int,
+        @JvmField public val goldGain: Int,
+        @JvmField public val participantId: Int,
     ) : TimelineEvent(TimelineEventType.ITEM_UNDO, timestamp)
 
     // Type: TURRET_PLATE_DESTROYED, Champs: [killerId, laneType, position, teamId]
-    public data class TurretPlateDestroyed(
-        override val timestamp: Long,
-        @JvmField val killerId: Int,
-        @JvmField val laneType: LaneType,
-        @JvmField val position: Position,
-        val teamId: Int,
+    public class TurretPlateDestroyed(
+        public override val timestamp: Long,
+        @JvmField public val killerId: Int,
+        @JvmField public val laneType: LaneType,
+        @JvmField public val position: Position,
+        public val teamId: Int,
     ) : TimelineEvent(TimelineEventType.TURRET_PLATE_DESTROYED, timestamp)
 
     // Type: ELITE_MONSTER_KILL, Champs: [bounty, killerId, killerTeamId, monsterSubType, monsterType, position, assistingParticipantIds]
     @UnstableApi
-    public data class EliteMonsterKill(
-        override val timestamp: Long,
-        @JvmField val bounty: Int,
-        @JvmField val killerId: Int,
-        @JvmField val killerTeamId: TeamSide,
-        @JvmField val monsterSubType: String,
-        @JvmField val monsterType: String,
-        @JvmField val position: Position,
-        @JvmField val assistingParticipantIds: List<Int>,
+    public class EliteMonsterKill(
+        public override val timestamp: Long,
+        @JvmField public val bounty: Int,
+        @JvmField public val killerId: Int,
+        @JvmField public val killerTeamId: TeamSide,
+        @JvmField public val monsterSubType: String,
+        @JvmField public val monsterType: String,
+        @JvmField public val position: Position,
+        @JvmField public val assistingParticipantIds: List<Int>,
     ) : TimelineEvent(TimelineEventType.ELITE_MONSTER_KILL, timestamp)
 
     // Type: WARD_KILL, Champs: [killerId, wardType]
-    public data class WardKill(
-        override val timestamp: Long,
-        val killerId: Int,
-        val wardType: WardType,
+    public class WardKill(
+        public override val timestamp: Long,
+        public val killerId: Int,
+        public val wardType: WardType,
     ) : TimelineEvent(TimelineEventType.WARD_KILL, timestamp) {
         public enum class WardType {
             YELLOW_TRINKET,
@@ -389,44 +383,44 @@ public abstract class TimelineEvent(
 
     // Type: BUILDING_KILL, Champs: [bounty, buildingType, killerId, laneType, position, teamId, towerType, assistingParticipantIds]
     @UnstableApi
-    public data class BuildingKill(
-        override val timestamp: Long,
-        @JvmField val bounty: Int,
-        @JvmField val buildingType: BuildingType,
-        @JvmField val killerId: Int,
-        @JvmField val laneType: LaneType,
-        @JvmField val position: Position,
-        @JvmField val team: TeamSide,
+    public class BuildingKill(
+        public override val timestamp: Long,
+        @JvmField public val bounty: Int,
+        @JvmField public val buildingType: BuildingType,
+        @JvmField public val killerId: Int,
+        @JvmField public val laneType: LaneType,
+        @JvmField public val position: Position,
+        @JvmField public val team: TeamSide,
         @Nullable
-        @JvmField val towerType: TowerType?,
-        @JvmField val assistingParticipantIds: List<Int>,
+        @JvmField public val towerType: TowerType?,
+        @JvmField public val assistingParticipantIds: List<Int>,
     ) : TimelineEvent(TimelineEventType.BUILDING_KILL, timestamp)
 
     // Type: DRAGON_SOUL_GIVEN, Champs: [name, teamId]
-    public data class DragonSoulGiven(
-        override val timestamp: Long,
-        @JvmField val name: String,
-        @JvmField val team: TeamSide,
+    public class DragonSoulGiven(
+        public override val timestamp: Long,
+        @JvmField public val name: String,
+        @JvmField public val team: TeamSide,
     ) : TimelineEvent(TimelineEventType.DRAGON_SOUL_GIVEN, timestamp)
 
     // Type: OBJECTIVE_BOUNTY_PRESTART, Champs: [actualStartTime, teamId]
-    public data class ObjectiveBountyPrestart(
-        override val timestamp: Long,
-        val actualStartTime: Long,
-        @JvmField val team: TeamSide,
+    public class ObjectiveBountyPrestart(
+        public override val timestamp: Long,
+        public val actualStartTime: Long,
+        @JvmField public val team: TeamSide,
     ) : TimelineEvent(TimelineEventType.OBJECTIVE_BOUNTY_PRESTART, timestamp)
 
     // Type: OBJECTIVE_BOUNTY_FINISH, Champs: [teamId]
-    public data class ObjectiveBountyFinish(
-        override val timestamp: Long,
-        @JvmField val team: TeamSide,
+    public class ObjectiveBountyFinish(
+        public override val timestamp: Long,
+        @JvmField public val team: TeamSide,
     ) : TimelineEvent(TimelineEventType.OBJECTIVE_BOUNTY_FINISH, timestamp)
 
     // Type: CHAMPION_TRANSFORM, Champs: [participantId, transformType]
-    public data class ChampionTransform(
-        override val timestamp: Long,
-        @JvmField val participantId: Int,
-        @JvmField val transformType: String,
+    public class ChampionTransform(
+        public override val timestamp: Long,
+        @JvmField public val participantId: Int,
+        @JvmField public val transformType: String,
     ) : TimelineEvent(TimelineEventType.CHAMPION_TRANSFORM, timestamp)
 
     // UNKNOWN
@@ -437,12 +431,12 @@ public abstract class TimelineEvent(
      * If you run into it, we recommend considering contributing to the project on Github, either by adding the missing event, or just opening a ticket including a matchId to reproduce the behaviour.
      */
     @UnstableApi
-    public data class Unknown(
-        override val timestamp: Long,
+    public class Unknown(
+        public override val timestamp: Long,
         /**
          * > Warning: This JsonObject will also contain timestamp and type, be aware while manipulating.
          */
-        @JvmField val lostProperties: JsonObject,
+        @JvmField public val lostProperties: JsonObject,
     ) : TimelineEvent(TimelineEventType.UNKNOWN, timestamp)
 
     internal companion object {
@@ -676,11 +670,10 @@ public abstract class TimelineEvent(
     }
 }
 
-@JvmRecord
-public data class TimelineFrames(
-    @JvmField val participantFrames: Map<Int, ParticipantFrame>,
-    @JvmField val events: List<TimelineEvent>,
-    @JvmField val timestamp: Long,
+public class TimelineFrames private constructor(
+    @JvmField public val participantFrames: Map<Int, ParticipantFrame>,
+    @JvmField public val events: List<TimelineEvent>,
+    @JvmField public val timestamp: Long,
 ) {
     public fun getEventByType(type: TimelineEventType): List<TimelineEvent> {
         return events.filter { it.type == type }
@@ -702,10 +695,9 @@ public data class TimelineFrames(
     }
 }
 
-@JvmRecord
-public data class TimelineParticipant(
-    @JvmField val participantId: Int,
-    @JvmField val puuid: String,
+public class TimelineParticipant private constructor(
+    @JvmField public val participantId: Int,
+    @JvmField public val puuid: String,
 ) {
     internal companion object {
         fun fromDto(dto: ParticipantTimelineDto): TimelineParticipant {
@@ -717,13 +709,12 @@ public data class TimelineParticipant(
     }
 }
 
-@JvmRecord
-public data class TimelineInfo(
-    @JvmField val endOfGameResult: String,
-    @JvmField val frameInterval: Long,
-    @JvmField val gameId: Long,
-    @JvmField val participants: List<TimelineParticipant>,
-    @JvmField val frames: List<TimelineFrames>,
+public class TimelineInfo private constructor(
+    @JvmField public val endOfGameResult: String,
+    @JvmField public val frameInterval: Long,
+    @JvmField public val gameId: Long,
+    @JvmField public val participants: List<TimelineParticipant>,
+    @JvmField public val frames: List<TimelineFrames>,
 ) {
     internal companion object {
         fun fromDto(dto: InfoTimelineDto): TimelineInfo {
@@ -738,11 +729,10 @@ public data class TimelineInfo(
     }
 }
 
-@JvmRecord
-public data class TimelineMetadata(
-    @JvmField val dataVersion: String,
-    @JvmField val matchId: String,
-    @JvmField val participants: List<String>,
+public class TimelineMetadata private constructor(
+    @JvmField public val dataVersion: String,
+    @JvmField public val matchId: String,
+    @JvmField public val participants: List<String>,
 ) {
     internal companion object {
         fun fromDto(dto: MetadataTimelineDto): TimelineMetadata {
@@ -755,10 +745,9 @@ public data class TimelineMetadata(
     }
 }
 
-@JvmRecord
-public data class MatchTimeline(
-    @JvmField val info: TimelineInfo,
-    @JvmField val metadata: TimelineMetadata,
+public class MatchTimeline private constructor(
+    @JvmField public val info: TimelineInfo,
+    @JvmField public val metadata: TimelineMetadata,
 ) {
     internal companion object {
         fun fromDto(dto: TimelineDto): MatchTimeline {

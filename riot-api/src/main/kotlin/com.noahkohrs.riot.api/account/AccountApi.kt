@@ -13,9 +13,9 @@ import feign.RequestLine
  *
  * [Riot Account API](https://developer.riotgames.com/apis#account-v1)
  */
-public class AccountApi(
-    private val apiKey: String,
-    private val platform: Platform,
+public class AccountApi internal constructor(
+    apiKey: String,
+    platform: Platform,
 ) {
     private val apiClient =
         AccountApiClientFactory
@@ -25,7 +25,7 @@ public class AccountApi(
     /**
      * Get account by puuid
      */
-    public fun getAccountByPuuid(puuid: String): Account = Account(apiClient.getAccountByPuuid(puuid))
+    public fun getAccountByPuuid(puuid: String): Account = Account.fromDto(apiClient.getAccountByPuuid(puuid))
 
     /**
      * Get account by riot id
@@ -33,7 +33,7 @@ public class AccountApi(
     public fun getAccountByRiotId(
         gameName: String,
         tagLine: String,
-    ): Account = Account(apiClient.getAccountByRiotId(gameName, tagLine))
+    ): Account = Account.fromDto(apiClient.getAccountByRiotId(gameName, tagLine))
 
     /**
      * Get active shard for a player
@@ -41,14 +41,14 @@ public class AccountApi(
     public fun getActiveShardsByGameAndPuuid(
         game: String,
         puuid: String,
-    ): ActiveShard = ActiveShard(apiClient.getActiveShardsByGameAndPuuid(game, puuid))
+    ): ActiveShard = ActiveShard.fromDto(apiClient.getActiveShardsByGameAndPuuid(game, puuid))
 
     /**
      * Get my account
      *
      * Warning: This method is restricted.
      */
-    public fun getMyAccount(): Account = Account(apiClient.getMyAccount())
+    public fun getMyAccount(): Account = Account.fromDto(apiClient.getMyAccount())
 
     private interface AccountApiClient {
         // GET /riot/account/v1/accounts/by-puuid/{puuid} Get account by puuid

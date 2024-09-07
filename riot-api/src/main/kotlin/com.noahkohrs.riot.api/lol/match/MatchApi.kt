@@ -9,9 +9,9 @@ import feign.QueryMap
 import feign.RequestLine
 import java.util.Date
 
-public class MatchApi(
-    private val apiKey: String,
-    private val globalRegion: GlobalRegion,
+public class MatchApi internal constructor(
+    apiKey: String,
+    globalRegion: GlobalRegion,
 ) {
     private val apiClient =
         GlobalRegionApiClientFactory
@@ -19,7 +19,7 @@ public class MatchApi(
             .createApiClient(MatchApiClient::class.java)
 
     /**
-     * Get a list of match ids by puuid
+     * Get a list of match ids by puuid.
      */
     @JvmOverloads
     public fun getMatchIdsByPuuid(
@@ -42,7 +42,7 @@ public class MatchApi(
     }
 
     /**
-     * Get a match by match id
+     * Get a match by match id.
      */
     public fun getMatchById(matchId: String): Match {
         val res = apiClient.getMatchById(matchId)
@@ -50,7 +50,7 @@ public class MatchApi(
     }
 
     /**
-     * Get a match timeline by match id
+     * Get a match timeline by match id.
      */
     public fun getMatchTimelineById(matchId: String): MatchTimeline {
         val res = apiClient.getMatchTimelineById(matchId)

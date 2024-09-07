@@ -5,7 +5,7 @@ import com.noahkohrs.riot.api.dtos.PlatformDataDto
 import com.noahkohrs.riot.api.values.Platform
 import feign.RequestLine
 
-public class StatusApi(
+public class StatusApi internal constructor(
     apiKey: String,
     platform: Platform,
 ) {
@@ -14,7 +14,7 @@ public class StatusApi(
             .create(apiKey, platform)
             .createApiClient(StatusApiClient::class.java)
 
-    public fun getPlatformData(): PlatformDataDto = apiClient.getPlatformData()
+    public fun getPlatformData(): PlatformData = PlatformData.fromDto(apiClient.getPlatformData())
 
     private interface StatusApiClient {
         @RequestLine("GET /lol/status/v4/platform-data")

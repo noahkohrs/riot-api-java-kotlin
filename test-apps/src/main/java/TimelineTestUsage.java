@@ -27,7 +27,7 @@ public class TimelineTestUsage {
         try {
             riotApi.lol.champion.getChampionRotations();
             Account DnsFloppaAccount = riotApi.account.getAccountByRiotId(DnsFloppa.name, DnsFloppa.tag);
-            String DnsFloppaPuuid = DnsFloppaAccount.getPuuid();
+            String DnsFloppaPuuid = DnsFloppaAccount.puuid;
             var matchs = riotApi.lol.match.getMatchIdsByPuuid(DnsFloppaPuuid, null, null, 420);
             var timeline = riotApi.lol.match.getMatchTimelineById(matchs.getFirst());
             var events = new HashSet<TimelineEventType>();

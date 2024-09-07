@@ -7,7 +7,7 @@ import com.noahkohrs.riot.api.values.Platform
 import feign.RequestLine
 
 // TODO: Replace ___ with the name of the API
-public class ExampleApi(
+public class ExampleApi internal constructor(
     apiKey: String,
     // TODO: Remove either region or globalRegion depending on the https://developer.riotgames.com/apis
     platform: Platform,

@@ -10,7 +10,7 @@ import feign.RequestLine
  *
  * [Champion API](https://developer.riotgames.com/apis#champion-v3)
  */
-public class ChampionApi(
+public class ChampionApi internal constructor(
     apiKey: String,
     platform: Platform,
 ) {
@@ -22,7 +22,7 @@ public class ChampionApi(
     /**
      * Returns champion rotations, including free-to-play and low-level free-to-play rotations.
      */
-    public fun getChampionRotations(): ChampionInfo = apiClient.getChampionRotations()
+    public fun getChampionRotations(): ChampionRotation = ChampionRotation.fromDto(apiClient.getChampionRotations())
 
     private interface ChampionApiClient {
         @RequestLine("GET /lol/platform/v3/champion-rotations")

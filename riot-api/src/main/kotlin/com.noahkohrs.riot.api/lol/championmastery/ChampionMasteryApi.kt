@@ -1,6 +1,6 @@
 package com.noahkohrs.riot.api.lol.championmastery
 
-import com.noahkohrs.riot.api.RegionApiClientFactory
+import com.noahkohrs.riot.api.PlatformApiClientFactory
 import com.noahkohrs.riot.api.dtos.ChampionMasteryDto
 import com.noahkohrs.riot.api.values.Platform
 import feign.Param
@@ -11,7 +11,7 @@ public class ChampionMasteryApi(
     platform: Platform,
 ) {
     private val apiClient =
-        RegionApiClientFactory
+        PlatformApiClientFactory
             .create(apiKey, platform)
             .createApiClient(ChampionMasteryApiClient::class.java)
 

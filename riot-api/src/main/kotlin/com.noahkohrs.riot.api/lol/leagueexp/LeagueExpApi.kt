@@ -1,6 +1,6 @@
 package com.noahkohrs.riot.api.lol.leagueexp
 
-import com.noahkohrs.riot.api.RegionApiClientFactory
+import com.noahkohrs.riot.api.PlatformApiClientFactory
 import com.noahkohrs.riot.api.dtos.LeagueEntryDto
 import com.noahkohrs.riot.api.values.LoLDivision
 import com.noahkohrs.riot.api.values.LoLRankedQueue
@@ -14,7 +14,7 @@ public class LeagueExpApi(
     private val platform: Platform,
 ) {
     private val apiClient =
-        RegionApiClientFactory
+        PlatformApiClientFactory
             .create(apiKey, platform)
             .createApiClient(LeagueExpApiClient::class.java)
 

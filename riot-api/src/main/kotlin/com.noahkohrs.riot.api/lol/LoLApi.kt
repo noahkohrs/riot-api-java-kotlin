@@ -4,6 +4,7 @@ import com.noahkohrs.riot.api.lol.champion.ChampionApi
 import com.noahkohrs.riot.api.lol.championmastery.ChampionMasteryApi
 import com.noahkohrs.riot.api.lol.league.LeagueApi
 import com.noahkohrs.riot.api.lol.leagueexp.LeagueExpApi
+import com.noahkohrs.riot.api.lol.lolchallenges.LoLChallengesApi
 import com.noahkohrs.riot.api.lol.match.MatchApi
 import com.noahkohrs.riot.api.lol.status.StatusApi
 import com.noahkohrs.riot.api.lol.summoner.SummonerApi
@@ -11,8 +12,8 @@ import com.noahkohrs.riot.api.values.GlobalRegion
 import com.noahkohrs.riot.api.values.Platform
 
 public class LoLApi(
-    private val apiKey: String,
-    private val platform: Platform,
+    apiKey: String,
+    platform: Platform,
 ) {
     @JvmField
     public val champion: ChampionApi = ChampionApi(apiKey, platform)
@@ -34,4 +35,7 @@ public class LoLApi(
 
     @JvmField
     public val match: MatchApi = MatchApi(apiKey, GlobalRegion.fromRegion(platform))
+
+    @JvmField
+    public val challenges: LoLChallengesApi = LoLChallengesApi(apiKey, platform)
 }

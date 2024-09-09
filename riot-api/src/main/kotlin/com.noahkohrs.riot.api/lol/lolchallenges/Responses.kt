@@ -47,11 +47,11 @@ public class ChallengeConfigInfo(
 }
 
 public class ChallengeInfo(
-    public val challengeId: Long,
-    public val percentile: Double,
-    public val level: LoLTier,
-    public val value: Long,
-    public val achievedTime: Date? = null,
+    @JvmField public val challengeId: Long,
+    @JvmField public val percentile: Double,
+    @JvmField public val level: LoLTier,
+    @JvmField public val value: Long,
+    @JvmField public val achievedTime: Date? = null,
 ) {
     internal companion object {
         fun fromDto(challengeInfoDto: ChallengeInfoDto): ChallengeInfo {

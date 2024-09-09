@@ -1,6 +1,6 @@
 package com.noahkohrs.riot.api.lol.lolchallenges
 
-import com.noahkohrs.riot.api.RegionApiClientFactory
+import com.noahkohrs.riot.api.PlatformApiClientFactory
 import com.noahkohrs.riot.api.dtos.ApexPlayerInfoDto
 import com.noahkohrs.riot.api.dtos.ChallengeConfigInfoDto
 import com.noahkohrs.riot.api.dtos.PlayerInfoDto
@@ -15,7 +15,7 @@ public class LoLChallengesApi(
     platform: Platform,
 ) {
     private val apiClient =
-        RegionApiClientFactory
+        PlatformApiClientFactory
             .create(apiKey, platform, debug = false)
             .createApiClient(LoLChallengesClient::class.java)
 

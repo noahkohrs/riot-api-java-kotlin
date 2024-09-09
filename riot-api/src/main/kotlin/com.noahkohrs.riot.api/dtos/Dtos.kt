@@ -1542,25 +1542,34 @@ internal data class TimelineDto(
     val metadata: MetadataTimelineDto,
 )
 
-public data class ChallengeConfigInfoDto(
+internal data class ChallengeDto(
+//    "description": "",
+    @Json(name = "description")
+    val description: String,
+// "name": "??????????????????",
+    @Json(name = "name")
+    val name: String,
+// "shortDescription": "?????????? ???????? ????????????????????"
+    @Json(name = "shortDescription")
+    val shortDescription: String,
+)
+
+internal data class ChallengeConfigInfoDto(
 //    id	long
     @Json(name = "id")
     val id: Long,
 //    localizedNames	Map[String, Map[String, string]]
     @Json(name = "localizedNames")
-    val localizedNames: Map<String, Map<String, String>> = emptyMap(),
+    val localizedNames: Map<String, ChallengeDto>,
 //    startTimestamp	long
-    @Json(name = "endTimestamp")
-    val endTimestamp: Long,
-//    endTimestamp	long
-    @Json(name = "startTimestamp")
-    val startTimestamp: Long,
+    // startTimestamp is never defined
+    // endTimestamp is rarely defined.
 //    leaderboard	boolean
     @Json(name = "leaderboard")
     val leaderboard: Boolean,
 //    thresholds	Map[String, double]
     @Json(name = "thresholds")
-    val thresholds: Map<String, Double> = emptyMap(),
+    val thresholds: Map<String, Int>,
 )
 
 internal data class ApexPlayerInfoDto(
@@ -1590,10 +1599,10 @@ internal data class ChallengeInfoDto(
     val value: Long,
 //    "achievedTime": 1719772956279
     @Json(name = "achievedTime")
-    val achievedTime: Long,
+    val achievedTime: Long? = null,
 )
 
-internal data class ChallengePoints(
+internal data class ChallengePointsDto(
 //    "level": "GOLD",
     @Json(name = "level")
     val level: String,
@@ -1639,8 +1648,8 @@ internal data class PlayerInfoDto(
     val preferences: PlayerClientReferencesDto,
 //    totalPoints	ChallengePoints
     @Json(name = "totalPoints")
-    val totalPoints: ChallengePoints,
+    val totalPoints: ChallengePointsDto,
 //    categoryPoints	Map[String, ChallengePoints]
     @Json(name = "categoryPoints")
-    val categoryPoints: Map<String, ChallengePoints> = emptyMap(),
+    val categoryPoints: Map<String, ChallengePointsDto> = emptyMap(),
 )

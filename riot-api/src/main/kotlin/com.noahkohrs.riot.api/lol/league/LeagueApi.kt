@@ -1,6 +1,6 @@
 package com.noahkohrs.riot.api.lol.league
 
-import com.noahkohrs.riot.api.RegionApiClientFactory
+import com.noahkohrs.riot.api.PlatformApiClientFactory
 import com.noahkohrs.riot.api.dtos.LeagueEntryDto
 import com.noahkohrs.riot.api.dtos.LeagueListDto
 import com.noahkohrs.riot.api.values.LoLDivision
@@ -15,7 +15,7 @@ public class LeagueApi internal constructor(
     platform: Platform,
 ) {
     private val apiClient =
-        RegionApiClientFactory
+        PlatformApiClientFactory
             .create(apiKey, platform)
             .createApiClient(LeagueApiClient::class.java)
 

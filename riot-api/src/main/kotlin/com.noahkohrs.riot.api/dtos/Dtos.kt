@@ -1542,19 +1542,16 @@ internal data class TimelineDto(
     val metadata: MetadataTimelineDto,
 )
 
-
-
-//=============Clash DTO==================
-
+// =============Clash DTO==================
 
 internal data class PlayerDto(
     @Json(name = "summonerId")
     val summonerId: String,
     @Json(name = "teamId")
     val teamId: String,
-    @Json(name = "position")  // legal values: "UNSELECTED", "FILL", "TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY"
+    @Json(name = "position") // legal values: "UNSELECTED", "FILL", "TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY"
     val position: String,
-    @Json(name = "role")    // legal values: "CAPTAIN", "MEMBER"
+    @Json(name = "role") // legal values: "CAPTAIN", "MEMBER"
     val role: String,
 )
 
@@ -1585,7 +1582,7 @@ internal data class TournamentPhaseDto(
     @Json(name = "startTime")
     val startTime: Long,
     @Json(name = "cancelled")
-    val cancelled: Boolean
+    val cancelled: Boolean,
 )
 
 internal data class TournamentDto(
@@ -1600,4 +1597,3 @@ internal data class TournamentDto(
     @Json(name = "schedule")
     val schedule: List<TournamentPhaseDto> = emptyList(),
 )
-

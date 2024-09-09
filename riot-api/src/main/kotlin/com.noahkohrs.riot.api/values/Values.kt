@@ -196,6 +196,22 @@ public enum class Role {
     }
 }
 
+public enum class ClashRole {
+    CAPTAIN,
+    MEMBER,
+    ;
+
+    internal companion object {
+        fun fromValue(str: String): ClashRole {
+            return when (str) {
+                "CAPTAIN" -> CAPTAIN
+                "MEMBER" -> MEMBER
+                else -> throw IllegalArgumentException("Invalid value for ClashRole: $str")
+            }
+        }
+    }
+}
+
 public enum class TeamSide {
     BLUE,
     RED,

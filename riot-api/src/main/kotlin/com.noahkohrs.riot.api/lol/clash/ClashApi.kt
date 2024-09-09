@@ -7,7 +7,6 @@ import com.noahkohrs.riot.api.values.Platform
 import feign.Param
 import feign.RequestLine
 
-
 public class ClashApi internal constructor(
     apiKey: String,
     platform: Platform,
@@ -24,17 +23,12 @@ public class ClashApi internal constructor(
         return res.map { Player.fromDto(it) }
     }
 
-    private interface ClashApiClient
-    {
+    private interface ClashApiClient {
         // GET /lol/clash/v1/player/by-summoner/{summonerId}
         @RequestLine("GET /lol/clash/v1/player/by-summoner/{summonerId}")
         fun getPlayersBySummoner(
-            @Param("summonerId") summonerId: String
+            @Param("summonerId") summonerId: String,
         ): List<PlayerDto>
-
-
-
-
     }
 }
 

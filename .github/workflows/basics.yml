@@ -28,4 +28,4 @@ jobs:
         if: failure()
         with:
           name: test-results
-          path: build/reports/tests/test
+          path: build/reports/tests

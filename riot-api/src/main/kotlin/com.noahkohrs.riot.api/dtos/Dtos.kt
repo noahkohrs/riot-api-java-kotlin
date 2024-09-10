@@ -1549,9 +1549,11 @@ internal data class PlayerDto(
     val summonerId: String,
     @Json(name = "teamId")
     val teamId: String,
-    @Json(name = "position") // legal values: "UNSELECTED", "FILL", "TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY"
+    // legal values: "UNSELECTED", "FILL", "TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY"
+    @Json(name = "position")
     val position: String,
-    @Json(name = "role") // legal values: "CAPTAIN", "MEMBER"
+    // legal values: "CAPTAIN", "MEMBER"
+    @Json(name = "role")
     val role: String,
 )
 

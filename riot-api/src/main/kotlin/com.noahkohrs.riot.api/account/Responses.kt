@@ -7,7 +7,7 @@ import com.noahkohrs.riot.api.dtos.*
  *
  * > Note: Most endpoints utilizes the `puuid` of the account to identify the player. However, some endpoints might uses different identifiers such as `summonerId`.
  */
-public class Account private constructor(
+public class Account constructor(
     /**
      * The puuid of the account.
      */

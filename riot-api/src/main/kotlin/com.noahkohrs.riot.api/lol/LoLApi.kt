@@ -7,6 +7,7 @@ import com.noahkohrs.riot.api.lol.leagueexp.LeagueExpApi
 import com.noahkohrs.riot.api.lol.match.MatchApi
 import com.noahkohrs.riot.api.lol.status.StatusApi
 import com.noahkohrs.riot.api.lol.summoner.SummonerApi
+import com.noahkohrs.riot.api.templates.ClashApi
 import com.noahkohrs.riot.api.values.GlobalRegion
 import com.noahkohrs.riot.api.values.Platform
 
@@ -34,4 +35,7 @@ public class LoLApi(
 
     @JvmField
     public val match: MatchApi = MatchApi(apiKey, GlobalRegion.fromRegion(platform))
+
+    @JvmField
+    public val clash: ClashApi = ClashApi(apiKey, platform)
 }

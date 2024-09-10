@@ -24,6 +24,8 @@ jobs:
           RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
       - name: Upload test artifacts
         uses: actions/upload-artifact@v4
+        # When it failed and test happened
+        if: steps.Test.outcome == 'failure'
         with:
           name: test-results
           path: build/reports/tests/test

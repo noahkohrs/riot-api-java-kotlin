@@ -1,7 +1,7 @@
 package com.noahkohrs.riot.api.templates
 
 import apis.template.SomeResponse
-import com.noahkohrs.riot.api.RegionApiClientFactory
+import com.noahkohrs.riot.api.PlatformApiClientFactory
 import com.noahkohrs.riot.api.values.GlobalRegion
 import com.noahkohrs.riot.api.values.Platform
 import feign.RequestLine
@@ -14,7 +14,7 @@ public class ExampleApi internal constructor(
     globalRegion: GlobalRegion,
 ) {
     private val apiClient =
-        RegionApiClientFactory
+        PlatformApiClientFactory
             .create(apiKey, platform)
             .createApiClient(ExampleApiClient::class.java)
 

@@ -1,6 +1,6 @@
 package com.noahkohrs.riot.api.lol.status
 
-import com.noahkohrs.riot.api.RegionApiClientFactory
+import com.noahkohrs.riot.api.PlatformApiClientFactory
 import com.noahkohrs.riot.api.dtos.PlatformDataDto
 import com.noahkohrs.riot.api.values.Platform
 import feign.RequestLine
@@ -10,7 +10,7 @@ public class StatusApi internal constructor(
     platform: Platform,
 ) {
     private val apiClient =
-        RegionApiClientFactory
+        PlatformApiClientFactory
             .create(apiKey, platform)
             .createApiClient(StatusApiClient::class.java)
 

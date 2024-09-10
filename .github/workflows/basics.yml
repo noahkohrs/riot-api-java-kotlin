@@ -28,4 +28,4 @@ jobs:
         if: failure()
         with:
           name: test-results
-          path: build/reports/tests
+          path: riot-api/build/reports/tests/test

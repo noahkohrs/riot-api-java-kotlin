@@ -6,10 +6,10 @@ import com.noahkohrs.riot.api.values.Platform
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 
-
-class ClashApiTest{
+class ClashApiTest {
     private val riotApi = RiotApi(TestInternal.apiKey, Platform.EUW1)
-    //TODO to test this we need to have a player in a clash team
+
+    // TODO to test this we need to have a player in a clash team
     private val playerPuuid = riotApi.account.getAccountByRiotId(TestInternal.somePlayers[0].name, TestInternal.somePlayers[0].tag).puuid
     private val summonerId = riotApi.lol.summoner.getSummonerByPuuid(playerPuuid).id
 
@@ -18,7 +18,6 @@ class ClashApiTest{
         riotApi.lol.clash.getPlayersBySummoner(summonerId).forEach { player ->
             assertNotNull(player)
         }
-
     }
 
     @Test
@@ -57,5 +56,4 @@ class ClashApiTest{
         val tournament = riotApi.lol.clash.getTournamentById(tournamentId)
         assertNotNull(tournament)
     }
-
 }

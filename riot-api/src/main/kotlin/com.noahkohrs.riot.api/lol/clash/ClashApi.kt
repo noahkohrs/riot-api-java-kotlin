@@ -20,7 +20,6 @@ public class ClashApi internal constructor(
             .create(apiKey, platform)
             .createApiClient(ClashApiClient::class.java)
 
-
     /**
      * Get a list of players by summoner id.
      */
@@ -61,8 +60,6 @@ public class ClashApi internal constructor(
         return Tournament.fromDto(res)
     }
 
-
-
     private interface ClashApiClient {
         // GET /lol/clash/v1/player/by-summoner/{summonerId}
         @RequestLine("GET /lol/clash/v1/players/by-summoner/{summonerId}")
@@ -70,25 +67,21 @@ public class ClashApi internal constructor(
             @Param("summonerId") summonerId: String,
         ): List<PlayerDto>
 
-
         // GET /lol/clash/v1/team/{teamId}
         @RequestLine("GET /lol/clash/v1/teams/{teamId}")
         fun getTeamById(
             @Param("teamId") teamId: String,
         ): TeamDtoClash
 
-
         // GET /lol/clash/v1/tournaments
         @RequestLine("GET /lol/clash/v1/tournaments")
         fun getTournaments(): List<TournamentDto>
-
 
         // GET /lol/clash/v1/tournaments/by-team/{teamId}
         @RequestLine("GET /lol/clash/v1/tournaments/by-team/{teamId}")
         fun getTournamentByTeam(
             @Param("teamId") teamId: String,
         ): TournamentDto
-
 
         // GET /lol/clash/v1/tournaments/{tournamentId}
         @RequestLine("GET /lol/clash/v1/tournaments/{tournamentId}")

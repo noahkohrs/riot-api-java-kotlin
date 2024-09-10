@@ -1,6 +1,6 @@
 package com.noahkohrs.riot.api.templates
 
-import com.noahkohrs.riot.api.RegionApiClientFactory
+import com.noahkohrs.riot.api.PlatformApiClientFactory
 import com.noahkohrs.riot.api.dtos.PlayerDto
 import com.noahkohrs.riot.api.lol.clash.Player
 import com.noahkohrs.riot.api.values.Platform
@@ -12,7 +12,7 @@ public class ClashApi internal constructor(
     platform: Platform,
 ) {
     private val apiClient =
-        RegionApiClientFactory
+        PlatformApiClientFactory
             .create(apiKey, platform)
             .createApiClient(ClashApiClient::class.java)
 

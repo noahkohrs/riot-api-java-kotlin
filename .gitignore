@@ -41,3 +41,6 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+# Kotlin compiler temporary files
+.kotlin/sessions/*.salive

@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Test
 class AccountApiTest {
     private val riotApi = RiotApi(TestInternal.apiKey, Platform.EUW1)
 
-
     @Test fun testGetPuuid() {
         TestInternal.somePlayers.forEach { it ->
             val puuid = riotApi.account.getAccountByRiotId(it.name, it.tag).puuid

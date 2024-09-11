@@ -90,5 +90,3 @@ public class ClashApi internal constructor(
         ): TournamentDto
     }
 }
-
-

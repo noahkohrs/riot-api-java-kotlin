@@ -1653,3 +1653,61 @@ internal data class PlayerInfoDto(
     @Json(name = "categoryPoints")
     val categoryPoints: Map<String, ChallengePointsDto> = emptyMap(),
 )
+
+// =============Clash DTO==================
+
+internal data class PlayerDto(
+    @Json(name = "summonerId")
+    val summonerId: String,
+    @Json(name = "teamId")
+    val teamId: String,
+    // legal values: "UNSELECTED", "FILL", "TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY"
+    @Json(name = "position")
+    val position: String,
+    // legal values: "CAPTAIN", "MEMBER"
+    @Json(name = "role")
+    val role: String,
+)
+
+internal data class TeamDtoClash(
+    @Json(name = "id")
+    val id: String,
+    @Json(name = "tournamentId")
+    val tournamentId: Int,
+    @Json(name = "name")
+    val name: String,
+    @Json(name = "iconId")
+    val iconId: Int,
+    @Json(name = "tier")
+    val tier: Int,
+    @Json(name = "captain")
+    val captain: String,
+    @Json(name = "abbreviation")
+    val abbreviation: String,
+    @Json(name = "players")
+    val players: List<PlayerDto> = emptyList(),
+)
+
+internal data class TournamentPhaseDto(
+    @Json(name = "id")
+    val id: Int,
+    @Json(name = "registrationTime")
+    val registrationTime: Long,
+    @Json(name = "startTime")
+    val startTime: Long,
+    @Json(name = "cancelled")
+    val cancelled: Boolean,
+)
+
+internal data class TournamentDto(
+    @Json(name = "id")
+    val id: Int,
+    @Json(name = "themeId")
+    val themeId: Int,
+    @Json(name = "nameKey")
+    val nameKey: String,
+    @Json(name = "nameKeySecondary")
+    val nameKeySecondary: String,
+    @Json(name = "schedule")
+    val schedule: List<TournamentPhaseDto> = emptyList(),
+)

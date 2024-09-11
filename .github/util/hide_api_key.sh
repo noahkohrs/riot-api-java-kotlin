@@ -22,7 +22,7 @@ fi
 # Find all the files in the directory $2 recursively
 find $2 -type f | while read file; do
     # Replace the key $1 with the string "VISIBLE_API_KEY" in the file
-    sed -i "s/$1/VISIBLE_API_KEY/g" $file
+    sed -i "s/$1/PRIVATE_API_KEY/g" $file
 done
 
 echo "API key hidden successfully"

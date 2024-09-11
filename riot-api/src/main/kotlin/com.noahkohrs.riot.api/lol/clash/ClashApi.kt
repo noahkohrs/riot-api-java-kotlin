@@ -91,5 +91,4 @@ public class ClashApi internal constructor(
     }
 }
 
-// TODO: Generate a test for this class by right-clicked on <ClassName> -> Generate -> Test... -> OK
-// TODO: Add the test in the test folder.
+

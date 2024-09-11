@@ -20,7 +20,7 @@ This product is not endorsed, certified or approved in any way by Riot Games, In
 - [ ] Implement all endpoints for the `lol` gateway
   - [x] Implement champion endpoints.
   - [x] Implement champion-mastery endpoints.
-  - [ ] Implement clash endpoints.
+  - [x] Implement clash endpoints.
   - [x] Implement league endpoints.
   - [x] Implement league-exp endpoints.
   - [ ] Implement challenges endpoints.

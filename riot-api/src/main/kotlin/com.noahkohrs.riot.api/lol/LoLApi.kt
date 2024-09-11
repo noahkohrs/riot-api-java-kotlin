@@ -4,6 +4,7 @@ import com.noahkohrs.riot.api.lol.champion.ChampionApi
 import com.noahkohrs.riot.api.lol.championmastery.ChampionMasteryApi
 import com.noahkohrs.riot.api.lol.league.LeagueApi
 import com.noahkohrs.riot.api.lol.leagueexp.LeagueExpApi
+import com.noahkohrs.riot.api.lol.lolchallenges.LoLChallengesApi
 import com.noahkohrs.riot.api.lol.match.MatchApi
 import com.noahkohrs.riot.api.lol.status.StatusApi
 import com.noahkohrs.riot.api.lol.summoner.SummonerApi
@@ -38,4 +39,7 @@ public class LoLApi(
 
     @JvmField
     public val clash: ClashApi = ClashApi(apiKey, platform)
+
+    @JvmField
+    public val challenges: LoLChallengesApi = LoLChallengesApi(apiKey, platform)
 }

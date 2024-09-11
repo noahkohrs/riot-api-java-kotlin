@@ -17,8 +17,20 @@ jobs:
       - name: Lint
         run: ./gradlew ktlintCheck
       # Checking the unit tests
-      # For some reason, test does not pass on the CI/CD for now and they need to be done locally.
-#      - name: Test
-#        run: ./gradlew test
-#        env:
-#          RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
+      - name: Test
+        run: ./gradlew test
+        env:
+          RIOT_API_KEY: ${{ secrets.TEST_RIOT_API_KEY }}
+      # Hide the API key from the artifacts
+      - name: Hide API key
+        run: ./.github/util/hide_api_key.sh $RIOT_API_KEY riot-api/build/reports/tests
+        if: failure()
+        env:
+          RIOT_API_KEY: ${{ secrets.TEST_RIOT_API_KEY }}
+        # Upload the test results if the tests fail
+      - name: Upload failed tests
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-results
+          path: riot-api/build/reports/tests/test

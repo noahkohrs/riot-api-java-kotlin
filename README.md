@@ -2,7 +2,7 @@
 
 A wrapper for the Riot Api for Java and Kotlin.
 
-This projet is **WORK IN PROGRESS** and is not production ready.
+This project is **WORK IN PROGRESS** and is not production ready.
 
 ## Contributing
 
@@ -10,7 +10,7 @@ If you would like to contribute to this project, please feel free to do it.
 However, please try to :
 - Be consistent with the current library structures and patterns.
 - Document as much as possible your implementation choices.
-- Not add to much content in one pull request. 
+- Don't put too much code in a single PR, it will be easier to review.
 
 ## Disclaimer
 
@@ -23,7 +23,7 @@ This product is not endorsed, certified or approved in any way by Riot Games, In
   - [x] Implement clash endpoints.
   - [x] Implement league endpoints.
   - [x] Implement league-exp endpoints.
-  - [ ] Implement challenges endpoints.
+  - [x] Implement challenges endpoints.
   - [x] Implement match endpoints.
   - [ ] Implement rso-match endpoints.
   - [ ] Implement spectator endpoints.

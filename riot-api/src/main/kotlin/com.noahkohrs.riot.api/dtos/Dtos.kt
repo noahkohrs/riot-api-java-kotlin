@@ -1541,3 +1541,115 @@ internal data class TimelineDto(
     @Json(name = "metadata")
     val metadata: MetadataTimelineDto,
 )
+
+internal data class ChallengeDto(
+//    "description": "",
+    @Json(name = "description")
+    val description: String,
+// "name": "??????????????????",
+    @Json(name = "name")
+    val name: String,
+// "shortDescription": "?????????? ???????? ????????????????????"
+    @Json(name = "shortDescription")
+    val shortDescription: String,
+)
+
+internal data class ChallengeConfigInfoDto(
+//    id	long
+    @Json(name = "id")
+    val id: Long,
+//    localizedNames	Map[String, Map[String, string]]
+    @Json(name = "localizedNames")
+    val localizedNames: Map<String, ChallengeDto>,
+//    startTimestamp	long
+    // startTimestamp is never defined
+    // endTimestamp is rarely defined.
+//    leaderboard	boolean
+    @Json(name = "leaderboard")
+    val leaderboard: Boolean,
+//    thresholds	Map[String, double]
+    @Json(name = "thresholds")
+    val thresholds: Map<String, Int>,
+)
+
+internal data class ApexPlayerInfoDto(
+//    puuid	string
+    @Json(name = "puuid")
+    val puuid: String,
+//    value	double
+    @Json(name = "value")
+    val value: Double,
+//    position	int
+    @Json(name = "position")
+    val position: Int,
+)
+
+internal data class ChallengeInfoDto(
+//    "challengeId": 402407,
+    @Json(name = "challengeId")
+    val challengeId: Long,
+//    "percentile": 0.11,
+    @Json(name = "percentile")
+    val percentile: Double,
+//    "level": "PLATINUM",
+    @Json(name = "level")
+    val level: String,
+//    "value": 40696,
+    @Json(name = "value")
+    val value: Long,
+//    "achievedTime": 1719772956279
+    @Json(name = "achievedTime")
+    val achievedTime: Long? = null,
+)
+
+internal data class ChallengePointsDto(
+//    "level": "GOLD",
+    @Json(name = "level")
+    val level: String,
+//    "current": 6185,
+    @Json(name = "current")
+    val current: Long,
+//    "max": 29680,
+    @Json(name = "max")
+    val max: Long,
+//    "percentile": 0.158
+    @Json(name = "percentile")
+    val percentile: Double,
+)
+
+internal data class PlayerClientReferencesDto(
+//    "bannerAccent": "1",
+    @Json(name = "bannerAccent")
+    val bannerAccent: String,
+//    "title": "50400005",
+    @Json(name = "title")
+    val title: String,
+//    "challengeIds": [
+//    601002,
+//    504001,
+//    501008
+//    ],
+    @Json(name = "challengeIds")
+    val challengeIds: List<Long> = emptyList(),
+//    "crestBorder": "1",
+    @Json(name = "crestBorder")
+    val crestBorder: String,
+//    "prestigeCrestBorderLevel": 500
+    @Json(name = "prestigeCrestBorderLevel")
+    val prestigeCrestBorderLevel: Int,
+)
+
+internal data class PlayerInfoDto(
+//    challenges	List[ChallengeInfo]
+    @Json(name = "challenges")
+    val challenges: List<ChallengeInfoDto> = emptyList(),
+//    preferences	PlayerClientPreferences
+    @Json(name = "preferences")
+    val preferences: PlayerClientReferencesDto,
+//    totalPoints	ChallengePoints
+    @Json(name = "totalPoints")
+    val totalPoints: ChallengePointsDto,
+//    categoryPoints	Map[String, ChallengePoints]
+    @Json(name = "categoryPoints")
+    val categoryPoints: Map<String, ChallengePointsDto> = emptyMap(),
+)

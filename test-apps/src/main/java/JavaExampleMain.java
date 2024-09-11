@@ -26,6 +26,7 @@ public class JavaExampleMain {
             Account DnsFloppaAccount = riotApi.account.getAccountByRiotId(DnsFloppa.name, DnsFloppa.tag);
             String DnsFloppaPuuid = DnsFloppaAccount.puuid;
             riotApi.lol.championMastery.getMasteryScoreByPuuid(DnsFloppaPuuid);
+            riotApi.lol.challenges.getChallengeConfig();
         } catch (Exception e) {
             e.printStackTrace();
         }

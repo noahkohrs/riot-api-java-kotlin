@@ -1,5 +1,7 @@
 package com.noahkohrs.riot.api.values
 
+import kotlin.jvm.Throws
+
 public enum class Platform(public val value: String) {
     BR1("br1"),
     EUN1("eun1"),
@@ -114,6 +116,7 @@ public enum class LoLTier(public val value: String) {
      * Override valueOf
      */
     public companion object {
+        @Throws(IllegalArgumentException::class)
         internal fun fromValue(value: String): LoLTier {
             return when (value) {
                 "IRON" -> IRON

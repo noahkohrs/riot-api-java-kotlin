@@ -1,6 +1,8 @@
 import org.jetbrains.kotlin.gradle.dsl.ExplicitApiMode
 
+
 apply(plugin = "org.jetbrains.dokka")
+
 plugins {
     kotlin("jvm")
 }
@@ -12,7 +14,6 @@ dependencies {
     implementation("io.github.openfeign:feign-moshi:13.3")
     implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
 
-    project(":riot-static")
     testImplementation(kotlin("test"))
 }
 

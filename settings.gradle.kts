@@ -14,3 +14,4 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+include("riot-static")

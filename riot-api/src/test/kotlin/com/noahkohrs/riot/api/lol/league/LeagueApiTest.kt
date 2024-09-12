@@ -27,8 +27,7 @@ class LeagueApiTest {
     fun getLeagueEntriesBySummoner() {
         val puuid = riotApi.account.getAccountByRiotId("DNS Floppa", "007").puuid
         val summonerId = riotApi.lol.summoner.getSummonerByPuuid(puuid).id
-        println(summonerId)
-        val setOfEntries = riotApi.lol.league.getLeagueEntriesBySummoner(summonerId)
+        riotApi.lol.league.getLeagueEntriesBySummoner(summonerId)
     }
 
     @Test

@@ -132,6 +132,9 @@ public enum class LoLTier(public val value: String) {
                 else -> throw IllegalArgumentException("Invalid value for LoLTier: $value")
             }
         }
+
+        public val highestTiers: Set<LoLTier> = setOf(MASTER, GRANDMASTER, CHALLENGER)
+        public val lowerTiers: Set<LoLTier> = setOf(IRON, BRONZE, SILVER, GOLD, PLATINUM, EMERALD, DIAMOND)
     }
 }
 

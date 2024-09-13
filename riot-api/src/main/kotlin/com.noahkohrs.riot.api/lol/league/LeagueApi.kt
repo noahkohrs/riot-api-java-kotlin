@@ -47,8 +47,15 @@ public class LeagueApi internal constructor(
         queue: LoLRankedQueue,
         tier: LoLTier,
         division: LoLDivision,
+        page: Int = 1,
     ): Set<LeagueEntryResponse> {
-        val dto = apiClient.getLeagueEntries(queue.value, tier.value, division.value)
+        if (tier == LoLTier.CHALLENGER || tier == LoLTier.GRANDMASTER || tier == LoLTier.MASTER) {
+            throw IllegalArgumentException(
+                "Tier must be a division tier between IRON and DIAMOND. " +
+                    "For challenger, grandmaster and master leagues, use their respective methods.",
+            )
+        }
+        val dto = apiClient.getLeagueEntries(queue.value, tier.value, division.value, page)
         return dto.map { LeagueEntryResponse.fromDto(it) }.toSet()
     }
 
@@ -89,11 +96,12 @@ public class LeagueApi internal constructor(
             @Param("encryptedSummonerId") encryptedSummonerId: String,
         ): Set<LeagueEntryDto>
 
-        @RequestLine("GET /lol/league/v4/entries/{queue}/{tier}/{division}")
+        @RequestLine("GET /lol/league/v4/entries/{queue}/{tier}/{division}?page={page}")
         fun getLeagueEntries(
             @Param("queue") queue: String,
             @Param("tier") tier: String,
             @Param("division") division: String,
+            @Param("page") page: Int,
         ): Set<LeagueEntryDto>
 
         @RequestLine("GET /lol/league/v4/grandmasterleagues/by-queue/{queue}")

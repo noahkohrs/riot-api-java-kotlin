@@ -1711,3 +1711,132 @@ internal data class TournamentDto(
     @Json(name = "schedule")
     val schedule: List<TournamentPhaseDto> = emptyList(),
 )
+
+// =============Spectator DTO==================
+
+internal data class GameCustomizationObjectDto(
+    @Json(name = "category")
+    val category: String,
+    @Json(name = "content")
+    val content: String,
+)
+
+internal data class PerksDtoSpectator(
+    @Json(name = "perkIds")
+    val perkIds: List<Long> = emptyList(),
+    @Json(name = "perkStyle")
+    val perkStyle: Long = 0,
+    @Json(name = "perkSubStyle")
+    val perkSubStyle: Long = 0,
+)
+
+internal data class CurrentGameParticipantDto(
+    @Json(name = "championId")
+    val championId: Long = 0,
+    @Json(name = "perks")
+    val perks: PerksDtoSpectator = PerksDtoSpectator(),
+    @Json(name = "profileIconId")
+    val profileIconId: Long = 0,
+    @Json(name = "bot")
+    val bot: Boolean,
+    @Json(name = "teamId")
+    val teamId: Long = 0,
+    @Json(name = "summonerId")
+    val summonerId: String,
+    @Json(name = "puuid")
+    val puuid: String,
+    @Json(name = "spell1Id")
+    val spell1Id: Long = 0,
+    @Json(name = "spell2Id")
+    val spell2Id: Long = 0,
+    @Json(name = "gameCustomizationObjects")
+    val gameCustomizationObjects: List<GameCustomizationObjectDto> = emptyList(),
+)
+
+internal data class ObserverDto(
+    @Json(name = "encryptionKey")
+    val encryptionKey: String = "",
+)
+
+internal data class BannedChampionDto(
+    @Json(name = "pickTurn")
+    val pickTurn: Int = 0,
+    @Json(name = "championId")
+    val championId: Long = 0,
+    @Json(name = "teamId")
+    val teamId: Long = 0,
+)
+
+internal data class CurrentGameInfoDto(
+    @Json(name = "gameId")
+    val gameId: Long = 0,
+    @Json(name = "gameType")
+    val gameType: String,
+    @Json(name = "gameStartTime")
+    val gameStartTime: Long = 0,
+    @Json(name = "mapId")
+    val mapId: Long = 0,
+    @Json(name = "gameLength")
+    val gameLength: Long = 0,
+    @Json(name = "platformId")
+    val platformId: String,
+    @Json(name = "gameMode")
+    val gameMode: String,
+    @Json(name = "bannedChampions")
+    val bannedChampions: List<BannedChampionDto> = emptyList(),
+    @Json(name = "gameQueueConfigId")
+    val gameQueueConfigId: Long = 0,
+    @Json(name = "observers")
+    val observers: ObserverDto = ObserverDto(),
+    @Json(name = "participants")
+    val participants: List<CurrentGameParticipantDto> = emptyList(),
+)
+
+internal data class ParticipantDtoSpectator(
+    @Json(name = "bot")
+    val bot: Boolean,
+    @Json(name = "spell2Id")
+    val spell2Id: Long = 0,
+    @Json(name = "profileIconId")
+    val profileIconId: Long = 0,
+    @Json(name = "summonerId")
+    val summonerId: String,
+    @Json(name = "puuid")
+    val puuid: String,
+    @Json(name = "championId")
+    val championId: Long = 0,
+    @Json(name = "teamId")
+    val teamId: Long = 0,
+    @Json(name = "spell1Id")
+    val spell1Id: Long = 0,
+)
+
+internal data class FeaturedGameInfoDto(
+    @Json(name = "gameMode")
+    val gameMode: String,
+    @Json(name = "gameLength")
+    val gameLength: Long = 0,
+    @Json(name = "mapId")
+    val mapId: Long = 0,
+    @Json(name = "gameType")
+    val gameType: String,
+    @Json(name = "bannedChampions")
+    val bannedChampions: List<BannedChampionDto> = emptyList(),
+    @Json(name = "gameId")
+    val gameId: Long = 0,
+    @Json(name = "observers")
+    val observers: ObserverDto = ObserverDto(),
+    @Json(name = "gameQueueConfigId")
+    val gameQueueConfigId: Long = 0,
+    @Json(name = "participants")
+    val participants: List<ParticipantDtoSpectator> = emptyList(),
+    @Json(name = "platformId")
+    val platformId: String,
+)
+
+internal data class FeaturedGamesDto(
+    @Json(name = "gameList")
+    val gameList: List<FeaturedGameInfoDto> = emptyList(),
+    @Json(name = "clientRefreshInterval")
+    val clientRefreshInterval: Long = 0,
+)

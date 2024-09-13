@@ -7,6 +7,11 @@ import com.noahkohrs.riot.api.values.Platform
 import feign.Param
 import feign.RequestLine
 
+/**
+ * The ChampionMastery API provides information about champion masteries.
+ *
+ * [Riot ChampionMastery API](https://developer.riotgames.com/apis#champion-mastery-v4)
+ */
 public class ChampionMasteryApi internal constructor(
     apiKey: String,
     platform: Platform,

@@ -10,6 +10,11 @@ import com.noahkohrs.riot.api.values.Platform
 import feign.Param
 import feign.RequestLine
 
+/**
+ * The LeagueExp API provides information about league entries.
+ *
+ * [Riot LeagueExp API](https://developer.riotgames.com/apis#league-exp-v4)
+ */
 public class LeagueExpApi internal constructor(
     apiKey: String,
     platform: Platform,

@@ -5,6 +5,11 @@ import com.noahkohrs.riot.api.dtos.PlatformDataDto
 import com.noahkohrs.riot.api.values.Platform
 import feign.RequestLine
 
+/**
+ * The Status API provides information about the status of the platform.
+ *
+ * [Riot Status API](https://developer.riotgames.com/apis#status-v4)
+ */
 public class StatusApi internal constructor(
     apiKey: String,
     platform: Platform,

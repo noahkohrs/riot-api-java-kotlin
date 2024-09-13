@@ -8,128 +8,145 @@ internal data class ResponseWrapper<T>(
 )
 
 // TODO: Consider if the static Api should work with a separation between responses and dtos as the normal api.
-public data class ChampionDto(
-// "version": "14.18.1",
-// "id": "Aatrox",
+public open class ChampionSummaryDto(
     @Json(name = "id")
-    val id: String,
-// "key": "266",
+    public val id: String,
     @Json(name = "key")
-    val key: String,
-// "name": "Aatrox",
+    public val key: String,
     @Json(name = "name")
-    val name: String,
-// "title": "the Darkin Blade",
+    public val name: String,
     @Json(name = "title")
-    val title: String,
-// "blurb": "Once honored defenders of Shurima against the Void, Aatrox and his brethren would eventually become an even greater threat to Runeterra, and were defeated only by cunning mortal sorcery. But after centuries of imprisonment, Aatrox was the first to find...",
+    public val title: String,
     @Json(name = "blurb")
-    val blurb: String,
-// "info": {
-//    "attack": 8,
-//    "defense": 4,
-//    "magic": 3,
-//    "difficulty": 4
-// },
+    public val blurb: String,
     @Json(name = "info")
-    val info: Info,
-    // TODO: Consider how to handle the image field
-    // Might be nice to give access to solid object which is able to render the img.
-// "image": {
-//    "full": "Aatrox.png",
-//    "sprite": "champion0.png",
-//    "group": "champion",
-//    "x": 0,
-//    "y": 0,
-//    "w": 48,
-//    "h": 48
-// },
-// "tags": [
-// "Fighter"
-// ],
+    public val info: Info,
+    @Json(name = "image")
+    public val image: Image,
     // TODO: Consider rewriting this to return enumeration field
     @Json(name = "tags")
-    val tags: List<String>,
-// "partype": "Blood Well",
+    public val tags: List<String>,
     @Json(name = "partype")
-    val partype: String,
-// "stats": {
-//    "hp": 650,
-//    "hpperlevel": 114,
-//    "mp": 0,
-//    "mpperlevel": 0,
-//    "movespeed": 345,
-//    "armor": 38,
-//    "armorperlevel": 4.8,
-//    "spellblock": 32,
-//    "spellblockperlevel": 2.05,
-//    "attackrange": 175,
-//    "hpregen": 3,
-//    "hpregenperlevel": 0.5,
-//    "mpregen": 0,
-//    "mpregenperlevel": 0,
-//    "crit": 0,
-//    "critperlevel": 0,
-//    "attackdamage": 60,
-//    "attackdamageperlevel": 5,
-//    "attackspeedperlevel": 2.5,
-//    "attackspeed": 0.651
-// }
+    public val partype: String,
     @Json(name = "stats")
-    val stats: Stats,
-) {
-    public data class Info(
-        @Json(name = "attack")
-        val attack: Int,
-        @Json(name = "defense")
-        val defense: Int,
-        @Json(name = "magic")
-        val magic: Int,
-        @Json(name = "difficulty")
-        val difficulty: Int,
+    public val stats: Stats,
+)
+
+public class ChampionDto(
+    id: String,
+    key: String,
+    name: String,
+    title: String,
+    blurb: String,
+    info: Info,
+    image: Image,
+    @Json(name = "skins") public val skins: List<Skin>,
+    @Json(name = "lore") public val lore: String,
+    @Json(name = "allytips") public val allyTips: List<String>,
+    @Json(name = "enemytips") public val enemyTips: List<String>,
+    tags: List<String>,
+    partype: String,
+    stats: Stats,
+    @Json(name = "spells") public val spells: List<Spell>,
+    @Json(name = "passive") public val passive: Passive,
+) : ChampionSummaryDto(
+        id = id,
+        key = key,
+        name = name,
+        title = title,
+        blurb = blurb,
+        info = info,
+        image = image,
+        tags = tags,
+        partype = partype,
+        stats = stats,
     )
 
-    // TODO: Make the naming more readable
-    public data class Stats(
-        @Json(name = "hp")
-        val hp: Int,
-        @Json(name = "hpperlevel")
-        val hpperlevel: Int,
-        @Json(name = "mp")
-        val mp: Int,
-        @Json(name = "mpperlevel")
-        val mpperlevel: Float,
-        @Json(name = "movespeed")
-        val movespeed: Int,
-        @Json(name = "armor")
-        val armor: Int,
-        @Json(name = "armorperlevel")
-        val armorperlevel: Float,
-        @Json(name = "spellblock")
-        val spellblock: Int,
-        @Json(name = "spellblockperlevel")
-        val spellblockperlevel: Float,
-        @Json(name = "attackrange")
-        val attackrange: Int,
-        @Json(name = "hpregen")
-        val hpregen: Float,
-        @Json(name = "hpregenperlevel")
-        val hpregenperlevel: Float,
-        @Json(name = "mpregen")
-        val mpregen: Float,
-        @Json(name = "mpregenperlevel")
-        val mpregenperlevel: Float,
-        @Json(name = "crit")
-        val crit: Int,
-        @Json(name = "critperlevel")
-        val critperlevel: Int,
-        @Json(name = "attackdamage")
-        val attackdamage: Int,
-        @Json(name = "attackdamageperlevel")
-        val attackdamageperlevel: Float,
-        @Json(name = "attackspeedperlevel")
-        val attackspeedperlevel: Float,
-        @Json(name = "attackspeed")
-        val attackspeed: Float,
-    )
-}
+public data class Stats(
+    @Json(name = "hp")
+    val hp: Int,
+    @Json(name = "hpperlevel")
+    val hpperlevel: Int,
+    @Json(name = "mp")
+    val mp: Int,
+    @Json(name = "mpperlevel")
+    val mpperlevel: Float,
+    @Json(name = "movespeed")
+    val movespeed: Int,
+    @Json(name = "armor")
+    val armor: Int,
+    @Json(name = "armorperlevel")
+    val armorperlevel: Float,
+    @Json(name = "spellblock")
+    val spellblock: Int,
+    @Json(name = "spellblockperlevel")
+    val spellblockperlevel: Float,
+    @Json(name = "attackrange")
+    val attackrange: Int,
+    @Json(name = "hpregen")
+    val hpregen: Float,
+    @Json(name = "hpregenperlevel")
+    val hpregenperlevel: Float,
+    @Json(name = "mpregen")
+    val mpregen: Float,
+    @Json(name = "mpregenperlevel")
+    val mpregenperlevel: Float,
+    @Json(name = "crit")
+    val crit: Int,
+    @Json(name = "critperlevel")
+    val critperlevel: Int,
+    @Json(name = "attackdamage")
+    val attackdamage: Int,
+    @Json(name = "attackdamageperlevel")
+    val attackdamageperlevel: Float,
+    @Json(name = "attackspeedperlevel")
+    val attackspeedperlevel: Float,
+    @Json(name = "attackspeed")
+    val attackspeed: Float,
+)
+
+public data class Info(
+    @Json(name = "attack") val attack: Int,
+    @Json(name = "defense") val defense: Int,
+    @Json(name = "magic") val magic: Int,
+    @Json(name = "difficulty") val difficulty: Int,
+)
+
+public data class Image(
+    @Json(name = "full") val full: String,
+    @Json(name = "sprite") val sprite: String,
+    @Json(name = "group") val group: String,
+    @Json(name = "x") val x: Int,
+    @Json(name = "y") val y: Int,
+    @Json(name = "w") val width: Int,
+    @Json(name = "h") val height: Int,
+)
+
+public data class Skin(
+    @Json(name = "id") val id: String,
+    @Json(name = "num") val num: Int,
+    @Json(name = "name") val name: String,
+    @Json(name = "chromas") val chromas: Boolean,
+)
+
+public data class Spell(
+    @Json(name = "id") val id: String,
+    @Json(name = "name") val name: String,
+    @Json(name = "description") val description: String,
+    @Json(name = "tooltip") val tooltip: String,
+    @Json(name = "maxrank") val maxRank: Int,
+    @Json(name = "cooldown") val cooldown: List<Int>,
+    @Json(name = "cooldownBurn") val cooldownBurn: String,
+    @Json(name = "cost") val cost: List<Int>,
+    @Json(name = "costBurn") val costBurn: String,
+    @Json(name = "range") val range: List<Int>,
+    @Json(name = "rangeBurn") val rangeBurn: String,
+    @Json(name = "image") val image: Image,
+    @Json(name = "resource") val resource: String,
+)
+
+public data class Passive(
+    @Json(name = "name") val name: String,
+    @Json(name = "description") val description: String,
+    @Json(name = "image") val image: Image,
+)

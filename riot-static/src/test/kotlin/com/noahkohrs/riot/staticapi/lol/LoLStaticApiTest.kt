@@ -29,11 +29,24 @@ class LoLStaticApiTest {
     fun getChampions() {
         val champions = api.getChampions()
         assertTrue(champions.isNotEmpty())
-
+        println(champions[0])
         champions.forEach {
             assertTrue(it.id.isNotEmpty())
             assertTrue(it.name.isNotEmpty())
             assertTrue(it.title.isNotEmpty())
         }
+    }
+
+    @Test
+    fun getChampion() {
+        val champion = api.getChampion("Aatrox")
+        assertNotNull(champion)
+        println(champion)
+    }
+
+    @Test
+    fun getChampionSplash() {
+        val splash = api.getChampionSplash("Aatrox", 0)
+        assertTrue(splash.isNotEmpty())
     }
 }

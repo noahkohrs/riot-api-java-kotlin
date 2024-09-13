@@ -10,6 +10,11 @@ import com.noahkohrs.riot.api.values.Platform
 import feign.Param
 import feign.RequestLine
 
+/**
+ * The LoLChallengesApi provides information about challenges.
+ *
+ * [Riot LoL Challenges API](https://developer.riotgames.com/apis#lol-challenges-v1)
+ */
 public class LoLChallengesApi(
     apiKey: String,
     platform: Platform,

@@ -31,13 +31,7 @@ public class MatchApi internal constructor(
         startIndex: Int = 0,
         count: Int = 20,
     ): List<String> {
-        val queries = mutableMapOf<String, Any>()
-        startTime?.let { queries["startTime"] = it.time }
-        endTime?.let { queries["endTime"] = it.time }
-        queueId?.let { queries["queue"] = it }
-        type?.let { queries["type"] = it }
-        queries["startIndex"] = startIndex
-        queries["count"] = count
+        val queries = buildMatchQueries(startTime, endTime, queueId, type, startIndex, count)
         return apiClient.getMatchIdsByPuuid(puuid, queries)
     }
 
@@ -81,4 +75,22 @@ public class MatchApi internal constructor(
             matchId: String,
         ): TimelineDto
     }
+}
+
+internal fun buildMatchQueries(
+    startTime: Date?,
+    endTime: Date?,
+    queueId: Int?,
+    type: String?,
+    startIndex: Int,
+    count: Int,
+): MutableMap<String, Any> {
+    val queries = mutableMapOf<String, Any>()
+    startTime?.let { queries["startTime"] = it.time }
+    endTime?.let { queries["endTime"] = it.time }
+    queueId?.let { queries["queue"] = it }
+    type?.let { queries["type"] = it }
+    queries["startIndex"] = startIndex
+    queries["count"] = count
+    return queries
 }

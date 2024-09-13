@@ -11,6 +11,11 @@ import com.noahkohrs.riot.api.values.Platform
 import feign.Param
 import feign.RequestLine
 
+/**
+ * The Clash API provides information about clash.
+ *
+ * [Riot Clash API](https://developer.riotgames.com/apis#clash-v1)
+ */
 public class ClashApi internal constructor(
     apiKey: String,
     platform: Platform,

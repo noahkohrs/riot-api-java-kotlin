@@ -25,7 +25,7 @@ This product is not endorsed, certified or approved in any way by Riot Games, In
   - [x] Implement league-exp endpoints.
   - [x] Implement challenges endpoints.
   - [x] Implement match endpoints.
-  - [ ] Implement rso-match endpoints.
+  - [x] Implement rso-match endpoints.
   - [ ] Implement spectator endpoints.
   - [x] Implement status endpoints.
   - [x] Implement summoner endpoints.

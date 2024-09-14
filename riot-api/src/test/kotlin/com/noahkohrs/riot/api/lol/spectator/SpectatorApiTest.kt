@@ -1,5 +1,6 @@
 package com.noahkohrs.riot.api.lol.spectator
 
+import TestInternal
 import com.noahkohrs.riot.api.RiotApi
 import com.noahkohrs.riot.api.values.Platform
 import org.junit.jupiter.api.Assertions.*
@@ -12,9 +13,18 @@ class SpectatorApiTest {
 
     @Test
     fun getCurrentGameInfoByPuuidStressTest() {
-        val currentGameInfo = riotApi.lol.spectator.getCurrentGameInfoByPuuid(playerPuuid)
-        assertNotNull(currentGameInfo)
+        try {
+            val currentGameInfo = riotApi.lol.spectator.getCurrentGameInfoByPuuid(playerPuuid)
+            assertNotNull(currentGameInfo)
+        } catch (e : feign.FeignException.NotFound) {
+            // This is fine, the player is not in a game
+            println("Player is not in a game")
+            return
+        }
+
     }
+
+
 
     @Test
     fun getFeaturedGamesStressTest() {

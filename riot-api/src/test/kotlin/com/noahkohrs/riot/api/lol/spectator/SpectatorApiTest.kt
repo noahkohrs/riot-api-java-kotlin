@@ -16,15 +16,12 @@ class SpectatorApiTest {
         try {
             val currentGameInfo = riotApi.lol.spectator.getCurrentGameInfoByPuuid(playerPuuid)
             assertNotNull(currentGameInfo)
-        } catch (e : feign.FeignException.NotFound) {
+        } catch (e: feign.FeignException.NotFound) {
             // This is fine, the player is not in a game
             println("Player is not in a game")
             return
         }
-
     }
-
-
 
     @Test
     fun getFeaturedGamesStressTest() {

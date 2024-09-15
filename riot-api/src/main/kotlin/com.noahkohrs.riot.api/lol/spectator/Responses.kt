@@ -1,16 +1,21 @@
 package com.noahkohrs.riot.api.lol.spectator
 
+import com.noahkohrs.riot.api.annotations.LinkToStaticApi
 import com.noahkohrs.riot.api.dtos.*
 
 public class CurrentGameParticipant private constructor(
+    @LinkToStaticApi
     @JvmField public val championId: Long,
     @JvmField public val perks: Perks,
+    @LinkToStaticApi
     @JvmField public val profileIconId: Long,
     @JvmField public val bot: Boolean,
     @JvmField public val teamId: Long,
     @JvmField public val summonerId: String,
     @JvmField public val puuid: String,
+    @LinkToStaticApi
     @JvmField public val spell1Id: Long,
+    @LinkToStaticApi
     @JvmField public val spell2Id: Long,
     @JvmField public val gameCustomizationObjects: List<GameCustomizationObject>,
 ) {
@@ -37,6 +42,7 @@ public class CurrentGameParticipant private constructor(
     }
 
     public class Perks(
+        @LinkToStaticApi
         @JvmField public val perkIds: List<Long>,
         @JvmField public val perkStyle: Long,
         @JvmField public val perkSubStyle: Long,
@@ -55,6 +61,7 @@ public class CurrentGameInfo private constructor(
     @JvmField public val mapId: Long,
     @JvmField public val gameLength: Long,
     @JvmField public val platformId: String,
+    // TODO: Investigate if we should refine this value as a enum or not
     @JvmField public val gameMode: String,
     @JvmField public val bannedChampions: List<BannedChampion>,
     @JvmField public val gameQueueConfigId: Long,
@@ -116,14 +123,14 @@ public class FeaturedGameInfo private constructor(
                 participants =
                     dto.participants.map {
                         ParticipantsSpectator(
-                            it.bot,
-                            it.spell2Id,
-                            it.profileIconId,
-                            it.summonerId,
-                            it.puuid,
-                            it.championId,
-                            it.teamId,
-                            it.spell1Id,
+                            isABot = it.bot,
+                            profileIconId = it.profileIconId,
+                            summonerId = it.summonerId,
+                            puuid = it.puuid,
+                            championId = it.championId,
+                            teamId = it.teamId,
+                            spell1Id = it.spell1Id,
+                            spell2Id = it.spell2Id,
                         )
                     },
                 platformId = dto.platformId,
@@ -132,14 +139,18 @@ public class FeaturedGameInfo private constructor(
     }
 
     public class ParticipantsSpectator(
-        @JvmField public val bot: Boolean,
+        @JvmField public val isABot: Boolean,
+        @LinkToStaticApi
+        @JvmField public val spell1Id: Long,
+        @LinkToStaticApi
         @JvmField public val spell2Id: Long,
+        @LinkToStaticApi
         @JvmField public val profileIconId: Long,
         @JvmField public val summonerId: String,
         @JvmField public val puuid: String,
+        @LinkToStaticApi
         @JvmField public val championId: Long,
         @JvmField public val teamId: Long,
-        @JvmField public val spell1Id: Long,
     )
 }
 

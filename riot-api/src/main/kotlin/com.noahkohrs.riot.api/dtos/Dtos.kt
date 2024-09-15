@@ -1152,7 +1152,7 @@ internal data class ParticipantDto(
     val teamEarlySurrendered: Boolean = false,
 // teamId	int
     @Json(name = "teamId")
-    val teamId: Int = 0,
+    val teamId: Long = 0,
 // teamPosition	string	Both individualPosition and teamPosition are computed by the game server and are different versions of the most likely position played by a player. The individualPosition is the best guess for which position the player actually played in isolation of anything else. The teamPosition is the best guess for which position the player actually played if we add the constraint that each team must have one top player, one jungle, one middle, etc. Generally the recommendation is to use the teamPosition field over the individualPosition field.
     @Json(name = "teamPosition")
     val teamPosition: String = "",

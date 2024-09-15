@@ -1,9 +1,9 @@
 package com.noahkohrs.riot.api.lol.match
 
+import com.noahkohrs.riot.api.annotations.LinkToStaticApi
 import com.noahkohrs.riot.api.dtos.*
 import com.noahkohrs.riot.api.values.Position
 import com.noahkohrs.riot.api.values.Role
-import com.noahkohrs.riot.api.values.TeamSide
 
 public class Metadata private constructor(
     @JvmField public val dataVersion: String,
@@ -136,7 +136,9 @@ public class Participant private constructor(
     @JvmField public val deaths: Int,
     @JvmField public val challenges: ChallengesDto,
     @JvmField public val mission: Mission,
+    @LinkToStaticApi
     @JvmField public val items: List<Int>,
+    @LinkToStaticApi
     @JvmField public val augmentsIds: List<Int>,
     @JvmField public val userData: UserData,
     @JvmField public val pings: PingsStats,
@@ -195,7 +197,7 @@ public class Participant private constructor(
         @JvmField public val gameEndedInSurrender: Boolean,
         @JvmField public val gameEndedInEarlySurrender: Boolean,
         @JvmField public val win: Boolean,
-        @JvmField public val teamId: TeamSide,
+        @JvmField public val teamId: Long,
         @JvmField public val teamEarlySurrendered: Boolean,
     )
 
@@ -221,10 +223,15 @@ public class Participant private constructor(
         @JvmField public val totalTimeSpentDead: Int,
         @JvmField public val totalTimeCCDealt: Int,
         @JvmField public val consumablesPurchased: Int,
+        @LinkToStaticApi
         @JvmField public val summoner1Id: Int,
+        @LinkToStaticApi
         @JvmField public val summoner2Id: Int,
     )
 
+    /**
+     * Number of each spell and summoner cast.
+     */
     public class CastsStats(
         @JvmField public val spell1Casts: Int,
         @JvmField public val spell2Casts: Int,
@@ -369,7 +376,7 @@ public class Participant private constructor(
                         gameEndedInSurrender = dto.gameEndedInSurrender,
                         gameEndedInEarlySurrender = dto.gameEndedInEarlySurrender,
                         win = dto.win,
-                        teamId = TeamSide.fromValue(dto.teamId),
+                        teamId = dto.teamId,
                         teamEarlySurrendered = dto.teamEarlySurrendered,
                     ),
                 playerStats =

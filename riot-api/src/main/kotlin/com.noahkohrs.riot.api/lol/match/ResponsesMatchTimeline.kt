@@ -5,7 +5,6 @@ import com.noahkohrs.riot.api.dtos.*
 import com.noahkohrs.riot.api.manipulation.JsonObject
 import com.noahkohrs.riot.api.values.BuildingType
 import com.noahkohrs.riot.api.values.LaneType
-import com.noahkohrs.riot.api.values.TeamSide
 import com.noahkohrs.riot.api.values.TowerType
 import org.jetbrains.annotations.Nullable
 
@@ -290,7 +289,7 @@ public abstract class TimelineEvent(
         public override val timestamp: Long,
         @JvmField public val gameId: Long,
         @JvmField public val realTimestamp: Long,
-        @JvmField public val winningTeam: TeamSide,
+        @JvmField public val winningTeam: Long,
     ) : TimelineEvent(TimelineEventType.GAME_END, timestamp)
 
     // Type: SKILL_LEVEL_UP, Champs: [levelUpType, participantId, skillSlot]
@@ -339,7 +338,7 @@ public abstract class TimelineEvent(
         @JvmField public val killerId: Int,
         @JvmField public val laneType: LaneType,
         @JvmField public val position: Position,
-        public val teamId: Int,
+        public val teamId: Long,
     ) : TimelineEvent(TimelineEventType.TURRET_PLATE_DESTROYED, timestamp)
 
     // Type: ELITE_MONSTER_KILL, Champs: [bounty, killerId, killerTeamId, monsterSubType, monsterType, position, assistingParticipantIds]
@@ -348,7 +347,7 @@ public abstract class TimelineEvent(
         public override val timestamp: Long,
         @JvmField public val bounty: Int,
         @JvmField public val killerId: Int,
-        @JvmField public val killerTeamId: TeamSide,
+        @JvmField public val killerTeamId: Long,
         @JvmField public val monsterSubType: String,
         @JvmField public val monsterType: String,
         @JvmField public val position: Position,
@@ -390,7 +389,7 @@ public abstract class TimelineEvent(
         @JvmField public val killerId: Int,
         @JvmField public val laneType: LaneType,
         @JvmField public val position: Position,
-        @JvmField public val team: TeamSide,
+        @JvmField public val team: Long,
         @Nullable
         @JvmField public val towerType: TowerType?,
         @JvmField public val assistingParticipantIds: List<Int>,
@@ -400,20 +399,20 @@ public abstract class TimelineEvent(
     public class DragonSoulGiven(
         public override val timestamp: Long,
         @JvmField public val name: String,
-        @JvmField public val team: TeamSide,
+        @JvmField public val team: Long,
     ) : TimelineEvent(TimelineEventType.DRAGON_SOUL_GIVEN, timestamp)
 
     // Type: OBJECTIVE_BOUNTY_PRESTART, Champs: [actualStartTime, teamId]
     public class ObjectiveBountyPrestart(
         public override val timestamp: Long,
         public val actualStartTime: Long,
-        @JvmField public val team: TeamSide,
+        @JvmField public val team: Long,
     ) : TimelineEvent(TimelineEventType.OBJECTIVE_BOUNTY_PRESTART, timestamp)
 
     // Type: OBJECTIVE_BOUNTY_FINISH, Champs: [teamId]
     public class ObjectiveBountyFinish(
         public override val timestamp: Long,
-        @JvmField public val team: TeamSide,
+        @JvmField public val team: Long,
     ) : TimelineEvent(TimelineEventType.OBJECTIVE_BOUNTY_FINISH, timestamp)
 
     // Type: CHAMPION_TRANSFORM, Champs: [participantId, transformType]
@@ -528,7 +527,7 @@ public abstract class TimelineEvent(
                 "GAME_END" -> {
                     val gameId = dto.additionalData.getLong("gameId") ?: 0
                     val realTimestamp = dto.additionalData.getLong("realTimestamp") ?: 0
-                    val winningTeam = TeamSide.fromValue(dto.additionalData.getString("winningTeam") ?: "")
+                    val winningTeam = dto.additionalData.getLong("winningTeam") ?: 0
                     GameEnd(dto.timestamp, gameId, realTimestamp, winningTeam)
                 }
 
@@ -579,14 +578,14 @@ public abstract class TimelineEvent(
                             dto.additionalData.getInt("positionX") ?: 0,
                             dto.additionalData.getInt("positionY") ?: 0,
                         )
-                    val teamId = dto.additionalData.getInt("teamId") ?: 0
+                    val teamId = dto.additionalData.getLong("teamId") ?: 0
                     TurretPlateDestroyed(dto.timestamp, killerId, laneType, position, teamId)
                 }
 
                 "ELITE_MONSTER_KILL" -> {
                     val bounty = dto.additionalData.getInt("bounty") ?: 0
                     val killerId = dto.additionalData.getInt("killerId") ?: 0
-                    val killerTeamId = TeamSide.fromValue(dto.additionalData.getString("killerTeamId") ?: "")
+                    val killerTeamId = dto.additionalData.getLong("killerTeamId") ?: 0
                     val monsterSubType = dto.additionalData.getString("monsterSubType") ?: ""
                     val monsterType = dto.additionalData.getString("monsterType") ?: ""
                     val position =
@@ -624,7 +623,7 @@ public abstract class TimelineEvent(
                             dto.additionalData.getInt("positionX") ?: 0,
                             dto.additionalData.getInt("positionY") ?: 0,
                         )
-                    val team = TeamSide.fromValue(dto.additionalData.getString("teamId") ?: "")
+                    val team = dto.additionalData.getLong("teamId") ?: 0
                     val towerType = TowerType.fromValue(dto.additionalData.getString("towerType") ?: "")
                     val assistingParticipantIds =
                         dto.additionalData.getArray<Int>("assistingParticipantIds") ?: emptyList()
@@ -643,18 +642,18 @@ public abstract class TimelineEvent(
 
                 "DRAGON_SOUL_GIVEN" -> {
                     val name = dto.additionalData.getString("name") ?: ""
-                    val teamId = TeamSide.fromValue(dto.additionalData.getString("teamId") ?: "")
+                    val teamId = dto.additionalData.getLong("teamId") ?: 0
                     DragonSoulGiven(dto.timestamp, name, teamId)
                 }
 
                 "OBJECTIVE_BOUNTY_PRESTART" -> {
                     val actualStartTime = dto.additionalData.getLong("actualStartTime") ?: 0
-                    val teamId = TeamSide.fromValue(dto.additionalData.getString("teamId") ?: "")
+                    val teamId = dto.additionalData.getLong("teamId") ?: 0
                     ObjectiveBountyPrestart(dto.timestamp, actualStartTime, teamId)
                 }
 
                 "OBJECTIVE_BOUNTY_FINISH" -> {
-                    val teamId = TeamSide.fromValue(dto.additionalData.getString("teamId") ?: "")
+                    val teamId = dto.additionalData.getLong("teamId") ?: 0
                     ObjectiveBountyFinish(dto.timestamp, teamId)
                 }
 

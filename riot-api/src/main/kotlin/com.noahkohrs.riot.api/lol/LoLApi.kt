@@ -7,6 +7,7 @@ import com.noahkohrs.riot.api.lol.leagueexp.LeagueExpApi
 import com.noahkohrs.riot.api.lol.lolchallenges.LoLChallengesApi
 import com.noahkohrs.riot.api.lol.match.MatchApi
 import com.noahkohrs.riot.api.lol.match.MatchRsoApi
+import com.noahkohrs.riot.api.lol.spectator.SpectatorApi
 import com.noahkohrs.riot.api.lol.status.StatusApi
 import com.noahkohrs.riot.api.lol.summoner.SummonerApi
 import com.noahkohrs.riot.api.templates.ClashApi
@@ -46,4 +47,7 @@ public class LoLApi(
 
     @JvmField
     public val challenges: LoLChallengesApi = LoLChallengesApi(apiKey, platform)
+
+    @JvmField
+    public val spectator: SpectatorApi = SpectatorApi(apiKey, platform)
 }

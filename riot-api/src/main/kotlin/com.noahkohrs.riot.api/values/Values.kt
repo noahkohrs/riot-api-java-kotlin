@@ -218,31 +218,6 @@ public enum class ClashRole {
     }
 }
 
-public enum class TeamSide {
-    BLUE,
-    RED,
-    UNKNOWN,
-    ;
-
-    internal companion object {
-        fun fromValue(str: String): TeamSide {
-            return when (str) {
-                "BLUE" -> BLUE
-                "RED" -> RED
-                else -> UNKNOWN
-            }
-        }
-
-        fun fromValue(int: Int): TeamSide {
-            return when (int) {
-                100 -> BLUE
-                200 -> RED
-                else -> UNKNOWN
-            }
-        }
-    }
-}
-
 public enum class LaneType {
     BOT,
     MID,

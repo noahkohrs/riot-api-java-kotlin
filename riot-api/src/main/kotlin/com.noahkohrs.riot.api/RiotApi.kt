@@ -29,7 +29,6 @@ public class RiotApi(
             platform,
             globalRegion,
         )
-    // public val riot: Any = object {} // Might just be placed in this class since it's only sub-api
 
     @JvmField
     public val tft: TftApi =

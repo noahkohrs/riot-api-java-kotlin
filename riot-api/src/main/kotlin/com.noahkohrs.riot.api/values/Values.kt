@@ -132,6 +132,9 @@ public enum class LoLTier(public val value: String) {
                 else -> throw IllegalArgumentException("Invalid value for LoLTier: $value")
             }
         }
+
+        public val highestTiers: Set<LoLTier> = setOf(MASTER, GRANDMASTER, CHALLENGER)
+        public val lowerTiers: Set<LoLTier> = setOf(IRON, BRONZE, SILVER, GOLD, PLATINUM, EMERALD, DIAMOND)
     }
 }
 
@@ -199,26 +202,17 @@ public enum class Role {
     }
 }
 
-public enum class TeamSide {
-    BLUE,
-    RED,
-    UNKNOWN,
+public enum class ClashRole {
+    CAPTAIN,
+    MEMBER,
     ;
 
     internal companion object {
-        fun fromValue(str: String): TeamSide {
+        fun fromValue(str: String): ClashRole {
             return when (str) {
-                "BLUE" -> BLUE
-                "RED" -> RED
-                else -> UNKNOWN
-            }
-        }
-
-        fun fromValue(int: Int): TeamSide {
-            return when (int) {
-                100 -> BLUE
-                200 -> RED
-                else -> UNKNOWN
+                "CAPTAIN" -> CAPTAIN
+                "MEMBER" -> MEMBER
+                else -> throw IllegalArgumentException("Invalid value for ClashRole: $str")
             }
         }
     }

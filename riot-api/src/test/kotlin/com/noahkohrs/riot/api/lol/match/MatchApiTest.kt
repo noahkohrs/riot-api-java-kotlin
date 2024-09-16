@@ -3,10 +3,10 @@ package com.noahkohrs.riot.api.lol.match
 import TestInternal
 import com.noahkohrs.riot.api.RiotApi
 import com.noahkohrs.riot.api.values.Platform
-import getTestExecutor
 import org.junit.jupiter.api.Assertions.assertNotNull
-import org.junit.jupiter.api.Test
-import waitForCompletion
+import org.junit.jupiter.api.DynamicTest
+import org.junit.jupiter.api.DynamicTest.dynamicTest
+import org.junit.jupiter.api.TestFactory
 
 class MatchApiTest {
     val riotApi = RiotApi(TestInternal.apiKey, Platform.EUW1)
@@ -14,32 +14,39 @@ class MatchApiTest {
     /**
      * Helps to determine if it can fail in unexpected situations.
      */
-    @Test
-    fun getMatchByIdStressTest() {
+    @TestFactory
+    fun getMatchByIdStressTest(): List<DynamicTest> {
         val testMatchs = getTestMatchsPool()
-        val threadPool = getTestExecutor()
-        testMatchs.forEach { matchId ->
-            threadPool.submit {
-                val match = riotApi.lol.match.getMatchById(matchId)
-                assertNotNull(match)
+        return testMatchs.map {
+            dynamicTest(it) {
+                val match = riotApi.lol.match.getMatchById(it)
+                verifyMatchData(match)
             }
         }
-        threadPool.waitForCompletion()
     }
 
-    @Test
-    fun getMatchTimelineByIdStressTest() {
-        val threadPool = getTestExecutor()
+    @TestFactory
+    fun getMatchTimelineByIdStressTest(): List<DynamicTest> {
         val testMatchs = getTestMatchsPool()
-        testMatchs.forEach { matchId ->
-            threadPool.submit {
-                val match = riotApi.lol.match.getMatchTimelineById(matchId)
-                assertNotNull(match)
+        return testMatchs.map { matchId ->
+            dynamicTest("getMatchTimelineByIdStressTest $matchId") {
+                val matchTimeline = riotApi.lol.match.getMatchTimelineById(matchId)
+                verifyMatchTimelineData(matchTimeline)
             }
         }
-        threadPool.waitForCompletion()
     }
 
+    // TODO: Polish
+    private fun verifyMatchData(match: Match) {
+        assertNotNull(match)
+    }
+
+    // TODO: Polish
+    private fun verifyMatchTimelineData(matchTimeline: MatchTimeline) {
+        assertNotNull(matchTimeline)
+    }
+
+    @Synchronized
     private fun getTestMatchsPool(): Set<String> {
         val testMatchs = mutableSetOf<String>()
         for (p in TestInternal.somePlayers) {

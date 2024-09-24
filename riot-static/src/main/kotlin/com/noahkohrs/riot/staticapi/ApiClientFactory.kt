@@ -1,5 +1,6 @@
 package com.noahkohrs.riot.staticapi
 
+import com.noahkohrs.riot.staticapi.values.*
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import feign.Feign
@@ -18,13 +19,19 @@ internal object StaticRiotApiFactory {
 
     fun <T> createImageClient(clazz: Class<T>, baseUrl: String): T {
         return Feign.builder()
-            .decoder(ByteArrayDecoder())
+            .decoder(ImageDecoder())
             .target(clazz, baseUrl)
     }
 }
 
-internal class ByteArrayDecoder : feign.codec.Decoder {
+internal class ImageDecoder : feign.codec.Decoder {
     override fun decode(response: feign.Response, type: Type): Any {
-        return response.body().asInputStream().readBytes()
+        val bytes = response.body().asInputStream().readBytes()
+        response.body().asInputStream().close()
+        return Image(
+            url = response.request().url(),
+            format = ImageFormat.parseFormat(response.request().url()),
+            bytes = bytes,
+        )
     }
 }

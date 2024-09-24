@@ -1,7 +1,6 @@
 package com.noahkohrs.riot.api
 
 import com.noahkohrs.riot.api.manipulation.UnpredictableDtoAdapterFactory
-import com.noahkohrs.riot.api.statics.StaticsRiotData
 import com.noahkohrs.riot.api.values.AccountRegion
 import com.noahkohrs.riot.api.values.GlobalRegion
 import com.noahkohrs.riot.api.values.Platform
@@ -73,23 +72,6 @@ internal object GlobalRegionApiClientFactory {
     ): ApiClientFactory {
         val baseUrl = "https://$globalRegion.api.riotgames.com"
         return ApiClientFactory(baseUrl, apiKey, debug)
-    }
-}
-
-/**
- * Planned to be replaced by an entire new module for the project.
- *
- * Do not expend.
- */
-internal object StaticRiotDragoonFactory {
-    private const val STATIC_API_URL = "https://static.developer.riotgames.com"
-
-    fun create(): StaticsRiotData.StaticDragoonApi {
-        val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
-        return Feign.builder()
-            .decoder(MoshiDecoder(moshi))
-            .encoder(MoshiEncoder(moshi))
-            .target(StaticsRiotData.StaticDragoonApi::class.java, STATIC_API_URL)
     }
 }
 

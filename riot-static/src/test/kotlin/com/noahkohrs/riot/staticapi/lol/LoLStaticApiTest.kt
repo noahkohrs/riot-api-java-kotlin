@@ -45,8 +45,14 @@ class LoLStaticApiTest {
     }
 
     @Test
-    fun getChampionSplash() {
+    fun getImages() {
         val splash = api.getChampionSplash("Aatrox", 0)
-        assertTrue(splash.isNotEmpty())
+        assertTrue(splash.bytes.isNotEmpty())
+
+        val spell = api.getSpell("FlashFrost.png")
+        assertTrue(spell.bytes.isNotEmpty())
+
+        val passive = api.getPassive("Anivia_P.png")
+        assertTrue(passive.bytes.isNotEmpty())
     }
 }

@@ -2,6 +2,9 @@ name: CI/CD Process
 on:
   pull_request:
   workflow_dispatch:
+# Schedule the workflow to run every 6 hours
+  schedule:
+    - cron: "0 */6 * * *"
 
 jobs:
   basic-checks:

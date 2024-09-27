@@ -43,11 +43,11 @@ public class LeagueEntryResponse private constructor(
 }
 
 public class LeagueListResponse private constructor(
-    @JvmField public val leagueId: String,
+    @JvmField public val leagueId: String?,
     @JvmField public val leaguePlayers: List<LeagueItemResponse>,
     @JvmField public val tier: LoLTier,
-    @JvmField public val leagueName: String,
-    @JvmField public val queue: LoLQueue,
+    @JvmField public val leagueName: String?,
+    @JvmField public val queue: LoLQueue?,
 ) {
     internal companion object {
         fun fromDto(dto: LeagueListDto): LeagueListResponse {
@@ -56,7 +56,7 @@ public class LeagueListResponse private constructor(
                 leaguePlayers = dto.entries.map { LeagueItemResponse.fromDto(it) },
                 tier = LoLTier.fromValue(dto.tier),
                 leagueName = dto.name,
-                queue = LoLQueue.fromValue(dto.queue),
+                queue = dto.queue?.let { LoLQueue.fromValue(it) },
             )
         }
     }

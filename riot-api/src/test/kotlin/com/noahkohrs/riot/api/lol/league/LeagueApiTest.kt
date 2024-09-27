@@ -9,6 +9,7 @@ import com.noahkohrs.riot.api.values.Platform
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.DynamicContainer
+import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.DynamicTest.dynamicTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestFactory
@@ -69,6 +70,7 @@ class LeagueApiTest {
     ) {
         val summonerId = leagueEntry.summonerId ?: "Unknown Summoner"
 
+        // Note: Most of theses checks are useless and should be replaced by a proper test
         assertNotNull(leagueEntry, "League entry should not be null for summoner $summonerId")
         assertNotNull(leagueEntry.leagueId, "League ID should not be null for summoner $summonerId")
         assertNotNull(leagueEntry.leaguePoints, "League points should not be null for summoner $summonerId")
@@ -85,10 +87,15 @@ class LeagueApiTest {
         assertNotNull(leagueEntry.veteran, "Veteran status should not be null for summoner $summonerId")
     }
 
-    @Test
-    fun getLeague() {
-        val challengeLeagueId = riotApi.lol.league.getChallengerLeague(LoLRankedQueue.RankedSoloQueue).leagueId
-        riotApi.lol.league.getLeague(challengeLeagueId)
+    @TestFactory
+    fun getLeague(): List<DynamicTest> {
+        val entries = riotApi.lol.league.getLeagueEntries(LoLRankedQueue.RankedSoloQueue, LoLTier.EMERALD, LoLDivision.I)
+        return entries.map { entry ->
+            dynamicTest(entry.leagueId) {
+                val league = entry.leagueId?.let { riotApi.lol.league.getLeague(it) }
+                assertNotNull(league)
+            }
+        }
     }
 
     @Test

@@ -187,15 +187,15 @@ queue	string
  */
 internal data class LeagueListDto(
     @Json(name = "leagueId")
-    val leagueId: String,
+    val leagueId: String? = null,
     @Json(name = "entries")
     val entries: List<LeagueItemDto> = emptyList(),
     @Json(name = "tier")
     val tier: String,
     @Json(name = "name")
-    val name: String,
+    val name: String? = null,
     @Json(name = "queue")
-    val queue: String,
+    val queue: String? = null,
 )
 
 /*

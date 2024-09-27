@@ -4,6 +4,7 @@ plugins {
 rootProject.name = "riot-api-sdk"
 include("riot-api")
 include("test-apps")
+include("riot-static")
 
 // Repositories
 

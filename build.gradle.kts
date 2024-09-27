@@ -8,3 +8,5 @@ subprojects {
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
 }
 
+group = "com.noahkohrs"
+version = "1.0-SNAPSHOT"

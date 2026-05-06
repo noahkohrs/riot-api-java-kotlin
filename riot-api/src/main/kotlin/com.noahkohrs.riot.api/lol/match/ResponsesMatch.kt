@@ -112,18 +112,18 @@ public class Mission private constructor(
     internal companion object {
         fun fromDto(dto: MissionDto): Mission {
             return Mission(
-                playerScore0 = dto.playerScore0,
-                playerScore1 = dto.playerScore1,
-                playerScore2 = dto.playerScore2,
-                playerScore3 = dto.playerScore3,
-                playerScore4 = dto.playerScore4,
-                playerScore5 = dto.playerScore5,
-                playerScore6 = dto.playerScore6,
-                playerScore7 = dto.playerScore7,
-                playerScore8 = dto.playerScore8,
-                playerScore9 = dto.playerScore9,
-                playerScore10 = dto.playerScore10,
-                playerScore11 = dto.playerScore11,
+                playerScore0 = dto.playerScore0.toInt(),
+                playerScore1 = dto.playerScore1.toInt(),
+                playerScore2 = dto.playerScore2.toInt(),
+                playerScore3 = dto.playerScore3.toInt(),
+                playerScore4 = dto.playerScore4.toInt(),
+                playerScore5 = dto.playerScore5.toInt(),
+                playerScore6 = dto.playerScore6.toInt(),
+                playerScore7 = dto.playerScore7.toInt(),
+                playerScore8 = dto.playerScore8.toInt(),
+                playerScore9 = dto.playerScore9.toInt(),
+                playerScore10 = dto.playerScore10.toInt(),
+                playerScore11 = dto.playerScore11.toInt(),
             )
         }
     }

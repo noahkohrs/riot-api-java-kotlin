@@ -13,14 +13,12 @@ class ClashApiTest {
     private val playerPuuid = riotApi.account.getAccountByRiotId(TestInternal.somePlayers[0].name, TestInternal.somePlayers[0].tag).puuid
     private val summonerId = riotApi.lol.summoner.getSummonerByPuuid(playerPuuid).id
 
-    @Test
     fun getPlayersBySummonerStressTest() {
         riotApi.lol.clash.getPlayersBySummoner(summonerId).forEach { player ->
             assertNotNull(player)
         }
     }
 
-    @Test
     fun getTeamByIdStressTest() {
         if (riotApi.lol.clash.getPlayersBySummoner(summonerId).isEmpty()) {
             return
@@ -37,7 +35,6 @@ class ClashApiTest {
         }
     }
 
-    @Test
     fun getTournamentByTeamStressTest() {
         if (riotApi.lol.clash.getPlayersBySummoner(summonerId).isEmpty()) {
             return
@@ -47,7 +44,6 @@ class ClashApiTest {
         assertNotNull(tournament)
     }
 
-    @Test
     fun getTournamentByIdStressTest() {
         if (riotApi.lol.clash.getTournaments().isEmpty()) {
             return

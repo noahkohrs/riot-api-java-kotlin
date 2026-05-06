@@ -394,7 +394,7 @@ public data class ChallengesDto(
     val blastConeOppositeOpponentCount: Int = 0,
 //    bountyGold	int
     @Json(name = "bountyGold")
-    val bountyGold: Int = 0,
+    val bountyGold: Float = 0f,
 //    buffsStolen	int
     @Json(name = "buffsStolen")
     val buffsStolen: Int = 0,
@@ -725,42 +725,30 @@ public data class ChallengesDto(
 )
 
 internal data class MissionDto(
-//    playerScore0	int
-//    playerScore1	int
-//    playerScore2	int
-//    playerScore3	int
-//    playerScore4	int
-//    playerScore5	int
-//    playerScore6	int
-//    playerScore7	int
-//    playerScore8	int
-//    playerScore9	int
-//    playerScore10	int
-//    playerScore11	int
     @Json(name = "playerScore0")
-    val playerScore0: Int = 0,
+    val playerScore0: Float = 0f,
     @Json(name = "playerScore1")
-    val playerScore1: Int = 0,
+    val playerScore1: Float = 0f,
     @Json(name = "playerScore2")
-    val playerScore2: Int = 0,
+    val playerScore2: Float = 0f,
     @Json(name = "playerScore3")
-    val playerScore3: Int = 0,
+    val playerScore3: Float = 0f,
     @Json(name = "playerScore4")
-    val playerScore4: Int = 0,
+    val playerScore4: Float = 0f,
     @Json(name = "playerScore5")
-    val playerScore5: Int = 0,
+    val playerScore5: Float = 0f,
     @Json(name = "playerScore6")
-    val playerScore6: Int = 0,
+    val playerScore6: Float = 0f,
     @Json(name = "playerScore7")
-    val playerScore7: Int = 0,
+    val playerScore7: Float = 0f,
     @Json(name = "playerScore8")
-    val playerScore8: Int = 0,
+    val playerScore8: Float = 0f,
     @Json(name = "playerScore9")
-    val playerScore9: Int = 0,
+    val playerScore9: Float = 0f,
     @Json(name = "playerScore10")
-    val playerScore10: Int = 0,
+    val playerScore10: Float = 0f,
     @Json(name = "playerScore11")
-    val playerScore11: Int = 0,
+    val playerScore11: Float = 0f,
 )
 
 internal data class ObjectiveDto(

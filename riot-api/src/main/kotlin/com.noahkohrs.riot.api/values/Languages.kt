@@ -83,6 +83,9 @@ public enum class Languages(
 
     // zh_TW
     CHINESE_TW("zh_TW"),
+
+    // id_ID
+    INDONESIAN("id_ID"),
     ;
 
     internal companion object {

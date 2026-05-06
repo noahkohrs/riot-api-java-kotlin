@@ -22,24 +22,21 @@ public class RiotApi(
             platform,
         )
 
-    @JvmField
-    public val lor: LoRApi =
+    private val lor: LoRApi =
         LoRApi(
             apiKey,
             platform,
             globalRegion,
         )
 
-    @JvmField
-    public val tft: TftApi =
+    private val tft: TftApi =
         TftApi(
             apiKey,
             platform,
             globalRegion,
         )
 
-    @JvmField
-    public val valorant: ValorantApi =
+    private val valorant: ValorantApi =
         ValorantApi(
             apiKey,
             platform,
